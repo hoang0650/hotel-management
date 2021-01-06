@@ -1,0 +1,157 @@
+﻿@model MyFinance.Domain.BusinessModel.HotelModel
+@{
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+
+<div id="content-body" class="detail-body">
+    <!--detail-->
+    <div class="container-detail container">
+      <div class="gap gap-small"></div>
+        <div class="gap gap-small"></div>
+        <div class="search-block">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="box-search2">
+                                    @using (Html.BeginForm("Result", "Home", FormMethod.Get, new { @class = "form-horizontal", @id = "form-Search" }))
+                                    {
+                                        <div class="txtlocation">
+                                            @Html.TextBox("keyword", null, new { @class = "form-control", @placeholder = "Tên nhà nghỉ, khách sạn hoặc khu vực cần tìm..." })
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                        </div>
+                                    }
+
+                                 </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gap gap-small"></div>
+        <div class="booking-item-details">
+            <div class="vc_row wpb_row st bg-holder">
+                <div class=" ">
+                    <div class="row">
+                        <div class="wpb_column column_container col-md-6">
+                            <div class="wpb_wrapper">
+                                <header class="">
+                                    <h1 class="lh1em featured_single" itemprop="name">@Model.Name           </h1>
+                                    <p class="lh1em text-small" itemprop="address"><i class="fa fa-map-marker"></i> @Model.Address</p>
+                                    <ul class="list list-inline text-small">
+                                        <li>
+                                            <a href="mailto:@Model.Email  "><i class="fa fa-envelope"></i> @Model.Email</a>
+                                        </li>
+
+                                        <li>
+                                            <a target="_blank" href="#"> <i class="fa fa-home"></i> @Model.Website</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="tel:@Model.Phone"> <i class="fa fa-phone"></i>@Model.Phone</a>
+                                        </li>
+
+                                    </ul>
+                                </header>
+                            </div>
+                        </div>
+                        <div class="wpb_column column_container col-md-3">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="booking-item-meta">
+                                                            <p class="booking-item-address"><i class="fa fa-dollar"></i> <span class="lbl">Giờ đầu :</span> @string.Format("{0:N0}", Model.FisrtHour) đ</p>
+                                                            <p class="booking-item-address"><i class="fa fa-dollar"></i> <span class="lbl">Giờ tiếp :</span> @string.Format("{0:N0}", Model.NextHour) đ</p>
+
+
+                                                            <div class="gap gap-small"></div>
+                                                        </div>
+                                                    </div>
+
+                        </div>
+
+                        <div class="wpb_column column_container col-md-3">
+                            <div class="wpb_wrapper">
+                                <p class="booking-item-header-price text-right">
+                                    <small>Qua đêm</small>
+                                    <span class="text-lg">@string.Format("{0:N0}", Model.OverNight) đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div><!--End .row-->
+                </div><!--End .container-->
+
+                <div class="gap gap-small"></div>
+                <!--main content-->
+                <div class="vc_row wpb_row st bg-holder">
+                    <div class="row">
+                        <!--left col--->
+                        <div class="wpb_column column_container col-md-7">
+                            <ul class="nav-detail-page nav nav-tabs ui-tabs-nav vc_clearfix ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+                                <li class="ui-state-default ui-corner-top " role="tab" tabindex="0">
+                                    <a href="#tab-slider" class="ui-tabs-anchor">
+                                        <i class="fa fa-camera"></i> Hình ảnh
+                                    </a>
+                                </li>
+                                <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="-1">
+                                    <a href="#tab-googlemap" class="ui-tabs-anchor">
+                                        <i class="fa fa-map-marker"></i> Bản đồ
+                                    </a>
+                                </li>
+                                @*<li class="ui-state-default ui-corner-top" role="tab">
+                                    <a href="#tab-video" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">
+                                        <i class="fa fa-youtube-play"></i> Video
+                                    </a>
+                                </li>*@
+                            </ul>
+                            <!--images slider-->
+                            <div id="tab-slider" class="ui-tabs-panel wpb_ui-tabs-hide vc_clearfix ui-widget-content ui-corner-bottom"  style="display:none">
+                                <img src="@string.Format("http://api.bizkasa.com{0}", Model.Logo)" />
+                            </div>
+                            <div class="ui-tabs-panel  vc_clearfix ui-widget-content ui-corner-bottom" id="tab-googlemap" style="display:block">
+                                <div class="google-map" id="map_canvas" style="height:400px;width:100%">
+                                    google map
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <!--right col-->
+
+                        @Html.Action("HotelRelated", "Home", new { @keyword = Model.Address })
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="gap gap-small"></div>
+    <div class="gap gap-small"></div>
+    <div class="gap gap-small"></div>
+    <!--footer-->
+    <div id="footer">
+        @{ Html.RenderPartial("_Footer");}
+    </div>
+   
+</div>
+@section scripts{
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf7hUxmzsiDyklIfcM93ESrtZXmG9Dqq4&sensor=false"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var myLatlng = new google.maps.LatLng(@Model.Latitude,@Model.Longitude);
+        var myOptions = {
+            zoom: 18,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+        var marker = new google.maps.Marker({
+            position: myLatlng, 
+            map: map, 
+            title:"Hello World!"
+        }); 
+
+
+
+    });
+
+</script>
+
+    }

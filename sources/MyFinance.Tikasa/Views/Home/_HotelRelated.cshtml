@@ -1,0 +1,46 @@
+﻿@model List<MyFinance.Domain.BusinessModel.HotelModel>
+<div class="wpb_column column_container col-md-5">
+    <div class="vc_column-inner ">
+        <div class="wpb_wrapper">
+            <h3>Cùng khu vực</h3>
+            <div class="list_hotel_related">
+
+                <ul class="booking-list">
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <a href="@Url.RouteUrl(new {hotelId=item.Id,hotelname=MyFinance.Utils.CommonUtil.ToAscii(item.Name)})">
+                                <div class="booking-item booking-item-small">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            <img width="800" height="600" src="@string.Format("http://api.bizkasa.com{0}", item.Logo)" class="wp-post-image" alt="">
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <h5 class="booking-item-title">@item.Name</h5>
+                                            <ul class="icon-group booking-item-rating-stars">
+                                                <li><i class="fa  fa-star"></i></li>
+                                                <li><i class="fa  fa-star"></i></li>
+                                                <li><i class="fa  fa-star"></i></li>
+                                                <li><i class="fa  fa-star"></i></li>
+                                                <li><i class="fa  fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <span class="booking-item-price-from">
+
+                                               Qua đêm
+                                            </span>
+                                            <span class="booking-item-price">@string.Format("{0:N0}", item.OverNight) đ</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    }
+                    
+                </ul>
+               
+            </div>
+        </div>
+    </div>
+</div>

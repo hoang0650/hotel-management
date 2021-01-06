@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Danh sách khách sạn ";
+}
+
+<div class="main-content" ng-app="appModule" ng-controller="HotelController">
+    <div>
+        <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+            <h3>Danh sách khách sạn</h3>
+            <div class="toolbar">
+                @*  <a class="btn btn-primary" href="" ng-click="ShowPopup(1)">
+                         <i class="icon-plus"></i>
+                         <span class="hidden-320">Thêm phiếu thu</span>
+                     </a>
+                     <a class="btn btn-danger">
+                         <i class="menu-icon fa fa-bolt"></i>
+                         <span class="hidden-320">Xóa nhiều</span>
+                     </a>
+                    <div class="btn-group">
+                             <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
+                                 <i class="icon-file"></i>
+                                 <span class="hidden-320">Excel</span>
+                                 <i class="icon-caret-down icon-on-right"></i>
+                             </button>
+                             <ul class="dropdown-menu">
+                                 <li>
+                                     <a>
+                                         <i class="icon-upload-alt"></i><span class="hidden-320">Nhập Excel</span>
+                                     </a>
+                                 </li>
+                                 <li>
+                                     <a>
+                                         <i class="icon-download-alt"></i><span class="hidden-320">Xuất Excel</span>
+                                     </a>
+                                 </li>
+                             </ul>
+                         </div>*@
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="page-content-container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="dataTables_wrapper" role="grid" ng-init="GetHotels()">
+                            <table class="table table-hover dataTable" id="list">
+                                <thead>
+                                    <tr role="row">
+                                        <th>Stt</th>
+                                        <th>Mã</th>
+                                        <th>Tên khách sạn</th>
+                                        <th>Số Phòng</th>
+                                        <th>Số Tầng</th>
+                                        <th>Website</th>
+                                        <th>Điện thoại</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Ngày hết hạn</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody style="border-bottom: none;">
+                                    <tr ng-repeat="item in Hotels">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{item.Id}}</td>
+                                        <td class="hidden-480">
+                                            <label class="no-padding-left">
+                                                {{item.Name}}
+                                            </label>
+
+                                        </td>
+                                        <td class="hidden-480">
+                                            <label class="no-padding-left">
+                                                {{item.NumRooms}}
+                                            </label>
+                                        </td>
+                                        <td class="hidden-480">
+                                            <label class="no-padding-left">
+                                                {{item.NumFloors}}
+                                            </label>
+                                        </td>
+                                        <td>{{item.Website}}</td>
+                                        <td>{{item.Phone}}</td>
+                                        <td>{{item.CreateDateString}}</td>
+                                        <td>{{item.DateExpiredString}}</td>
+                                        <td>
+                                            <a ng-click="GetHotelById(item.Id)"
+                                                <i class="fa fa-pencil" title="sửa khách sạn"> </i>
+                                            </a>
+                                            <a ng-really-message="Bạn có chắc chắn muốn xóa  ?" ng-really-click="DeleteHotel(item.Id)" item="item">
+                                                <i class="icon-trash bigger-130" title="Xóa hẳn hàng hóa"> </i>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <div class="pull-left">
+                        <span>Tìm thấy  <span class="total-highlight">{{Filter.Page.total}}</span>khách sạn </span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <paging class="small pull-right"
+                            page="Filter.Page.currentPage"
+                            page-size="Filter.Page.pageSize"
+                            total="Filter.Page.total"
+                            show-prev-next="true"
+                            show-first-last="false"
+                            paging-action="DoCtrlPagingAct( page, pageSize, total)">
+                    </paging>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    @{ Html.RenderPartial("_Edit");  }
+</div>
+@section Scripts {
+    <script src="~/Areas/CPanelAdmin/Script/Paging/paging.js"></script>
+    <script src="~/Areas/CPanelAdmin/Script/Hotel/Hotel.js"></script>
+
+}

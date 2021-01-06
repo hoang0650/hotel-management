@@ -1,0 +1,204 @@
+﻿
+<div class="main-content" ng-app="appModule" ng-controller="ReportController">
+
+
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="~/CPanelAdmin/AdminIndex">Trang chủ</a>
+            </li>
+
+            <li>
+                Danh sách phiếu thu
+            </li>
+
+        </ul><!-- /.breadcrumb -->
+        <div class="toolbar">
+          @*  <a class="btn btn-primary" href="" ng-click="ShowPopup(1)">
+           <i class="icon-plus"></i>
+           <span class="hidden-320">Thêm phiếu thu</span>
+       </a>
+       <a class="btn btn-danger">
+           <i class="menu-icon fa fa-bolt"></i>
+           <span class="hidden-320">Xóa nhiều</span>
+       </a>
+    <div class="btn-group">
+               <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
+                   <i class="icon-file"></i>
+                   <span class="hidden-320">Excel</span>
+                   <i class="icon-caret-down icon-on-right"></i>
+               </button>
+               <ul class="dropdown-menu">
+                   <li>
+                       <a>
+                           <i class="icon-upload-alt"></i><span class="hidden-320">Nhập Excel</span>
+                       </a>
+                   </li>
+                   <li>
+                       <a>
+                           <i class="icon-download-alt"></i><span class="hidden-320">Xuất Excel</span>
+                       </a>
+                   </li>
+               </ul>
+           </div>*@
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="page-content-container">
+            <div class="col-xs-12 ">
+                <h3 class="text-center text-uppercase">Báo cáo doanh thu<br /><span ng-show="Invoices.length>0"> {{FromDateView|date:"dd/MM/yyyy"}} - {{ToDateView|date:"dd/MM/yyyy"}}</span></h3>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <div class="col-xs-12">
+                        <div class="col-xs-12 no-padding">
+                            <div class="form-group" style="overflow: hidden;" ng-init="InitFilterModel()">
+                                <div class="col-sm-12 no-padding-left">
+                                    <div class="col-sm-2">
+                                        <div class="input-group">
+                                            <input class="form-control date-picker" id="id-date-revenue" type="text" data-date-format="dd-mm-yyyy" placeholder="Chọn thời gian">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar bigger-110"></i>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-2 no-padding-left">
+                                        <select class="form-control" ng-options="row.Key as row.Value for row in PaymentMethods" ng-model="Filter.PaymentMethod">
+                                            <option value="">--- Chọn hình thức thanh toán ---</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2 no-padding-left">
+                                        <select class="form-control" ng-options="row.Key as row.Value for row in InvoiceStatus" ng-model="Filter.InvoiceStatus">
+                                            <option value="">--- Chọn trạng thái thanh toán ---</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2 no-padding-left">
+                                        <input type="text" id="filter" name="txtSearch" value="" placeholder="Tên, mă, SĐT khách hàng" class="col-xs-12" ng-model="Filter.Keyword">
+                                    </div>
+
+                                    <div class="col-sm-3 no-padding-left no-padding-right">
+                                        <div class="input-group" style="width:100%">
+
+                                            <span class="padding-left-10">
+                                                <button id="btnSearch" class="btn btn-primary " ng-click="ReportRevenue()">
+                                                    <i class="icon-search icon-on-right bigger-110"></i>
+                                                    <span class="hidden-320">Tìm kiếm</span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="pull-right">
+                            <b>Tổng danh thu: </b><span class="total-highlight">{{TotalAmount|number}}</span>
+                        </div>
+                    </div>
+
+                    <div class="dataTables_wrapper" role="grid" ng-init="ReportRevenue()">
+                        <table class="table table-hover dataTable" id="list">
+                            <thead>
+                                <tr role="row">
+                                    <th>Stt</th>
+                                    <th>Mã phiếu</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Phòng</th>
+                                    <th>Loại phòng</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Tình trạng</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody style="border-bottom: none;">
+                                <tr ng-repeat="item in Invoices">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.Id}}</td>
+                                    <td class="hidden-480">
+                                        <label class="no-padding-left" ng-show="item.CustomerName.length>0">
+                                            {{item.CustomerName}}
+                                        </label>
+                                        <label class="no-padding-left" ng-show="item.CompanyName.length>0">
+                                            {{item.CompanyName}}
+                                        </label>
+                                    </td>
+                                    <td class="hidden-480">
+                                        <label class="no-padding-left">
+                                            {{item.RoomName}}
+                                        </label>
+                                    </td>
+                                    <td class="hidden-480">
+                                        <label class="no-padding-left">
+                                            {{item.RoomClassName}}
+                                        </label>
+                                    </td>
+
+                                    <td>{{item.CreatedDate|date:"dd/MM/yyyy HH:mm"}}</td>
+                                    <td class="text-right">{{item.TotalAmount|number}}</td>
+                                    <td>{{item.InvoiceStatus==2?'Đã thanh toán':'Chưa thanh toán'}}</td>
+                                    <td>
+                                        <a>
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="col-sm-12">
+            <div class="col-sm-6">
+                <div class="pull-left">
+                    <span>Tổng số hóa đơn: </span><span class="total-highlight">{{Filter.Page.total}}</span>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <paging class="small pull-right"
+                        page="Filter.Page.currentPage"
+                        page-size="Filter.Page.pageSize"
+                        total="Filter.Page.total"
+                        adjacent="{{adjacent}}"
+                        dots="{{dots}}"
+                        scroll-top="{{scrollTop}}"
+                        hide-if-empty="{{hideIfEmpty}}"
+                        ul-class="{{ulClass}}"
+                        active-class="{{activeClass}}"
+                        disabled-class="{{disabledClass}}"
+                        show-prev-next="{{showPrevNext}}"
+                        paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total)">
+                </paging>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Scripts {
+
+    <script src="~/Areas/CPanelAdmin/Script/Paging/paging.js"></script>
+    <script src="~/Areas/CPanelAdmin/Script/Report/report.js"></script>
+    <link href="~/Areas/CPanelAdmin/Content/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
+    <script src="~/Areas/CPanelAdmin/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/fullcalendar/moment.js"></script>
+
+}
+

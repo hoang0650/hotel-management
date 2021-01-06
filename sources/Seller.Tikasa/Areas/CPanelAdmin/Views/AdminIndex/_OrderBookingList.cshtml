@@ -1,0 +1,127 @@
+﻿<div id="OrderBookings" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">Danh sách đặt phòng</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input class="form-control date-picker" id="id-date-filter-booking" type="text" data-date-format="dd-mm-yyyy" placeholder="Chọn thời gian">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar bigger-110"></i>
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" name="txtSearch" value="" placeholder=" Nhập tên, mă đặt phòng" class="col-xs-12 " ng-model="Filter.KeyWord">
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="input-group" style="width:100%">
+
+                                <span class="padding-left-10">
+                                    <button id="btnSearch" class="btn btn-primary " ng-click="GetBookingOrders()">
+                                        <i class="icon-search icon-on-right bigger-110"></i>
+                                        <span class="hidden-320">Tìm kiếm</span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <table id="simple-table" class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="width-27px center">
+                                        Stt
+                                    </th>
+                                    <th>Mã đặt phòng</th>
+                                    <th>Phòng đặt</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Ngày nhận (dự kiến)</th>
+                                    <th>Ngày ra (dự kiến)</th>
+                                    <th>Ngày đặt</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody ng-repeat="item in OrderBookings">
+                                <tr>
+                                    <td>{{$index+1}}</td>
+                                    <td>
+                                        {{item.OrderCode}}
+                                    </td>
+                                    <td>
+                                        {{item.RoomName}}
+                                    </td>
+                                    <td>
+                                        {{item.CustomerName}}
+                                    </td>
+                                    <td>
+                                        {{item.CheckInDate|date:"dd/MM/yyyy HH:mm"}}
+                                    </td>
+                                    <td>
+                                        {{item.CheckOutDate|date:"dd/MM/yyyy HH:mm"}}
+                                    </td>
+
+                                    <td>
+                                        {{item.CreatedDate|date:"dd/MM/yyyy HH:mm"}}
+                                    </td>
+                                    <td>
+                                        <div class="hidden-sm hidden-xs btn-group">
+                                            <a ng-click="TranferBookingToCheckIn(item.OrderId)" data-toggle="tooltip" title="Nhận phòng">
+                                                <i class="ace-icon fa fa-external-link bigger-120"></i>
+                                            </a>
+                                            <a ng-click="">
+                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                            </a>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr />
+                    <div class="col-sm-12 form-group">
+                        <div class="col-sm-6">
+                            <div class="pull-left">
+                                <span>Tổng lượt đặt: </span><span class="total-highlight">{{Filter.Page.total}}</span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <paging class="small pull-right"
+                                    page="Filter.Page.currentPage"
+                                    page-size="Filter.Page.pageSize"
+                                    total="Filter.Page.total"
+                                    adjacent="{{adjacent}}"
+                                    dots="{{dots}}"
+                                    scroll-top="{{scrollTop}}"
+                                    hide-if-empty="{{hideIfEmpty}}"
+                                    ul-class="{{ulClass}}"
+                                    active-class="{{activeClass}}"
+                                    disabled-class="{{disabledClass}}"
+                                    show-prev-next="{{showPrevNext}}"
+                                    paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total)">
+                            </paging>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Đóng</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

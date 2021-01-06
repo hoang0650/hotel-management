@@ -1,0 +1,98 @@
+﻿<div id="CheckoutCompany" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            @*<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">Thanh toán Phòng - {{Order.RoomName}}</h4>
+            </div>*@
+            <div class="modal-body">
+                <div class="row">
+                    <table id="simple-table" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="width-27px center">
+                                   
+                                </th>
+                                <th class="width-27px">Stt</th>
+                                <th class="width hidden-480 text-center">Khách đoàn</th>
+                                
+
+                            </tr>
+                        </thead>
+
+                        <tbody ng-repeat="item in OrderCompany">
+                            <tr>
+
+                                <td></td>
+                                <td>
+                                    {{$index+1}}
+                                </td>
+                                <td class="text-center">
+                                    [{{item.CompanyId}}] - {{item.CompanyName}}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3">
+                                    <table id="simple-table" class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace" ng-model="item.IsSelected" ng-click="CompanycheckAll(item)">
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </th>
+                                                <th>Stt</th>
+                                                <th>Phòng</th>
+                                                <th>Loại Phòng</th>
+                                                <th>Giá</th>
+                                                <th>tiền Phòng</th>
+                                                <th>Tiền DV</th>
+                                                <th>Phụ thu</th>
+                                                <th>Giảm trừ</th>
+                                                <th>Trả trước</th>
+                                                <th>Thành tiền</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr ng-repeat="row in item.Orders">
+                                                <td>
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace" ng-model="row.IsSelected" ng-click="CompanyOrderchecked(item,row)">
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </td>
+                                                <td>{{$parent.$index+1}}.{{$index+1}}</td>
+                                                <td>{{row.RoomName}}</td>
+                                                <td>{{row.RoomClassName}}</td>
+                                                <td>{{row.PriceByDay|number}}</td>
+                                                <td>{{GetRoomAmount(row.TimeUseds)|number}}</td>
+                                                <td>{{GetServiceAmount(row.Services)|number}}</td>
+                                                <td>{{row.Surcharge|number}}</td>
+                                                <td>{{row.Deductible|number}}</td>
+                                                <td>{{row.Prepay|number}}</td>
+                                                <td>{{GetRoomAmount(row.TimeUseds)+GetServiceAmount(row.Services)+(row.Surcharge-row.Deductible)|number}}</td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" ng-click="CheckOutCompany()">Thanh toán</button>
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Hủy</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

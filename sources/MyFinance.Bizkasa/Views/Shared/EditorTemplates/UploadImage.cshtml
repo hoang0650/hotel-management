@@ -1,0 +1,6 @@
+﻿@model string
+@Html.TextBox("", ViewData.TemplateInfo.FormattedModelValue,
+    new { @class = "form-control txt-upfile", placeholder = ViewData.ModelMetadata.Watermark })
+@Html.TextBox("btn","Chọn ảnh",
+            new { @type = "button", @class = "btn btn-sky" })
+

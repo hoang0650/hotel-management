@@ -1,0 +1,55 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>Đăng nhập hệ thống</title>
+		<meta name="description" content="User login page" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/bootstrap.min.css" />
+        <link href="~/Areas/CPanelAdmin/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+		<link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/fonts/fonts.googleapis.com.css" />
+		<link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/ace.min.css" />
+		<link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/ace-rtl.min.css" />
+        <link href="~/Areas/CPanelAdmin/Content/css/css1.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/toastr.css">
+	</head>
+
+	<body class="login-layout light-login">
+        <div id="loading" style="display: none;">
+            <img src="/Content/V2/images/ajax-loader.gif">
+        </div>
+        @RenderBody()
+		<!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<script src="~/Areas/CPanelAdmin/Content/js/jquery.2.1.1.min.js"></script>
+        <script src="~/Areas/CPanelAdmin/Content/js/toastr/toastr.js"></script>
+        <script src="~/Scripts/angular.min.js"></script>
+        <script src="~/Areas/CPanelAdmin/Script/Shared/ui-bootstrap-tpls-0.10.0.js"></script>
+        <script src="~/Areas/CPanelAdmin/Script/Module/appModule.js"></script>  
+        <script src="~/Areas/CPanelAdmin/Script/User/User.js"></script>
+
+		<script type="text/javascript">
+		    window.jQuery || document.write("<script src='~/Areas/CPanelAdmin/Content/js/jquery.min.js'>" + "<" + "/script>");
+		</script>
+
+		<script type="text/javascript">
+		    if ('ontouchstart' in document.documentElement) document.write("<script src='~/Areas/CPanelAdmin/Content/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+		</script>
+
+		<script type="text/javascript">
+		    jQuery(function ($) {
+		        $(document).on('click', '.toolbar a[data-target]', function (e) {
+		            e.preventDefault();
+		            var target = $(this).data('target');
+		            $('.widget-box.visible').removeClass('visible');//hide others
+		            $(target).addClass('visible');//show target
+		        });
+		    });
+
+		</script>
+	</body>
+</html>

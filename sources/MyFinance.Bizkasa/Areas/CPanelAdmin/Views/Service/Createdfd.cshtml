@@ -1,0 +1,844 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/CPanelAdmin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model AppFramework.Models.Domain.Product
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+            <h3>Tạo hàng hóa</h3>
+            <div class="toolbar">
+                <button class="btn btn-primary" data-ng-click="create()" title="Lưu">
+                    <i class="icon-ok"></i>
+                    <span class="hidden-320" onclick="return alert($('#editor1').html())">Lưu</span>
+                </button>
+                <button class="btn btn-primary" data-ng-click="createandcontinue()" title="Lưu và tiếp tục">
+                    <i class="icon-save"></i>
+                    <span class="hidden-320">Lưu và tiếp tục</span>
+                </button>
+                <a href="@Request.UrlReferrer.AbsoluteUri" class="btn" title="Trở về danh sách hàng hóa">
+                    <i class="icon-arrow-left"></i>
+                    <span class="hidden-320">Trở về </span>
+                </a>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="page-content-container manage-product">
+
+                <div class="row" style="margin-top:10px">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="tabbable">
+                                    <ul class="nav nav-tabs" id="myTab">
+
+                                        <li class="tab-pane in active">
+                                            <a data-toggle="tab" href="#social" aria-expanded="true">
+                                                <i class="blue fa fa-cog bigger-120"></i>
+                                                <span class="hidden-480">Cấu hình chung</span>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="page-content">
+                                            <div class="page-content-container manage-product">
+                                                <div id="social" class="tab-pane fade active in">
+                                                    
+                                                    <div class="page-content" style="margin-top: -35px;">
+                                                        <div class="page-content-container manage-product">
+                                                            <div class="row create-product" style="margin-left: -100px;">
+                                                                <div class="col-xs-12">
+
+                                                                    <div class="row">
+                                                                        <div class="col-sm-9">
+                                                                            <div class="row" style="margin-top: -20px;">
+                                                                                <div class="profile-user-info">
+                                                                                    <div class="profile-info-row">
+                                                                                        <div class="profile-info-name" style="color:red">Tiêu đề: </div>
+                                                                                        <div class="profile-info-value">
+                                                                                            <input type="text" name="Name" id="Name" placeholder="Nhập tên xe.." class="width-100">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="profile-user-info">
+                                                                                    <div class="form-group" style="margin-left:40px">
+                                                                                        <div class="wysiwyg-editor" id="editor1"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="col-sm-3">
+
+                                                                            <h4 class="row header smaller lighter blue" style="margin-top:-14px">
+                                                                                <i class="icon-th-large"></i>
+                                                                                Thông tin mở rộng
+                                                                            </h4>
+                                                                            <div class="row" style="  margin-left: -15px;margin-right: 0px;">
+                                                                                <div class="form-group" style="margin: -15px -50px 0px -10px;">
+                                                                                    <div class="col-xs-7">
+                                                                                        <label>Mã xe</label>
+                                                                                        <input type="text" class="width-100" placeholder="Nhập mã xe">
+                                                                                    </div>
+                                                                                    <div class="col-xs-5">
+                                                                                        <div class="checkbox width-100">
+                                                                                            <label class="no-padding-left">
+                                                                                                <input type="checkbox" class="ace ng-pristine ng-valid">
+                                                                                                <span class="lbl">Kích hoạt</span>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                        <div class="checkbox width-100">
+                                                                                            <label class="no-padding-left">
+                                                                                                <input type="checkbox" class="ace ng-pristine ng-valid">
+                                                                                                <span class="lbl">Hiện trang chủ</span>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <div class="row" style="  margin-left: -2px;margin-right: -4px;">
+                                                                                <div class="form-group" style="margin: -15px -50px 0px -10px;">
+                                                                                    <label>Loại xe</label>
+                                                                                    <div class="input-group" style="width:100%">
+                                                                                        <select class="form-control ng-pristine ng-valid" style="border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;"></select>
+                                                                                        @*<span class="input-group-btn ng-scope" >
+                                                                                                <button class="btn btn-primary" title="Quản lý loại xe">...</button>
+                                                                                            </span>*@
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="row" style="  margin-left: -2px;margin-right: -4px;">
+                                                                                <div class="form-group" style="margin: 0px -50px 0px -10px;">
+                                                                                    <label>Nhà sản xuất</label>
+                                                                                    <div class="input-group" style="width:100%">
+                                                                                        <select class="form-control ng-pristine ng-valid" style="border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;"></select>
+                                                                                        @*<span class="input-group-btn ng-scope">
+                                                                                                <button class="btn btn-primary" title="Quản lý loại xe">...</button>
+                                                                                            </span>*@
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="row" style="  margin-left: -2px;margin-right: -4px;">
+                                                                                <div class="form-group" style="margin: 0px -50px 0px -10px;">
+                                                                                    <label>Dòng xe</label>
+                                                                                    <div class="input-group" style="width:100%">
+                                                                                        <select class="form-control ng-pristine ng-valid" style="border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;"></select>
+                                                                                        @*<span class="input-group-btn ng-scope">
+                                                                                                <button class="btn btn-primary" title="Quản lý loại xe">...</button>
+                                                                                            </span>*@
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.col -->
+                            <!-- PAGE CONTENT ENDS -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<script src="~/Areas/CPanelAdmin/Script/editorscript.js"></script>
+
+@*<div class="main-content">
+
+
+        <!-- ngView:  --><div ng-view="" class="ng-scope">
+            <div data-ng-controller="createProductController" class="ng-scope">
+
+                <div class="page-content">
+                    <div class="page-content-container manage-product">
+                        <div class="row create-product">
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h4>Thông tin cơ bản</h4>
+                                        <span>Nhập tên và các thông tin cơ bản của hàng hoá</span>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Tên hàng hóa</label>
+                                                    <input type="text" name="productname" placeholder="Nhập tên hàng hóa" class="width-100 ng-pristine ng-valid" data-ng-model="product.ProductName" maxlength="200">
+                                                    <div class="popover fade left in" data-ng-style="product.ProductName != '' ? {'display': 'none'} : errorMessage.ProductName" style="top: 20px; left: -190px; display: none;">
+                                                        <div class="arrow"></div>
+                                                        <div class="popover-content">Bạn chưa nhập tên hàng hóa.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-xs-6">
+                                                            <label>Số lượng</label>
+                                                            <input type="text" class="text-right width-100 ng-pristine ng-valid" maxlength="4" auto-numeric="{vMin: 0, vMax: 9999}" data-ng-model="qtyVailable" data-ng-disabled="!isInventoryTracked || isSerial">
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <div class="checkbox width-100">
+                                                                <label class="no-padding-left">
+                                                                    <input type="checkbox" class="ace ng-pristine ng-valid" data-ng-model="isInventoryTracked" data-ng-disabled="isSerial"><span class="lbl">Theo dõi tồn kho?</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox width-100">
+                                                                <label class="no-padding-left">
+                                                                    <input type="checkbox" data-ng-model="isUntrackedItemSale" data-ng-disabled="!isInventoryTracked || isSerial" class="ace ng-pristine ng-valid"><span class="lbl">Cho phép bán âm?</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div has-permission="POSIM_Price_UpdateBuyPrice" class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label>Giá vốn</label>
+                                                    <input type="text" placeholder="Nhập giá vốn" class="width-100 text-right ng-pristine ng-valid" auto-numeric="{vMin: 0, vMax: 9999999999}" data-ng-model="buyPrice" maxlength="10">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label>Giá bán</label>
+                                                    <input type="text" placeholder="Nhập giá bán" class="width-100 text-right ng-pristine ng-valid" auto-numeric="{vMin: 0, vMax: 9999999999}" data-ng-model="retailPrice" maxlength="10">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6" data-ng-init="initCategory()">
+                                                <div class="form-group">
+                                                    <label>Nhóm hàng</label>
+                                                    <div class="input-group">
+                                                        <select class="form-control ng-pristine ng-valid" style="border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;" data-ng-model="category" data-ng-options="c.name group by c.groupby for c in categories" data-ng-change="changeCategory()"><optgroup label="Chọn nhóm hàng"><option value="0">Áo</option><option value="1">---- fsfsf</option><option value="2">---- sdsd</option><option value="3">dsdsd</option><option value="4" selected="selected">Chưa có nhóm hàng</option></optgroup><optgroup label="------------------------"><option value="5">Tạo mới nhóm hàng</option></optgroup></select>
+                                                        <span class="input-group-btn ng-scope" data-ng-controller="widgetCategoryController">
+                                                            <button class="btn btn-primary" title="Quản lý nhóm hàng" data-ng-click="openCategoryModal(categories)">...</button>
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group ng-hide" data-ng-show="category.id == -1">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control ng-pristine ng-valid" placeholder="Nhập tên nhóm hàng và enter" maxlength="200" data-ng-model="categoryName" ng-enter="createCategory()">
+                                                        <span class="input-group-btn padding-left-3">
+                                                            <select data-ng-model="parentCategory" class="nowrap ng-pristine ng-valid" data-ng-options="c.name for c in parentCategories"><option value="0" selected="selected">---Nhóm hàng cấp cha---</option><option value="1">Áo</option><option value="2">---- fsfsf</option><option value="3">---- sdsd</option><option value="4">dsdsd</option></select>
+                                                        </span>
+                                                        <span class="input-group-btn padding-left-3">
+                                                            <button class="btn btn-primary nowrap" data-ng-click="createCategory()" data-ng-disabled="categoryName == ''" disabled="disabled">
+                                                                <i class="icon-save bigger-110" title="Tạo mới Nhóm hàng"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6" data-ng-init="initManufacturer()">
+                                                <div class="form-group">
+                                                    <label>Nhà sản xuất</label>
+                                                    <div class="input-group">
+                                                        <select class="form-control ng-pristine ng-valid" style="border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;" data-ng-model="manufacturer" data-ng-options="c.name group by c.groupby for c in manufacturers"><optgroup label="Nhà sản xuất"><option value="0">OWEN</option><option value="1">G2000</option><option value="2">John Henrry</option><option value="3">Khatoco</option><option value="4">sfsf</option><option value="5">adasd</option><option value="6" selected="selected">Chưa có nhà sản xuất</option></optgroup><optgroup label="----------------------"><option value="7">Tạo mới nhà sản xuất</option></optgroup></select>
+                                                        <span class="input-group-btn ng-scope" data-ng-controller="widgetManufacturerController">
+                                                            <button class="btn btn-primary" title="Quản lý nhà sản xuất" data-ng-click="openManufacturerModal(manufacturers)">...</button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ng-hide" data-ng-show="manufacturer.id == -1">
+                                                    <div class="input-group">
+                                                        <input type="text" placeholder="Nhập tên nhà sản xuất và enter" maxlength="512" class="form-control ng-pristine ng-valid" data-ng-model="manufacturerName" ng-enter="createManufacturer()">
+                                                        <span class="input-group-btn padding-left-3">
+                                                            <button class="btn btn-primary inline" data-ng-disabled="manufacturerName == ''" data-ng-click="createManufacturer()" disabled="disabled"><i class="icon-save bigger-110" title="Tạo mới nhà sản xuất"></i></button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label>Mã hàng hóa<i>(Tối đa 32 ký tự.)</i></label>
+                                                    <input type="text" maxlength="32" placeholder="Hệ thống tự tạo mã nếu để trống (SP000001)" class="width-100 ng-pristine ng-valid" data-ng-model="product.UPC_EAN">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label>Thuế VAT</label>
+                                                    <select class="form-control ng-pristine ng-valid" data-ng-model="tax">
+                                                        <option value="-1">Không tính thuế</option>
+                                                        <option value="0">0%</option>
+                                                        <option value="5">5%</option>
+                                                        <option value="10">10%</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 class="row header smaller lighter blue" style="cursor: pointer;" data-ng-click="showExpand()">
+                                    <span class="col-sm-7">
+                                        <i class="icon-th-large"></i>
+                                        Thông tin mở rộng <i>(Thông tin thuộc tính, hình ảnh, mô tả, web,...)</i>
+                                    </span>
+                                    <span class="col-sm-5">
+                                        <label class="pull-right inline">
+                                            <i data-ng-class="isExpand == true ? 'icon-chevron-up' : 'icon-chevron-down'" class="icon-chevron-up"></i>
+                                        </label>
+                                    </span>
+                                </h4>
+                                <div class="row" data-ng-show="isExpand == true">
+                                    <div class="col-sm-3">
+                                        <h4>Chính sách kho</h4>
+                                        <span>Thiết lập phương thức quản lý kho đối với hàng hoá này.</span>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label>Mức tồn kho tối thiểu</label>
+                                                    <input type="text" placeholder="Mức tồn kho tối thiểu" class="width-100 text-right ng-pristine ng-valid" auto-numeric="{vMin: 0, vMax: 999}" data-ng-model="minQtyAvailable" maxlength="3">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label>Mức tồn kho tối đa</label>
+                                                    <input type="text" placeholder="Mức tồn kho tối đa" class="width-100 text-right ng-pristine ng-valid" auto-numeric="{vMin: 0, vMax: 99999}" data-ng-model="maxQtyAvailable" maxlength="5">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="checkbox form-group">
+                                                    <label class="no-padding-left no-padding-right">
+                                                        <input type="checkbox" class="ace ng-pristine ng-valid" data-ng-model="isSerial">
+                                                        <span class="lbl main-color">Quản lý tồn kho theo serial</span>
+                                                    </label>
+                                                    <span class="help-button ng-scope" style="line-height: 19px; margin-left: 20px;" popover="Khi khai báo hàng hóa, nếu bạn chọn quản lý hàng hóa theo serial thì bạn vui lòng vào nhập kho để nhập số lượng hàng hóa." popover-title="Quản lý serial" popover-placement="left" popover-trigger="mouseenter">
+                                                        ?
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12" data-ng-init="initAttribute()">
+                                                <div class="form-group">
+                                                    <label class="col-sm-8 control-label no-padding-left">
+                                                        <input type="checkbox" class="ace ng-pristine ng-valid" data-ng-model="isAttributed"><span class="lbl main-color">Quản lý kho theo thuộc tính hàng hóa ? <i>(VD: Màu sắc, kích thước,...)</i></span>
+                                                    </label>
+                                                    <div class="col-sm-4 text-right ng-scope" data-ng-controller="widgetAttributeController">
+                                                        <button class="btn btn-primary btn-sm" data-ng-click="openAttributeModal(attributes)"><i class="icon-list"></i>Quản lý thuộc tính</button>
+                                                    </div>
+                                                </div>
+                                                <div class="table-responsive ng-hide" style="margin-top: 40px;" data-ng-show="isAttributed == true">
+                                                    <table class="table table-striped table-bordered table-hover dataTable">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="width-20">Thuộc tính</th>
+                                                                <th class="width-75">Giá trị</th>
+                                                                <th class="width-5"></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                                            <!-- ngRepeat: attr in tblAttribute -->
+                                                            <tr data-ng-repeat="attr in tblAttribute" class="ng-scope">
+                                                                <td>
+                                                                    <select class="width-100 ng-pristine ng-valid" data-ng-model="attr.attribute.item" data-ng-options="c.name group by c.groupby for c in attr.attribute.items" data-ng-change="changeAttribute(attr)" options-disabled="c.isdisabled for c in attr.attribute.items"><optgroup label="Thuộc tính"><option value="0" selected="selected">Màu</option><option value="1">Size</option></optgroup><optgroup label="---"><option value="2">Tạo mới thuộc tính</option></optgroup></select>
+                                                                    <div class="input-group ng-hide" data-ng-show="attr.attribute.item.id == -1">
+                                                                        <input id="attr01574167-3864-4137-967a-a620f752fb0e" type="text" class="width-100 ng-pristine ng-valid" placeholder="Nhập tên thuộc tính và enter" maxlength="200" data-ng-model="attr.attribute.newItemName" ng-enter="createAttribute(attr)">
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-primary nowrap" data-ng-disabled="attr.attribute.newItemName == ''" data-ng-click="createAttribute(attr)" disabled="disabled">
+                                                                                <i class="icon-save bigger-110" title="Thêm thuộc tính"></i>
+                                                                            </button>
+                                                                        </span>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <attribute-tags attr-id="tag-01574167-3864-4137-967a-a620f752fb0e" attr-inputid="value-01574167-3864-4137-967a-a620f752fb0e" attr-class="tags" attr-placeholder="Nhập giá trị và enter" attr-maxlength="20" tags="attr.values" suggest="attr.attribute.item.values" parent-tag="attr.attribute.item" on-tag="buildProductItem" class="ng-isolate-scope"><div id="tag-01574167-3864-4137-967a-a620f752fb0e" class="tags" data-ng-click="setFocus()"><input id="value-01574167-3864-4137-967a-a620f752fb0e" type="text" placeholder="Nhập giá trị và enter" class="tags" autocomplete="off" maxlength="20"></div></attribute-tags>
+                                                                </td>
+                                                                <td class="center">
+                                                                    <i class="icon-trash bigger-130 ng-hide" data-ng-show="tblAttribute.length > 1" data-ng-click="removeRowAttribute(attr)"></i>
+                                                                </td>
+                                                            </tr><!-- end ngRepeat: attr in tblAttribute -->
+                                                        </tbody>
+                                                        <tfoot data-ng-show="attributes.length - 1 > 1 &amp;&amp; tblAttribute.length < attributes.length - 1 &amp;&amp; tblAttribute.length < limitAttribute" class="">
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                    <button class="btn btn-primary" data-ng-click="addRowAttribute()">Thêm thuộc tính</button>
+                                                                    <span class="lbl">
+                                                                        <i>(VD: Màu sắc, kích thước,...)</i>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                    <div class="form-group" style="margin-top: 10px;">
+                                                        <label>
+                                                            <input type="checkbox" class="ace ng-pristine ng-valid" data-ng-model="showItem">
+                                                            <span class="lbl">Có <span class="red bolder ng-binding">0</span> hàng hóa cùng loại</span>
+                                                        </label>
+                                                    </div>
+                                                    <table class="table table-striped table-hover dataTable ng-hide" style="border: 1px solid #ddd;" data-ng-show="items.length > 0 &amp;&amp; showItem == true">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="width-5"></th>
+                                                                <th class="width-35">Tên</th>
+                                                                <th class="width-15 hidden-480">Mã</th>
+                                                                <th has-permission="POSIM_Price_UpdateBuyPrice" class="width-15">Giá vốn</th>
+                                                                <th class="width-15">Giá bán</th>
+                                                                <th class="width-15" data-ng-show="isInventoryTracked == true">Tồn kho</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                                            <!-- ngRepeat: item in items -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hr hr-12" data-ng-show="isExpand == true"></div>
+                                <div class="row" data-ng-show="isExpand == true">
+                                    <div class="col-sm-3">
+                                        <h4>Mô tả chi tiết</h4>
+                                        <span>Hình ảnh và mô tả hàng hóa.</span>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="row margin-bottom-10">
+                                            <div class="col-xs-12">
+                                                <div class="dropzone dz-clickable" style="min-height: 235px; cursor: pointer !important;" ng-file-select="onFileSelect($files)" ng-file-drop="onFileSelect($files)" ng-file-drop-available="dropSupported=true" ng-file-drag-over-class="dragOverClass($event)" ng-file-drag-over-delay="100" data-ng-show="dropSupported" accept="image/*" multiple="">
+                                                    <div class="dz-default dz-message" data-ng-show="dataFiles.length == 0">
+                                                        <span>
+                                                            <span class="bolder">Upload hình ảnh hàng hóa</span><br>
+                                                            <span class="hidden-480" style="font-size:13px;">(Để tải và hiển thị nhanh, mỗi ảnh nên có dung lượng dưới 500KB. Tải tối đa 10MB.)</span><br>
+                                                            <i class="upload-icon icon-picture blue icon-3x"></i>
+                                                        </span>
+                                                    </div>
+                                                    <!-- ngRepeat: f in dataFiles -->
+                                                    <div data-ng-show="dataFiles.length > 0" data-ng-class="{'inline' : dataFiles.length > 0}" style="position: relative; top: 60px; z-index: 1;" class="ng-hide">
+                                                        <i class="icon-cloud-upload bigger-300 blue" style="cursor: pointer; z-index: 9;" title="Chọn hình ảnh khác" data-ng-click="repeatSelectFile()"></i>
+                                                    </div>
+                                                    <input type="file" class="dropzone dz-clickable" style="min-height: 235px; cursor: pointer !important; top: 0px; bottom: 0px; left: 0px; right: 0px; opacity: 0; position: absolute; width: 100%;" ng-file-select="onFileSelect($files)" ng-file-drop="onFileSelect($files)" ng-file-drop-available="dropSupported=true" ng-file-drag-over-class="dragOverClass($event)" ng-file-drag-over-delay="100" data-ng-show="dropSupported" accept="image/*" multiple="multiple">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Mô tả <i>(Nhập thông tin mô tả chi tiết hơn để khách hàng hiểu hàng hoá của bạn)</i></label>
+                                                    <div text-angular="" ng-model="description" class="ng-isolate-scope ng-pristine ng-valid ta-root"><div text-angular-toolbar="" name="textAngularToolbar1822501695714891" class="ng-scope ng-isolate-scope ta-toolbar btn-toolbar"><div class="btn-group"><button type="button" class="btn btn-sm btn-info ng-scope" name="bold" unselectable="on" ng-disabled="isDisabled()" tabindex="-1" ng-click="executeAction()" ng-class="displayActiveToolClass(active)" title="Bold" disabled="disabled"><i class="icon-bold"></i></button><button type="button" class="btn btn-sm btn-info ng-scope" name="italics" unselectable="on" ng-disabled="isDisabled()" tabindex="-1" ng-click="executeAction()" ng-class="displayActiveToolClass(active)" title="Italic" disabled="disabled"><i class="icon-italic"></i></button><button type="button" class="btn btn-sm btn-info ng-scope" name="underline" unselectable="on" ng-disabled="isDisabled()" tabindex="-1" ng-click="executeAction()" ng-class="displayActiveToolClass(active)" title="Underline" disabled="disabled"><i class="icon-underline"></i></button><button type="button" class="btn btn-sm btn-info ng-scope" name="ul" unselectable="on" ng-disabled="isDisabled()" tabindex="-1" ng-click="executeAction()" ng-class="displayActiveToolClass(active)" title="Unordered List" disabled="disabled"><i class="icon-list-ul"></i></button><button type="button" class="btn btn-sm btn-info ng-scope" name="ol" unselectable="on" ng-disabled="isDisabled()" tabindex="-1" ng-click="executeAction()" ng-class="displayActiveToolClass(active)" title="Ordered List" disabled="disabled"><i class="icon-list-ol"></i></button></div><div class="btn-group"><button type="button" class="btn btn-sm btn-info ng-scope" name="justifyLeft" unselectable="on" ng-disabled="isDisabled()" tabindex="-1" ng-click="executeAction()" ng-class="displayActiveToolClass(active)" title="Align text left" disabled="disabled"><i class="icon-align-left"></i></button><button type="button" class="btn btn-sm btn-info ng-scope" name="justifyCenter" unselectable="on" ng-disabled="isDisabled()" tabindex="-1" ng-click="executeAction()" ng-class="displayActiveToolClass(active)" title="Center" disabled="disabled"><i class="icon-align-center"></i></button><button type="button" class="btn btn-sm btn-info ng-scope" name="justifyRight" unselectable="on" ng-disabled="isDisabled()" tabindex="-1" ng-click="executeAction()" ng-class="displayActiveToolClass(active)" title="Align text right" disabled="disabled"><i class="icon-align-right"></i></button><button type="button" class="btn btn-sm btn-info ng-scope" name="indent" unselectable="on" ng-disabled="isDisabled()" tabindex="-1" ng-click="executeAction()" ng-class="displayActiveToolClass(active)" title="Increase indent" disabled="disabled"><i class="icon-indent-right"></i></button><button type="button" class="btn btn-sm btn-info ng-scope" name="outdent" unselectable="on" ng-disabled="isDisabled()" tabindex="-1" ng-click="executeAction()" ng-class="displayActiveToolClass(active)" title="Decrease indent" disabled="disabled"><i class="icon-indent-left"></i></button></div><div class="btn-group"><button type="button" class="btn btn-sm btn-info ng-scope" name="insertImage" unselectable="on" ng-disabled="isDisabled()" tabindex="-1" ng-click="executeAction()" ng-class="displayActiveToolClass(active)" title="Insert image" disabled="disabled"><i class="icon-picture"></i></button><button type="button" class="btn btn-sm btn-info ng-scope" name="insertLink" unselectable="on" ng-disabled="isDisabled()" tabindex="-1" ng-click="executeAction()" ng-class="displayActiveToolClass(active)" title="Insert / edit link" disabled="disabled"><i class="icon-link"></i></button></div></div><div class="ta-scroll-window ng-scope ta-text ta-editor form-control" ng-hide="showHtml"><div class="popover fade bottom" style="max-width: none; width: 305px;"><div class="arrow"></div><div class="popover-content"></div></div><div class="ta-resizer-handle-overlay"><div class="ta-resizer-handle-background"></div><div class="ta-resizer-handle-corner ta-resizer-handle-corner-tl"></div><div class="ta-resizer-handle-corner ta-resizer-handle-corner-tr"></div><div class="ta-resizer-handle-corner ta-resizer-handle-corner-bl"></div><div class="ta-resizer-handle-corner ta-resizer-handle-corner-br"></div><div class="ta-resizer-handle-info"></div></div><div id="taTextElement1822501695714891" contenteditable="true" ta-bind="ta-bind" ng-model="html" class="ng-isolate-scope ng-pristine ng-valid ta-bind"><p><br></p></div></div><textarea id="taHtmlElement1822501695714891" ng-show="showHtml" ta-bind="ta-bind" ng-model="html" class="ng-scope ng-isolate-scope ng-pristine ng-valid ta-bind ta-html ta-editor form-control ng-hide"></textarea><input type="hidden" tabindex="-1" style="display: none;" name="textAngularEditor1822501695714891" value=""></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hr hr-12" data-ng-show="isExpand == true"></div>
+                                <div class="row" data-ng-show="isExpand == true">
+                                    <div class="col-sm-3">
+                                        <h4>Thông tin cho web</h4>
+                                        <span>Hiển thị trên trang web, tối ưu SEO.</span>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="ace ng-pristine ng-valid" data-ng-model="product.IsOnlinePublished">
+                                                        <span class="lbl">Hiển thị hàng hóa ra website</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <input type="checkbox" class="ace ng-pristine ng-valid" data-ng-model="product.IsAttrative">
+                                                        <span class="lbl">Nổi bật</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" class="ace ng-pristine ng-valid" data-ng-model="product.IsNew">
+                                                        <span class="lbl">Hàng mới</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" class="ace ng-pristine ng-valid" data-ng-model="product.IsBestSelling">
+                                                        <span class="lbl">Đang bán chạy</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Tags</label>
+                                                    <tags attr-placeholder="Nhập tag và enter" attr-id="tags" attr-inputid="tagsinput" attr-class="tags" attr-maxlength="20" tags="tags" suggest="suggestTags" class="ng-isolate-scope"><div id="tags" class="tags" data-ng-click="setFocus()"><input id="tagsinput" type="text" placeholder="Nhập tag và enter" class="tags" autocomplete="off" maxlength="20"></div></tags>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Tiêu đề trang <i>(Tối đa 70 ký tự.)</i></label>
+                                                    <input type="text" placeholder="" maxlength="70" class="width-100 ng-pristine ng-valid" data-ng-model="product.MetaTitle">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Thông tin mô tả <i>(Tối đa 160 ký tự.)</i></label>
+                                                    <input type="text" placeholder="Chưa có thông tin mô tả" maxlength="160" class="width-100 ng-pristine ng-valid" data-ng-model="product.MetaDescription">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="form-group">
+                                                    <label>URL<i>(Tối đa 160 ký tự.)</i></label>
+                                                    <input type="text" placeholder="" maxlength="160" class="width-100 ng-pristine ng-valid" data-ng-model="product.FriendlyUrl">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12" data-ng-init="initCollection()">
+                                                <div class="form-group">
+                                                    <label>Bộ sưu tập</label>
+                                                    <select class="width-100 ng-pristine ng-valid" data-ng-model="collection" data-ng-options="c.name group by c.groupby for c in collections"><optgroup label="Bộ sưu tập"><option value="0" selected="selected">Chưa có bộ sưu tập</option></optgroup><optgroup label="---"><option value="1">Tạo mới bộ sưu tập</option></optgroup></select>
+                                                </div>
+                                                <div class="form-group ng-hide" data-ng-show="collection.id == -1">
+                                                    <div class="input-group">
+                                                        <input type="text" placeholder="Nhập tên bộ sưu tập và enter" class="form-control ng-pristine ng-valid" data-ng-model="collectionName" ng-enter="createCollection()">
+                                                        <span class="input-group-btn padding-left-3">
+                                                            <button class="btn btn-primary inline" data-ng-disabled="collectionName == ''" data-ng-click="createCollection()" disabled="disabled"><i class="icon-save bigger-110" title="Tạo mới bộ sưu tập"></i></button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" data-ng-show="isExpand == true">
+                                    <div class="col-xs-12">
+                                        <div class="text-right">
+                                            <button class="btn btn-primary" data-ng-click="create()" title="Lưu">
+                                                <i class="icon-ok"></i>
+                                                <span class="hidden-320">Lưu</span>
+                                            </button>
+                                            <button class="btn btn-primary" data-ng-click="createandcontinue()" title="Lưu và tiếp tục">
+                                                <i class="icon-save"></i>
+                                                <span class="hidden-320">Lưu và tiếp tục</span>
+                                            </button>
+                                            <a href="#/product" class="btn" title="Trở về danh sách hàng hóa">
+                                                <i class="icon-arrow-left"></i>
+                                                <span class="hidden-320">Trở về </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Widget Template-->
+                <script type="text/ng-template" id="modalCategory.html">
+                    <div class="modal-header no-padding">
+                        <div class="table-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="closeModal()">
+                                <span class="white">×</span>
+                            </button>
+                            Quản lý nhóm hàng
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="tabbable">
+                                    <ul class="nav nav-tabs padding-12 tab-color-blue background-blue">
+                                        <li id="tab-1" class="active" data-tabs="tabCategory">
+                                            <a data-toggle="tab" data-ng-click="activeTab('tab-1', 'tab-pane-1', 'tabCategory')"><i class="icon-list bigger-110"></i> Danh sách nhóm hàng</a>
+                                        </li>
+                                        <li id="tab-2" data-tabs="tabCategory">
+                                            <a data-toggle="tab" data-ng-click="activeTab('tab-2', 'tab-pane-2', 'tabCategory')"><i class="icon-plus bigger-110"></i> Tạo mới nhóm hàng</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div id="tab-pane-1" data-tab-pane="tabCategory" class="tab-pane in active">
+                                            <table class="table table-striped table-bordered table-hover" ng-table="tableParams">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tên nhóm hàng</th>
+                                                        <th class="center"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr data-ng-repeat="c in $data">
+                                                        <td>
+                                                            <a data-ng-if="!c.$edit" data-ng-click="c.$edit = true">{{c.name}}</a>
+                                                            <input id="txtCategory{{c.id}}" type="text" class="width-100" data-ng-if="c.$edit" data-ng-value="formatName(c.name)" />
+                                                        </td>
+                                                        <td class="center" style="width:75px;">
+                                                            <a data-ng-if="!c.$edit" data-ng-click="c.$edit = true">
+                                                                <i class="icon-edit bigger-130" title="Cập nhật nhóm hàng"></i>
+                                                            </a>
+                                                            <a data-ng-if="c.$edit" data-ng-click="updateCategory(c)">
+                                                                <i class="icon-save bigger-130" title="Lưu nhóm hàng"></i>
+                                                            </a>
+                                                            <a data-ng-if="c.$edit" data-ng-click="c.$edit = false">
+                                                                <i class="icon-undo bigger-130" title="Hủy cập nhật"></i>
+                                                            </a>
+                                                            <a class="padding-left-3" data-ng-if="!c.$edit" data-ng-click="deleteCategory(c)">
+                                                                <i class="icon-trash bigger-130" title="Xóa nhóm hàng"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div id="tab-pane-2" data-tab-pane="tabCategory" class="tab-pane">
+                                            <div class="row form-horizontal">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label no-padding-right text-right" style="text-align:right;">Tên nhóm hàng</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" placeholder="Nhập tên nhóm hàng" maxlength="200" data-ng-model="form.categoryName" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label no-padding-right text-right" style="text-align:right;">Nhóm hàng cấp cha</label>
+                                                        <div class="col-sm-8">
+                                                            <select data-ng-model="form.parentCategory" class="nowrap width-100" data-ng-options="c.name for c in parentCategories"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label no-padding-right">&nbsp;</label>
+                                                        <div class="col-sm-8">
+                                                            <button class="btn btn-primary nowrap" data-ng-click="saveCategory()" data-ng-disabled="form.categoryName == ''">
+                                                                <i class="icon-ok bigger-110"></i> Lưu
+                                                            </button>
+                                                            <button class="btn btn-primary nowrap" data-ng-click="saveAndContinueCategory()" data-ng-disabled="form.categoryName == ''">
+                                                                <i class="icon-save bigger-110"></i> Lưu và tiếp tục
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-sm" data-ng-click="closeModal()">
+                            <i class="icon-undo"></i>
+                            Đóng
+                        </button>
+                    </div>
+                </script>
+
+                <script type="text/ng-template" id="modalManufacturer.html">
+                    <div class="modal-header no-padding">
+                        <div class="table-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="closeModal()">
+                                <span class="white">×</span>
+                            </button>
+                            Quản lý nhà sản xuất
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="tabbable">
+                                    <ul class="nav nav-tabs padding-12 tab-color-blue background-blue">
+                                        <li id="tab-1" class="active" data-tabs="tabManufacturer">
+                                            <a data-toggle="tab" data-ng-click="activeTab('tab-1', 'tab-pane-1', 'tabManufacturer')"><i class="icon-list bigger-110"></i> Danh sách nhà sản xuất</a>
+                                        </li>
+                                        <li id="tab-2" data-tabs="tabManufacturer">
+                                            <a data-toggle="tab" data-ng-click="activeTab('tab-2', 'tab-pane-2', 'tabManufacturer')"><i class="icon-plus bigger-110"></i> Tạo mới nhà sản xuất</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div id="tab-pane-1" data-tab-pane="tabManufacturer" class="tab-pane in active">
+                                            <table class="table table-striped table-bordered table-hover" ng-table="tableParams">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tên nhà sản xuất</th>
+                                                        <th class="center"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr data-ng-repeat="c in $data">
+                                                        <td>
+                                                            <a data-ng-if="!c.$edit" data-ng-click="c.$edit = true">{{c.name}}</a>
+                                                            <input id="txtManufacturer{{c.id}}" type="text" class="width-100" data-ng-if="c.$edit" data-ng-value="c.name" />
+                                                        </td>
+                                                        <td class="center" style="width:75px;">
+                                                            <a data-ng-if="!c.$edit" data-ng-click="c.$edit = true">
+                                                                <i class="icon-edit bigger-130" title="Cập nhật nhà sản xuất"></i>
+                                                            </a>
+                                                            <a data-ng-if="c.$edit" data-ng-click="updateManufacturer(c)">
+                                                                <i class="icon-save bigger-130" title="Lưu nhà sản xuất"></i>
+                                                            </a>
+                                                            <a data-ng-if="c.$edit" data-ng-click="c.$edit = false">
+                                                                <i class="icon-undo bigger-130" title="Hủy cập nhật"></i>
+                                                            </a>
+                                                            <a class="padding-left-3" data-ng-if="!c.$edit" data-ng-click="deleteManufacturer(c)">
+                                                                <i class="icon-trash bigger-130" title="Xóa nhà sản xuất"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div id="tab-pane-2" data-tab-pane="tabManufacturer" class="tab-pane">
+                                            <div class="row form-horizontal">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" maxlength="512" placeholder="Nhập tên nhà sản xuất" data-ng-model="form.manufacturerName" style="border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important; " />
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-primary nowrap" data-ng-click="saveManufacturer()" data-ng-disabled="form.manufacturerName == ''">
+                                                                    <i class="icon-ok bigger-110"></i> Lưu
+                                                                </button>
+                                                                <button class="btn btn-primary nowrap" data-ng-click="saveAndContinueManufacturer()" data-ng-disabled="form.manufacturerName == ''">
+                                                                    <i class="icon-save bigger-110"></i> Lưu và tiếp tục
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-sm" data-ng-click="closeModal()">
+                            <i class="icon-undo"></i>
+                            Đóng
+                        </button>
+                    </div>
+                </script>
+
+                <script type="text/ng-template" id="modalAttribute.html">
+                    <div class="modal-header no-padding">
+                        <div class="table-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="closeModal()">
+                                <span class="white">×</span>
+                            </button>
+                            Quản lý thuộc tính
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="tabbable">
+                                    <ul class="nav nav-tabs padding-12 tab-color-blue background-blue">
+                                        <li id="tab-1" class="active" data-tabs="tabAttribute">
+                                            <a data-toggle="tab" data-ng-click="activeTab('tab-1', 'tab-pane-1', 'tabAttribute')"><i class="icon-list bigger-110"></i> Danh sách thuộc tính</a>
+                                        </li>
+                                        <li id="tab-2" data-tabs="tabAttribute">
+                                            <a data-toggle="tab" data-ng-click="activeTab('tab-2', 'tab-pane-2', 'tabAttribute')"><i class="icon-plus bigger-110"></i> Tạo mới thuộc tính</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div id="tab-pane-1" data-tab-pane="tabAttribute" class="tab-pane in active">
+                                            <table class="table table-striped table-bordered table-hover" ng-table="tableParams">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tên thuộc tính</th>
+                                                        <th class="center"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr data-ng-repeat="c in $data">
+                                                        <td>
+                                                            <a data-ng-if="!c.$edit" data-ng-click="c.$edit = true">{{c.name}}</a>
+                                                            <input id="txtAttribute{{c.id}}" type="text" class="width-100" data-ng-if="c.$edit" data-ng-value="c.name" />
+                                                        </td>
+                                                        <td class="center" style="width:75px;">
+                                                            <a data-ng-if="!c.$edit" data-ng-click="c.$edit = true">
+                                                                <i class="icon-edit bigger-130" title="Cập nhật thuộc tính"></i>
+                                                            </a>
+                                                            <a data-ng-if="c.$edit" data-ng-click="updateAttribute(c)">
+                                                                <i class="icon-save bigger-130" title="Lưu thuộc tính"></i>
+                                                            </a>
+                                                            <a data-ng-if="c.$edit" data-ng-click="c.$edit = false">
+                                                                <i class="icon-undo bigger-130" title="Hủy cập nhật"></i>
+                                                            </a>
+                                                            <a class="padding-left-3" data-ng-if="!c.$edit" data-ng-click="deleteAttribute(c)">
+                                                                <i class="icon-trash bigger-130" title="Xóa thuộc tính"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div id="tab-pane-2" data-tab-pane="tabAttribute" class="tab-pane">
+                                            <div class="row form-horizontal">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" placeholder="Nhập tên thuộc tính" maxlength="200" data-ng-model="form.attributeName" style="border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important; " />
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-primary nowrap" data-ng-click="saveAttribute()" data-ng-disabled="form.attributeName == ''">
+                                                                    <i class="icon-ok bigger-110"></i> Lưu
+                                                                </button>
+                                                                <button class="btn btn-primary nowrap" data-ng-click="saveAndContinueAttribute()" data-ng-disabled="form.attributeName == ''">
+                                                                    <i class="icon-save bigger-110"></i> Lưu và tiếp tục
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-sm" data-ng-click="closeModal()">
+                            <i class="icon-undo"></i>
+                            Đóng
+                        </button>
+                    </div>
+                </script>
+
+
+            </div>
+        </div>
+
+
+
+    </div>*@

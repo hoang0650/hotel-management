@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Thêm mới khách sạn";
+}
+
+<div class="main-content" ng-app="appModule" ng-controller="HotelController">
+    <div class="page-content">
+
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home" aria-expanded="true">
+                                <i class="green ace-icon fa fa-home bigger-120"></i>
+                                Thông tin chung
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a data-toggle="tab" href="#image" aria-expanded="false">
+                                <i class="green ace-icon fa fa-picture-o bigger-120"></i>
+                                Hình ảnh
+
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a data-toggle="tab" href="#messages" aria-expanded="false">
+                                Tiện ích
+                                @*<span class="badge badge-danger">4</span>*@
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade active in form-horizontal">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Tên khách sạn </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="form-field-1" ng-model="Hotel.Name" placeholder="Tên khách sạn" class="form-control">
+
+                                    </div>
+
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Tên công ty </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="form-field-1" ng-model="Hotel.Name" placeholder="Tên công ty(nếu có)" class="form-control">
+
+                                    </div>
+
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Điện thoại </label>
+                                    <div class="col-sm-2">
+
+                                        <input type="text" id="form-field-1" ng-model="Hotel.Phone" placeholder="Điện thoại" class="form-control">
+
+                                    </div>
+
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Email </label>
+                                    <div class="col-sm-2">
+
+                                        <input type="text" id="form-field-1" ng-model="Hotel.Email" placeholder="Email" class="form-control">
+
+                                    </div>
+
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Website </label>
+                                    <div class="col-sm-2">
+
+                                        <input type="text" id="form-field-1" ng-model="Hotel.Website" placeholder="Website" class="form-control">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Số tầng </label>
+                                    <div class="col-sm-2">
+
+                                        <input type="text" id="form-field-1" ng-model="Hotel.NumFloors" placeholder="Số tầng" class="form-control">
+
+                                    </div>
+
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Số Phòng </label>
+                                    <div class="col-sm-2">
+
+                                        <input type="text" id="form-field-1" ng-model="Hotel.NumRooms" placeholder="Số Phòng" class="form-control">
+
+                                    </div>
+
+                                   
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Địa chỉ </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="form-field-1" ng-model="Hotel.Address" placeholder="Địa chỉ khách sạn" class="form-control">
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="clearfix form-actions">
+                                    <div class="col-md-offset-3 col-md-9">
+
+                                        <button type="button" class="btn btn-primary" ng-click="CreateHotelFromSystem()">
+                                            <i class="ace-icon fa fa-check bigger-110"></i>
+                                            Cập nhật
+                                        </button>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="image" class="tab-pane fade">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Logo </label>
+                                <div class="col-sm-4">
+                                    <label class="ace-file-input ace-file-multiple"><input multiple="" type="file" id="id-input-file-3"><span class="ace-file-container" data-title="Drop images here or click to choose"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon ace-icon fa fa-picture-o"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="messages" class="tab-pane fade">
+                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    <script src="~/Areas/CPanelAdmin/Script/Hotel/Hotel.js"></script>
+}

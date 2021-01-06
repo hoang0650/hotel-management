@@ -1,0 +1,321 @@
+﻿<div class="page-sidebar" id="sidebar">
+    <!-- Sidebar Menu -->
+    <ul class="nav sidebar-menu">
+        <!--Dashboard-->
+        <li id="TrangChu">
+            <a href="/pk_admin">
+                <i class="menu-icon glyphicon glyphicon-home"></i>
+                <span class="menu-text"> Trang Chủ </span>
+            </a>
+        </li>
+        <!--Danh Mục-->
+        <li id="DanhMuc">
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon fa fa-th"></i>
+                <span class="menu-text"> Danh Mục </span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li id="TinhThanh">
+                    <a href="/pk_a">
+                        <span class="menu-text">Tỉnh thành</span>
+                    </a>
+                </li>
+                <li id="HangBay">
+                    <a href="/pk_admin/hang-bay">
+                        <span class="menu-text">Hãng bay</span>
+                    </a>
+                </li>
+                <li id="Menu">
+                    <a href="/pk_admin/menu">
+                        <span class="menu-text">Menu</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/Category?t=@MyFinance.Domain.Enum.CategoryEnum.Room">
+                        <span class="menu-text">Loại phòng</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/Category?t=@MyFinance.Domain.Enum.CategoryEnum.Services">
+                        <span class="menu-text">Dịch vụ</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!--Hotel-->
+        <li id="Hotel">
+            <a href="~/Hotel" class="menu-dropdown">
+                <i class="menu-icon fa fa-th"></i>
+                <span class="menu-text"> Khách sạn</span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li id="TinhThanh">
+                    <a href="~/Hotel">
+                        <span class="menu-text">Danh sách khách sạn</span>
+                    </a>
+                </li>
+                <li id="HangBay">
+                    <a href="~/Hotel/Edit">
+                        <span class="menu-text">Thông tin khách sạn</span>
+                    </a>
+                </li>
+                
+            </ul>
+        </li>
+
+
+        <!--Hãng bay-->
+        <li id="CauHinh">
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon fa fa-plane"></i>
+                <span class="menu-text"> Cấu hình hãng bay </span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li id="ThanhToan">
+                    <a href="/pk_admin/thanh-toan">
+                        <span class="menu-text">Cấu hình thanh toán</span>
+                    </a>
+                </li>
+                <li id="KyGui">
+                    <a href="/pk_admin/hanh-ly">
+                        <span class="menu-text">Hành lý ký gửi</span>
+                    </a>
+                </li>
+                <li id="HoTro">
+                    <a href="/pk_admin/ho-tro">
+                        <span class="menu-text">Hỗ trợ trực tuyến</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!--Hình ảnh-->
+        <li id="HinhAnh">
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon-picture"></i>
+                <span class="menu-text"> Hình ảnh </span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li id="QuangCao">
+                    <a href="/pk_admin/quang-cao">
+                        <span class="menu-text">Quảng cáo</span>
+                    </a>
+                </li>
+                <li id="DoiTac">
+                    <a href="/pk_admin/doi-tac">
+                        <span class="menu-text">Đối tác</span>
+                    </a>
+                </li>
+                <li id="Banner">
+                    <a href="/pk_admin/banner">
+                        <span class="menu-text">Banner</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!--Nhượng vé-->
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon fa fa-refresh"></i>
+                <span class="menu-text"> Nhượng vé </span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="elements.html">
+                        <span class="menu-text">Tỉnh thành</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="elements.html">
+                        <span class="menu-text">Tỉnh thành</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!--Văn bản-->
+        <li id="TienIch">
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon fa fa-qrcode"></i>
+                <span class="menu-text"> Tiện ích</span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li id="GioiThieu">
+                    <a href="/pk_admin/gioi-thieu">
+                        <span class="menu-text">Giới thiệu</span>
+                    </a>
+                </li>
+                <li id="DieuKhoan">
+                    <a href="/pk_admin/dieu-khoan-thanh-toan">
+                        <span class="menu-text">Điều khoản thanh toán</span>
+                    </a>
+                </li>
+                <li id="HuongDan">
+                    <a href="/pk_admin/huong-dan-dat-ve">
+                        <span class="menu-text">Hướng dẫn đặt vé</span>
+                    </a>
+                </li>
+                <li id="PTThanhToan">
+                    <a href="/pk_admin/phuong-thuc-thanh-toan">
+                        <span class="menu-text">Phương thức thanh toán</span>
+                    </a>
+                </li>
+                <li id="MuaVe">
+                    <a href="/pk_admin/hinh-thuc-mua-ve">
+                        <span class="menu-text">Hình thức mua vé</span>
+                    </a>
+                </li>
+                <li id="HTThanhToan">
+                    <a href="/pk_admin/hinh-thuc-thanh-toan">
+                        <span class="menu-text">Hình thức thanh toán</span>
+                    </a>
+                </li>
+                <li id="OnlineBookings">
+                    <a href="/pk_admin/onlineBookings">
+                        <span class="menu-text">Onlinebookings</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <!--TIỆN TÍCH-->
+        <li id="VanBan">
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon fa fa-file-text-o"></i>
+                <span class="menu-text"> Văn bản </span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li id="TinTuc">
+                    <a href="/pk_admin/tin-tuc">
+                        <span class="menu-text">Tin tức</span>
+                    </a>
+                </li>
+                <li id="RaoVat">
+                    <a href="/pk_admin/rao-vat">
+                        <span class="menu-text">Rao vặt</span>
+                    </a>
+                </li>
+                <li id="MeoHay">
+                    <a href="/pk_admin/meo-hay">
+                        <span class="menu-text">Mẹo hay</span>
+                    </a>
+                </li>
+                <li id="TuyenDung">
+                    <a href="/pk_admin/tuyen-dung">
+                        <span class="menu-text">Tuyển dụng</span>
+                    </a>
+                </li>
+                <li id="CauHoi">
+                    <a href="/pk_admin/cau-hoi">
+                        <span class="menu-text">Câu hỏi thường gặp</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <!--Đơn hàng-->
+        <li id="DSDonHang">
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon fa fa-th"></i>
+                <span class="menu-text"> Quản lý đơn hàng </span>
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li id="DonHang">
+                    <a href="/pk_admin/don-hang">
+                        <span class="menu-text">Danh sách đơn hàng</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!--Manager User-->
+        <li id="TaiKhoan">
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon-user"></i>
+
+                <span class="menu-text">
+                    Quản lý Tài khoản
+                </span>
+
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li id="DanhSachTaiKhoan">
+                    <a href="/User">
+                        <span class="menu-text">Tài khoản</span>
+                    </a>
+                </li>
+
+                <li id="QuyenHan">
+                    <a href="/pk_admin/quyen-han">
+                        <span class="menu-text">Quyền hạn</span>
+                    </a>
+                </li>
+                <li id="NhomQuyen">
+                    <a href="/pk_admin/nhom-quyen">
+                        <span class="menu-text">Nhóm quyền</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!--Setting-->
+        <li id="HeThong">
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon fa  fa-gears"></i>
+
+                <span class="menu-text">
+                    Hệ thống
+                </span>
+
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li id="CauHinh">
+                    <a href="/pk_admin/cau-hinh">
+                        <span class="menu-text">Cấu hình Website</span>
+                    </a>
+                </li>
+                <li id="LichSu">
+                    <a href="/pk_admin/log-thac-tac">
+                        <span class="menu-text">Lịch sử tháo tác</span>
+                    </a>
+                </li>
+                <li id="CauHinhRobots">
+                    <a href="/pk_admin/cau-hinh-robots">
+                        <span class="menu-text">Cấu hình robots.txt</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="menu-text">Ngôn ngữ</span>
+                    </a>
+                </li>
+                <li id="Modules">
+                    <a href="/pk_admin/modules">
+                        <span class="menu-text">Modules</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <!-- /Sidebar Menu -->
+</div>

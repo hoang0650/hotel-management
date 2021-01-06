@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/bootstrap.min.css" />
+
+    <link href="~/Areas/CPanelAdmin/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/jquery.gritter.min.css">
+    <link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/colorbox.min.css">
+    <link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/toastr.css">
+    <link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/jquery-ui.custom.min.css" />
+    <link href="~/Areas/CPanelAdmin/Content/css/jquery-ui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/select2.min.css" />
+    <link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/datepicker.min.css" />   
+    <link href="~/Areas/CPanelAdmin/Content/css/daterangepicker.min.css" rel="stylesheet" />
+    <link href="~/Areas/CPanelAdmin/Content/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Areas/CPanelAdmin/Content/css/bootstrap-timepicker.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/bootstrap-editable.min.css" />
+    @*<script src="~/Areas/CPanelAdmin/Content/js/jquery.nestable.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>*@
+    <link href="~/Areas/CPanelAdmin/Content/css/chosen.min.css" rel="stylesheet" />
+    <link href="~/Areas/CPanelAdmin/Content/css/colorpicker.min.css" rel="stylesheet" />
+    <link href="~/Areas/CPanelAdmin/Content/css/css1.css" rel="stylesheet" />
+    <!-- ace styles -->
+    <link rel="stylesheet" href="~/Areas/CPanelAdmin/Content/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link href="~/Areas/CPanelAdmin/Content/css/mobile.css" rel="stylesheet" />
+    <link href="~/Areas/CPanelAdmin/Content/css/css2.css" rel="stylesheet" />
+    <link href="~/Areas/CPanelAdmin/Content/css/css3.css" rel="stylesheet" />
+    <!-- ace settings handler -->
+   
+    
+   
+    @*<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
+    <script src="~/Areas/CPanelAdmin/Content/js/ace-extra.min.js"></script>
+    <style type="text/css">
+        .ace-main-stylesheet {
+        }
+    </style>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-41801427-14', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+<body class="no-skin">
+
+    @{Html.RenderPartial("_TopNavigation");}
+    <div id="loading" style="display: none;">
+        <img src="/Content/V2/images/ajax-loader.gif">
+    </div>
+    <div class="main-container" id="main-container">
+        
+        <script type="text/javascript">
+            try {
+                ace.settings.check('main-container', 'fixed');
+            } catch (e) { }
+        </script>
+        
+        @{Html.RenderPartial("_LeftNavigation");}
+
+        <div class="main-content">
+            <div class="main-content-inner">
+            
+                @RenderBody()
+
+                <!-- /.page-content -->
+            </div>
+        </div>
+        <!-- /.main-content -->
+        @{Html.RenderPartial("_Footer");}
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div>
+    <!-- /.main-container -->
+    <!-- basic scripts -->
+
+
+
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='./Content/js/jquery.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="~/Areas/CPanelAdmin/Content/js/jquery.2.1.1.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/chosen.jquery.min.js"></script>
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='~/Areas/CPanelAdmin/Content/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="~/Areas/CPanelAdmin/Content/js/bootstrap.min.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/bootstrap-datepicker.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/toastr/toastr.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/bootstrap-datepicker.min.js"></script>
+    
+    <script src="~/Areas/CPanelAdmin/Script/Shared/ui-bootstrap-tpls-0.10.0.js"></script>
+    
+    <script src="~/Areas/CPanelAdmin/Content/fullcalendar/moment.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/bootstrap-timepicker.min.js"></script>
+  
+    <script src="~/Areas/CPanelAdmin/Content/zclip/zclip.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/jquery.colorbox.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/jquery.gritter.min.js"></script>
+
+    <script src="~/Areas/CPanelAdmin/Content/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/jquery.easypiechart.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/jquery.sparkline.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/jquery.flot.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/jquery.flot.pie.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/jquery.flot.resize.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/jquery.hotkeys.min.js"></script>
+    
+    
+    <script src="~/Areas/CPanelAdmin/Content/js/bootstrap-colorpicker.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Content/js/ace-elements.min.js"></script>
+    @*<script src="~/Scripts/angular.min.js"></script>*@
+    <script src="~/Areas/CPanelAdmin/Content/js/ace.min.js"></script>
+
+    <script src="~/Areas/CPanelAdmin/Script/Module/appModule.js"></script>
+  
+   @RenderSection("Scripts", false)
+    <script type="text/javascript">      
+
+
+        jQuery(function ($) {
+          
+            $(function () {
+                setNavigation();
+            });
+
+            function setNavigation() {
+                var path = window.location.pathname;
+                path = path.replace(/\/$/, "");
+                path = decodeURIComponent(path);
+
+                $("#menu li a").each(function () {
+                    var href = $(this).attr('href');
+                    if (path.substring(0, href.length) === href) {
+                        $(this).closest("#menu").find("li.active").removeClass('active');
+                        $(this).closest("li").addClass('active').closest('ul').parent().addClass('active open');;
+
+                    }
+                });
+            }
+
+            $('.dd-handle a').on('mousedown', function (e) {
+                e.stopPropagation();
+            });
+
+            $('[data-rel="tooltip"]').tooltip();
+
+        });
+
+
+        $('#loading-btn').on(ace.click_event, function () {
+            var btn = $(this);
+            btn.button('loading');
+            setTimeout(function () {
+                btn.button('reset');
+            }, 500);
+        });
+
+        $('#loading-btnintro').on(ace.click_event, function () {
+            var btn = $(this);
+            btn.button('loading');
+            setTimeout(function () {
+                btn.button('reset');
+            }, 500);
+        });
+
+
+        $('#id-button-borders').attr('checked', 'checked').on('click', function () {
+            $('#default-buttons .btn').toggleClass('no-border');
+        });
+
+
+        jQuery(function ($) {
+            $('#loading-btnlocal').on(ace.click_event, function () {
+                var btn = $(this);
+                btn.button('loading');
+                setTimeout(function () {
+                    btn.button('reset');
+                }, 500);
+            });
+
+            $('#id-button-borders').attr('checked', 'checked').on('click', function () {
+                $('#default-buttons .btn').toggleClass('no-border');
+            });
+        });
+        jQuery(function ($) {
+         
+
+            $('#id-button-borders').attr('checked', 'checked').on('click', function () {
+                $('#default-buttons .btn').toggleClass('no-border');
+            });
+        });
+
+        jQuery(function ($) {
+            var $overflow = '';
+            var colorboxParams = {
+                rel: 'colorbox',
+                reposition: true,
+                scalePhotos: true,
+                scrolling: false,
+                previous: '<i class="ace-icon fa fa-arrow-left"></i>',
+                next: '<i class="ace-icon fa fa-arrow-right"></i>',
+                close: '&times;',
+                current: '{current} of {total}',
+                maxWidth: '100%',
+                maxHeight: '100%',
+                onOpen: function () {
+                    $overflow = document.body.style.overflow;
+                    document.body.style.overflow = 'hidden';
+                },
+                onClosed: function () {
+                    document.body.style.overflow = $overflow;
+                },
+                onComplete: function () {
+                    $.colorbox.resize();
+                }
+            };
+
+            $('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorboxParams);
+            $("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner orange fa-spin'></i>"); //let's add a custom loading icon
+
+
+            $(document).one('ajaxloadstart.page', function () {
+                $('#colorbox, #cboxOverlay').remove();
+            });
+        });
+
+      
+
+    </script>
+
+
+</body>
+
+</html>

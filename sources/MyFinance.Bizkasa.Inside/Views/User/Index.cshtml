@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Danh sách khách sạn";
+}
+
+<div class="content" ng-controller="UserController">
+
+    <!-- Page length options -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Danh sách tài khoản</h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+            <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+        </div>
+
+        @*<div class="panel-body">
+                It is possible to easily customise the options shown in the length menu using the <code>lengthMenu</code> initialisation option. This parameter can take one of two forms: 1) A <code>1D</code> array of options which will be used for both the displayed option and the value; 2) A <code>2D</code> array in which the first array is used to define the value options and the second array the displayed options. The example below shows a 2D array being used to include a <code>"Show all"</code> records option.
+            </div>*@
+
+        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer" ng-init="GetUsers()">
+            <div class="datatable-header"><div id="DataTables_Table_0_filter" class="dataTables_filter"><label><span>Filter:</span> <input type="search" class="" placeholder="Type to filter..." aria-controls="DataTables_Table_0"></label></div><div class="dataTables_length" id="DataTables_Table_0_length"><label><span>Show:</span> <div class="select2-container" id="s2id_autogen1"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-2">10</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen2" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-2" id="s2id_autogen2"><div class="select2-drop select2-display-none">   <div class="select2-search select2-search-hidden select2-offscreen">       <label for="s2id_autogen2_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-2" id="s2id_autogen2_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-2">   </ul></div></div><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="" tabindex="-1" title="" style="display: none;"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="-1">All</option></select></label></div></div><div class="datatable-scroll">
+                <table class="table datatable-show-all dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="First Name: activate to sort column descending">Mã</th>
+                            <th class="sorting">Tên tài khoản</th>
+                            <th class="sorting">Mã khách sạn</th>
+                            <th class="sorting">Tình trạng</th>
+                            <th class="sorting">Ngày tạo</th>
+                            <th class="sorting">Đăng nhập cuối</th>
+                            <th class="text-center sorting_disabled" rowspan="1" colspan="1" aria-label="Actions" style="width: 100px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr role="row" class="odd" ng-repeat="item in Users">
+                            <td>{{item.Id}}</td>
+                            <td class="hidden-480">
+                                <label class="no-padding-left">
+                                    {{item.Email}}
+                                </label>
+
+                            </td>
+                            <td>{{item.HotelId}}</td>
+                            <td>{{item.IsActive==true?"Hoạt động":"Ngừng hoạt động"}}</td>
+                            <td>{{item.CreatedDate}}</td>
+                            <td>{{item.LastLogin}}</td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="icon-menu9"></i>
+                                        </a>
+
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="#" ng-click="DisableHotel(item.Id)"><i class=" icon-unlink"></i> {{item.IsActive==true?"Ngừng hoạt động":"Kích hoạt"}}</a></li>
+                                            @*<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+                                            <li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>*@
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="datatable-footer">
+                <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of {{Filter.Page.total}} entries</div>
+
+                <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                    <paging class="small"
+                            page="Filter.Page.currentPage"
+                            page-size="Filter.Page.pageSize"
+                            total="Filter.Page.total"
+                            adjacent="{{adjacent}}"
+                            dots="{{dots}}"
+                            scroll-top="{{scrollTop}}"
+                            hide-if-empty="{{hideIfEmpty}}"
+                            ul-class="{{ulClass}}"
+                            active-class="{{activeClass}}"
+                            disabled-class="{{disabledClass}}"
+                            show-prev-next="{{showPrevNext}}"
+                            paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total)">
+                    </paging>
+                    @*<a class="paginate_button previous disabled" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" id="DataTables_Table_0_previous">←</a>
+                    <span>
+                    <a class="paginate_button current" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a>
+                    <a class="paginate_button " aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">2</a>
+                    </span>
+                    <a class="paginate_button next" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0" id="DataTables_Table_0_next">→</a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /page length options -->
+
+
+</div>
+@section Scripts {
+<script src="~/Scripts/App/User.js"></script>
+<script src="~/Scripts/App/paging.js"></script>
+    
+
+}

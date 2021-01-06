@@ -1,0 +1,36 @@
+﻿
+<div id="PanelTime" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title" id="myLargeModalLabel">
+                    <i class="ace-icon fa fa-clock-o"></i>
+                Chọn thời gian</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                      
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Chọn ngày </label>
+                        <div class="col-sm-7">
+                            <div class="input-group" ng-show="ViewStateMode=='ByDay'">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar bigger-110"></i>
+                                </span>
+                                <input class="form-control" id="id-date-picker-From" type="text" data-date-format="dd-mm-yyyy">
+                            </div>
+                        </div>
+                        <button type="submit" class="col-sm-2 btn btn-sm btn-primary" ng-click="GetRoomsStaticByTime()">
+                            <span class="bigger-110">Xem</span>
+                        </button>
+                    </div>
+                </div>
+
+             
+            </div>
+           
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

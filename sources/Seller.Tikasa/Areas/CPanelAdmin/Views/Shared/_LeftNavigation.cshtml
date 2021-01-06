@@ -1,0 +1,297 @@
+﻿
+<div id="sidebar" class="sidebar responsive h-sidebar  sidebar-fixed sidebar-scroll ">
+    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+        <div class="" id="sidebar-shortcuts-large">
+            @*<a target="_blank" href="/pos" class="btn btn-warning" title="Nhấp vào đây để bán hàng" style="width: 85%; margin: 7px 0; font-weight: bold;">
+                    <i class="menu-icon fa fa-desktop" style="margin-right: 12px;"></i>Go to website
+                </a>*@
+        </div>
+    </div>
+    <ul class="nav nav-list" id="menu">
+        <li class="hover active">
+            <a href="@Url.Action("Index","AdminIndex")">
+                <i class="menu-icon fa fa-tachometer"></i>
+                <span class="menu-text">Đặt phòng</span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+        <li class="hover">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-server"></i>
+                <span class="menu-text">
+                    Quản lý danh mục
+                </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="hover">
+                    <a href="~/CPanelAdmin/Room">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Loại phòng
+                    </a>
+
+
+                    <b class="arrow"></b>
+                </li>
+                <li class="hover">
+                    <a href="~/CPanelAdmin/Floor">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Tầng/Lầu
+                    </a>
+
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="hover">
+                    <a href="~/CPanelAdmin/Widget">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Dịch vụ
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+        <li class="hover">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-cubes"></i>
+                <span class="menu-text">
+                    Quản lý thu chi
+                </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="hover">
+                    <a href="~/CPanelAdmin/Invoice">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Phiếu thu
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                <li class="hover">
+                    <a href="~/CPanelAdmin/Invoice/Payment">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Phiếu chi
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+
+            </ul>
+        </li>
+        <!--Quan ly khach hang-->
+        <li class="hover">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-users"></i>
+                <span class="menu-text">
+                    Quản lý khách hàng
+                </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="hover">
+                    <a href="~/CPanelAdmin/Customer">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Danh sách khách hàng
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                <li class="hover">
+                    <a href="~/CPanelAdmin/Customer/CheckIn">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Khách hàng đang ở
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                @*<li class="">
+                    <a href="~/CPanelAdmin/Invoice/Payment">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Khách hàng quên đồ
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>*@
+
+            </ul>
+        </li>
+        <!--Kho-->
+        @if (MyFinance.Utils.WorkContext.BizKasaContext.IsOwner)
+{
+
+
+    <li class="hover">
+        <a href="javascript:" class="dropdown-toggle">
+            <i class="menu-icon fa fa-bar-chart"></i>
+            <span class="menu-text">
+                Báo cáo - Thống kê
+            </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <b class="arrow"></b>
+        <ul class="submenu">
+
+            <li class="hover">
+                <a href="@Url.Action("Index", "Report")">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Báo cáo chung
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+                <a href="@Url.Action("ReportRevenue", "Report")">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                   Báo cáo doanh thu
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+                <a href="@Url.Action("ReportByRoom", "Report")">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Phòng/ Loại phòng
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li class="hover">
+                <a href="@Url.Action("ReportGoodsReceipt", "Report")">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Nhập kho
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li class="hover">
+                <a href="@Url.Action("ReportByService", "Report")">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Sử dụng dịch vụ
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+                <a href="@Url.Action("ReportRoomHistory", "Report")">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Lịch sử sử dụng phòng
+                </a>
+                <b class="arrow"></b>
+            </li>
+            @*<li class="">
+                    <a href="~/CPanelAdmin/SystemConfig">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Báo cáo theo nhân viên
+                    </a>
+                    <b class="arrow"></b>
+                </li>*@
+
+        </ul>
+
+    </li>
+        <!--QL User-->
+            <li class="">
+                <a href="~/CPanelAdmin/User">
+                    <i class="menu-icon fa fa-user-plus"></i>
+                    <span class="menu-text">
+                        Quản lý tài khoản
+                    </span>
+                </a>
+            </li>
+            <li class="">
+                <a href="@Url.Action("Index","History")">
+                    <i class="menu-icon fa fa-thumb-tack"></i>
+                    <span class="menu-text">
+                        Lịch sử thao tác
+                    </span>
+                </a>
+
+
+            </li>
+        }
+        <!--SEO-->
+        @*<li class="">
+                <a href="#">
+                    <i class="menu-icon fa fa-facebook-official"></i>
+                    <span class="menu-text">FaceBook</span>
+                </a>
+
+            </li>*@
+
+
+        <li class="hover">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-cogs"></i>
+                <span class="menu-text">
+                    Cài đặt chung
+                </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+
+                <li class="hover">
+                    <a href="@Url.Action("Index","Hotel")">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Thông tin khách sạn
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="hover">
+                    <a href="~/CPanelAdmin/SystemConfig">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Cấu hình
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+            </ul>
+        </li>
+        <li class="hover">
+            <a href="https://docs.google.com/forms/d/1mvFZ40il-4WT1Zj6vwzugYYQGIsW_slsUSZ2N8rkjkU/viewform?usp=send_form" target="_blank" style=" color: rgb(213, 63, 64);">
+                <i class="menu-icon fa fa-comments"></i>
+                <span class="menu-text">
+                    Góp ý
+                </span>
+            </a>
+        </li>
+      
+
+    </ul>
+    <!-- /.nav-list -->
+
+    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+    </div>
+    @*<div style="width:100%" id="sandbox-container">
+
+        </div>*@
+
+    <script type="text/javascript">
+
+
+        try {
+            ace.settings.check('sidebar', 'collapsed');
+        } catch (e) { }
+    </script>
+</div>

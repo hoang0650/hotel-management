@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "Báo cáo theo phòng / loại phòng";
+}
+
+<div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="~/CPanelAdmin/AdminIndex">Trang chủ</a>
+            </li>
+
+            <li>
+                <a href="#">Báo cáo - thống kê</a>
+            </li>
+            <li class="active">
+                Thống kê sử dụng dịch vụ
+            </li>
+        </ul><!-- /.breadcrumb -->
+    </div>
+    <div class="page-content" ng-app="appModule" ng-controller="ReportController">
+        <div class="page-content">
+            <div class="col-xs-12 ">
+                <h3 class="text-center text-uppercase">Thống kê sử dụng dịch vụ, vật tư<br /><span ng-show="ReportRoom.length>0"> {{FromDateView|date:"dd/MM/yyyy"}} - {{ToDateView|date:"dd/MM/yyyy"}}</span></h3>
+            </div>
+            <div class="row">
+
+                <div class="col-xs-12 no-padding">
+                    <div class="form-group" style="overflow: hidden;">
+                        <div class="col-sm-12 no-padding-left">
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input class="form-control date-picker" id="id-date-ReportByService" type="text" data-date-format="dd-mm-yyyy" placeholder="Chọn thời gian">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar bigger-110"></i>
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-3 no-padding-left no-padding-right">
+                                <div class="input-group" style="width:100%">
+
+                                    <span class="padding-left-10">
+                                        <a class="btn btn-primary" ng-click="ReportByService()">
+                                            <i class="icon-search icon-on-right bigger-110"></i>
+                                            <span class="hidden-320">Tìm kiếm</span>
+                                        </a>
+                                    </span>
+                                    <span class="padding-left-10" ng-show="ReportRoom.length>0">
+                                        <button class="btn btn-primary" ng-click="Printreport('printContent')">
+                                            <i class="fa fa-print bigger-110"></i>
+                                            <span class="hidden-320">In</span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row" id="printContent">
+                    <div class="col-xs-6">
+                        <div class="dataTables_wrapper" role="grid">
+                            <table class="table table-hover dataTable" ng-init="ReportByService()">
+                                <thead>
+                                    <tr role="row">
+                                        <th>Stt</th>
+                                        <th>Tên dịch vụ</th>
+                                        <th>Loại dịch vụ</th>
+                                        <th>Lần sử dụng</th>
+                                        <th>Lần hủy</th>
+                                        <th>Tổng tiền</th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody style="border-bottom: none;" ng-show="ReportRoom.length>0">
+                                    <tr ng-repeat="item in ReportRoom">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{item.RoomName}}</td>
+                                        <td class="hidden-480">
+                                            {{item.RoomTypeName}}
+                                        </td>
+                                        <td class="hidden-480">
+                                            {{item.NumCheckIn}}
+                                        </td>
+                                        <td class="hidden-480">
+                                            {{item.NumCancel}}
+                                        </td>
+                                        <td class="text-right">{{item.TotalAmount|number}}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="text-right"><label class="control-label">Tổng tiền</label> </td>
+                                        <td colspan="3" class="text-right">{{TotalAmount|number}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                    <div class="col-xs-6">
+
+                        <div class="dataTables_wrapper" role="grid">
+                            <div id="roomPerformant" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+
+
+
+            </div>
+            
+        </div>
+    </div>
+
+    </div>
+
+@section Scripts {
+    
+<script src="~/Areas/CPanelAdmin/Script/Report/Report.js"></script>
+<link href="~/Areas/CPanelAdmin/Content/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
+<script src="~/Areas/CPanelAdmin/Content/js/highcharts.js"></script>
+
+}

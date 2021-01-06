@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "Danh sách tài khoản";
+}
+
+
+<div class="main-content" ng-app="appModule" ng-controller="UserController">
+
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="~/CPanelAdmin/AdminIndex">Trang chủ</a>
+            </li>
+
+            <li>
+                Danh sách tài khoản
+            </li>
+
+        </ul><!-- /.breadcrumb -->
+        <div class="toolbar">
+            <a class="btn btn-primary" href="#Adduser" data-toggle="modal">
+                <i class="icon-plus"></i>
+                <span class="hidden-320">Thêm tài khoản</span>
+            </a>
+            <a class="btn btn-danger" ng-really-message="Bạn có chắc chắn muốn xóa những nhân viên đã chọn  ?" ng-really-click="reallyDelete()">
+                <i class="menu-icon fa fa-bolt"></i>
+                <span class="hidden-320">Xóa nhiều</span>
+            </a>
+        </div>
+    </div>
+
+    
+    <div class="page-content">
+        <div class="page-content-container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    @*<div class="col-xs-12">
+                        <div class="col-xs-12 no-padding">
+                            <div class="form-group" style="overflow: hidden;">
+                                <div class="col-sm-12 no-padding-left">
+                                    <div class="col-sm-6 no-padding-left">
+                                        <input type="text" id="filter" name="txtSearch" value="" placeholder=" Nhập tên cần tìm" class="col-xs-12 search-query ng-valid ng-dirty">
+                                    </div>
+                                    <div class="col-sm-6 no-padding-left no-padding-right">
+                                        <div class="input-group" style="width:100%">
+                                            <span>
+                                                
+                                            </span>
+                                            <span class="padding-left-10">
+                                                <button id="btnSearch" class="btn btn-primary " onclick="return _filter()">
+                                                    <i class="icon-search icon-on-right bigger-110"></i>
+                                                    <span class="hidden-320">Tìm kiếm</span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>*@
+                    <div class="dataTables_wrapper" role="grid" ng-init="InitUser()">
+                        <table class="table table-hover dataTable ng-scope ng-table" ng-table="tableParams" id="list">
+                            <thead>
+                                <tr role="row">
+                                    <th class="width-27px border hidden-480"></th>
+                                    <th class="border">Tên đăng nhập</th>
+                                    <th class="center border hidden-480">Tình trạng</th>
+                                    <th class="center border hidden-480">Trong ca</th>
+                                    <th class="center border">Ngày tạo</th>
+                                    <th class="center width hidden-480">Đăng nhập gần nhất</th>
+                                    <th class="center border hidden-480">ghi chú</th>
+                                    <th class="hidden-480 text-center">Thao tác</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody style="border-bottom: none;" >
+
+
+                                <tr style="cursor: pointer;" class="oddrow" ng-repeat="item in Users">
+                                    <td class="hidden-480">
+                                        <label class="no-padding-left">
+                                            <input type="checkbox" class="ace ng-pristine" ng-model="item.IsSelected" ng-click="ItemSelected(item)" ng-checked="item.IsSelected"><span class="lbl"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        {{item.Email}}
+                                    </td>
+
+                                    <td class="width-10 hidden-480">
+                                        {{item.IsApproved?'Hoạt động':'không hoạt động'}}
+
+                                    </td>
+                                    <td class="width-10 hidden-480">
+                                        {{item.IsInShift?'Đang trong ca':''}}
+
+                                    </td>
+                                    <td class="width-10 hidden-480 ng-binding">
+                                        {{item.CreatedDateView}}
+                                    </td>
+                                    <td class=" width-10">
+                                        {{item.LastLoginView}}
+                                    </td>
+                                    <td class="center width-5 hidden-480">
+                                        {{item.Note}}
+                                    </td>
+
+                                    <td class="center width-7">
+                                        <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                            <a ng-click="GetUserForEdit(item.Id)">
+                                                <i class="menu-icon fa fa-pencil-square-o bigger-130"> </i>
+                                            </a>
+                                            <a ng-really-message="Bạn có chắc chắn muốn xóa  ?" ng-really-click="reallyDelete(item)" item="item">
+                                                <i class="icon-trash bigger-130" title="Xóa hẳn hàng hóa"> </i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- ngIf: p.productItems.length > 1 -->
+                            </tbody><!-- end ngRepeat: p in params.data -->
+                        </table>
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>
+      
+    </div>
+
+    @{ Html.RenderPartial("_AddUser");  }
+
+</div>
+@section Scripts {
+
+
+<script src="~/Areas/CPanelAdmin/Script/User/User.js"></script>
+    }
+

@@ -1,0 +1,124 @@
+﻿
+<div id="CheckInSingle" class="modal fade" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Nhận phòng</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row form-horizontal">
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label no-padding-right">Khách hàng </label>
+                        <div class="col-md-10">
+                            <div angucomplete-alt id="cus" placeholder="Tên Khách hàng" pause="500" remote-url="/CPanelAdmin/Customer/GetCustomerByName" remote-url-request-formatter="remoteUrlRequestcustomerFn" remote-url-data-field="Data" title-field="Name" description-field="Address" minlength="2" input-class="form-control form-control-small" match-class="highlight" selected-object="CustomerSelected" ng-model="Customer.Name">
+                            </div>
+                        </div>
+                      
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label no-padding-right">CMT </label>
+                        <div class="col-md-5">
+                            <div angucomplete-alt id="pas" placeholder="CMND/Passport" pause="500" remote-url="/CPanelAdmin/Customer/GetCustomerPassportId"
+                                 remote-url-request-formatter="SearchByPassport"
+                                 remote-url-data-field="Data" title-field="PassportId" description-field="Name"
+                                 minlength="2" input-class="form-control form-control-small" match-class="highlight"
+                                 selected-object="CustomerSelected" ng-model="Customer.PassportId">
+                            </div>
+                        </div>
+                       
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <input class="form-control date-picker" id="passportDate" type="text" data-date-format="dd-mm-yyyy" placeholder="Ngày sinh">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar bigger-110"></i>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label no-padding-right">Địa chỉ </label>
+                        <div class="col-md-5">
+                            <input type="text"  ng-model="Customer.Address" placeholder="Nhập địa chỉ" class="form-control">
+                        </div>
+                        <div class="col-md-5">
+                            <select id="form-field-1" class="form-control" ng-options="row.Id as row.Name  for row in ConfigPrices" ng-model="ConfigSelected"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="col-md-2 control-label no-padding-right" for="form-field-1"> Thời gian </label>
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <input class="form-control date-picker" id="id-date" type="text" data-date-format="dd-mm-yyyy">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar bigger-110"></i>
+                                </span>
+                            </div>
+
+                        </div>
+                      
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label no-padding-right" for="form-field-1"> Dịch vụ </label>
+                            <div class="col-md-6">
+                                <select class="form-control" ng-options="row as row.Name + '( '+ row.PricePaid +' )' group by row.GroupName for row in Widgets" ng-model="OrderService"></select>
+                                @*<select chosen options="Widgets" data-placeholder="Chọn dịch vụ ..." class="chosen-select-deselect form-control" tabindex="2" ng-options="row as row.Name + '( '+ row.PricePaid +' )' group by row.GroupName for row in Widgets" ng-model="OrderService"></select>*@
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>X</label>
+                                <select id="form-field-1" ng-options="a for a in UnitServices" ng-model="Quantity"></select>
+                                <button type="button" class="btn btn-primary" ng-click="addSeviceToOrder()">Thêm</button>
+                               
+                            </div>
+                       
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label no-padding-right" for="form-field-1"> </label>
+                        <div class="col-md-10">
+                            <div class="profile-user-info profile-user-info-striped" ng-show="Order.Services.length>0">
+                                <div class="profile-info-row" ng-repeat="item in Order.Services">
+                                    <button type="button" class="close" ng-click="RemoveSeviceFromOrder($index)">×</button>
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click">{{item.Name}} </span>
+                                        <span class="editable editable-click">{{item.Price|number}} x {{item.Quantity}}</span>
+                                    </div>
+                                    <div class="profile-info-name"> {{item.Price*item.Quantity| number}} </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Ghi chú </label>
+                                <div class="col-sm-10">
+                                    <textarea ng-model="Order.Notes" placeholder="" class="form-control"></textarea>
+                                </div>
+                            </div>
+
+                           
+                   
+
+                    
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" ng-click="AddOrderSingle()">Check In</button>
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Cancel</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,469 @@
+html { 
+    -webkit-font-smoothing: antialiased;
+    /*-webkit-text-shadow: rgba(255,255,255,0.01) 0 0 1px;
+    -webkit-text-stroke: rgba(255,255,255,0.01) 0.1px;
+    -webkit-text-stroke-width: 0.1px*/
+}
+
+@font-face {
+    font-family: 'sans';
+    src: url('../fonts/sans.eot');
+    src: url('../fonts/sansd41d.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/sans.woff') format('woff'),
+        url('../fonts/sans.ttf') format('truetype');
+    font-weight:400;
+    font-smooth:always;
+    font-style: normal;
+    -webkit-backface-visibility:hidden;
+    -moz-backface-visibility:hidden;
+    -ms-backface-visibility:hidden
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face{font-family:sans;src:url(../fonts/sans.svg) format(svg)}
+}
+@font-face {
+    font-family: 'sans-r';
+    src: url('../fonts/sans-r.eot');
+    src: url('../fonts/sans-rd41d.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/sans-r.woff') format('woff'),
+        url('../fonts/sans-r.ttf') format('truetype');
+    font-weight:400;
+    font-smooth:always;
+    font-style: normal;
+    -webkit-backface-visibility:hidden;
+    -moz-backface-visibility:hidden;
+    -ms-backface-visibility:hidden
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face{font-family:sans;src:url(../fonts/sans-r.svg) format(svg)}
+}
+@font-face {
+    font-family: 'sans-bold';
+    src: url('../fonts/sans-bold.eot');
+    src: url('../fonts/sans-boldd41d.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/sans-bold.woff') format('woff'),
+        url('../fonts/sans-bold.ttf') format('truetype');
+    font-weight:400;
+    font-smooth:always;
+    font-style: normal;
+    -webkit-backface-visibility:hidden;
+    -moz-backface-visibility:hidden;
+    -ms-backface-visibility:hidden
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face{font-family:sans-bold;src:url(../fonts/sans-bold.svg) format(svg)}
+}
+@font-face {
+    font-family: 'sans-exbold';
+    src: url('../fonts/sans-exbold.eot');
+    src: url('../fonts/sans-exboldd41d.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/sans-exbold.woff') format('woff'),
+        url('../fonts/sans-exbold.ttf') format('truetype');
+    font-weight:400;
+    font-smooth:always;
+    font-style: normal;
+    -webkit-backface-visibility:hidden;
+    -moz-backface-visibility:hidden;
+    -ms-backface-visibility:hidden
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face{font-family:sans-exbold;src:url(../fonts/sans-exbold.svg) format(svg)}
+}
+@-moz-document url-prefix() {
+    .body {font-family:'sans',Arial, Helvetica, sans-serif;}
+}
+
+body{
+    font-family:'sans-r',Arial, Helvetica, sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family:'sans',Arial, Helvetica, sans-serif;
+}
+
+/* Link & hover, focus color */
+a {
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+}
+
+a:focus{
+    outline:none
+}
+p, ul li{
+    font-family:'sans-r',Arial, Helvetica, sans-serif;
+}
+img{
+    border:0 none;
+    height:auto;
+    max-width:100%;
+    vertical-align:middle
+}
+/* SCROLLBAR  */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(50, 50, 50, 0.3);
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(50, 50, 50, 0.2);
+}
+
+/* Add here all your CSS customizations */
+.services .content, .services .opensources-logos {padding-top: 15px; padding-bottom: 10px;}
+.services .isotope-item, .opensources-logos .isotope-item {text-align: left;}
+.opensources-logos {padding-top:20px} 
+.opensources-logos li {min-height: 105px;}
+.opensources-logos.technical-skill li {min-height: 120px;}
+.opensources-logos li img:hover{border:1px solid #f8931d; box-shadow: 0 0 5px #ccc; margin: 0; padding: 0;}
+.opensources-logos li img {border: 1px solid transparent;}
+body{
+
+}
+.inverted {background: #f8931d; margin-top: 10px;}
+
+/* Section Featured */
+section.featured {background: #f8931d; border-top: 2px solid #ECECE8;}
+section.featured p, section.featured h2, section.featured span, section.featured strong {color: #FFFFFF}
+section.featured .owl-theme .owl-controls .owl-page span {background: #FFFFFF}
+
+.map-section {margin-top: 0;}
+/*.scroll-to-top i {display: none;}*/
+/*.scroll-to-top {opacity: 1; position: fixed;bottom: 10px;right: 10px;width: 74px;height: 74px;background: url(http://bizkasa.com/templates/v4/images/xicon_scroll_to_top.png.pagespeed.ic.mN03Ox6WZm.png) top left no-repeat;cursor: pointer;}*/
+
+.thumb-info .thumb-info-title {background: none;}
+.thumb-info:hover .thumb-info-title {background: none;}
+
+/* Page Top Custom - Create your Own */
+.page-top.custom-service-web {
+    background-image: url(../img/sliders/custom-header-web-bg.png.pagespeed.ce.SHIEY6PMNu.png);
+    background-repeat: repeat;
+    background-color: #999;
+    border-top: 5px solid #888;
+}
+.page-top.custom-service-mobile {
+    background-image: url(../img/sliders/custom-header-mobile-bg.png.pagespeed.ce.q81GdCgjWw.png);
+    background-repeat: repeat;
+    background-color: #999;
+    border-top: 5px solid #888;
+}
+
+.page-top.custom-service-outsourcing {
+    background-image: url(../img/sliders/custom-header-outsourcing-bg.png.pagespeed.ce.q81GdCgjWw.png);
+    background-repeat: repeat;
+    background-color: #999;
+    border-top: 5px solid #888;
+}
+
+.page-top.custom-work-portfolio {
+    background-image: url(../img/sliders/custom-header-portfolio-bg.png.pagespeed.ce.1VpdU7Juyl.png);
+    background-repeat: repeat;
+    background-color: #999;
+    border-top: 5px solid #888;
+}
+
+.page-top.custom-work-technical {
+    background-image: url(../img/sliders/custom-header-technical-bg.jpg.pagespeed.ce.iwbumSeJ0K.jpg);
+    background-repeat: repeat;
+    background-color: #999;
+    border-top: 5px solid #888;
+    min-height: 308px;
+}
+
+.page-top.custom-careers {
+    background-image: url(../img/sliders/custom-header-careers-bg.jpg.pagespeed.ce.uTy7vSY4e_.jpg);
+    background-repeat: repeat;
+    background-color: #999;
+    border-top: 5px solid #888;
+    min-height: 308px;
+}
+.page-top.custom-manual {
+    background-image: url(../img/sliders/x135617547.jpg.pagespeed.ic.QBCg2JYCrS.jpg);
+    background-repeat: repeat;
+    background-color: #999;
+    border-top: 5px solid #888;
+    min-height: 308px;
+}
+
+.page-top.custom-contactus {
+    background-image: url(../img/sliders/xcustom-header-contactus-bg.jpg.pagespeed.ic.QovU8VNW0D.jpg);
+    background-repeat: repeat;
+    background-color: #999;
+    border-top: 5px solid #888;
+    min-height: 308px;
+}
+
+.page-top.custom-contactus .row,
+.page-top.custom-careers .row,
+.page-top.custom-manual .row,
+.page-top.custom-work-technical .row,
+.page-top.custom-work-portfolio .row,
+.page-top.custom-service-mobile .row,
+.page-top.custom-service-outsourcing .row,
+.page-top.custom-service-web .row {
+    position: relative;
+}
+
+.page-top.custom-contactus p.lead, 
+.page-top.custom-careers p.lead, 
+.page-top.custom-manual p.lead, 
+.page-top.custom-work-technical p.lead, 
+.page-top.custom-work-portfolio p.lead, 
+.page-top.custom-service-mobile p.lead, 
+.page-top.custom-service-outsourcing p.lead, 
+.page-top.custom-service-web p.lead {
+    color: #E8E8E8;
+}
+
+.page-top.custom-contactus img, 
+.page-top.custom-careers img, 
+.page-top.custom-manual img, 
+.page-top.custom-work-technical img, 
+.page-top.custom-work-portfolio img, 
+.page-top.custom-service-mobile img, 
+.page-top.custom-service-outsourcing img, 
+.page-top.custom-service-web img {
+    bottom: -20px;
+    position: relative;
+}
+
+.page-top.custom-contactus h1, 
+.page-top.custom-careers h1, 
+.page-top.custom-manual h1, 
+.page-top.custom-work-technical h1, 
+.page-top.custom-work-portfolio h1, 
+.page-top.custom-service-mobile h1, 
+.page-top.custom-service-outsourcing h1, 
+.page-top.custom-service-web h1 {
+    color: #FFF;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.view-article.layout-v4default-career section.featured  {
+    background-image: url(../img/sliders/section-careers.jpg.pagespeed.ce.fIHn0qRwD0.jpg);
+    background-repeat: repeat;
+    background-color: #999;
+    border-top: 5px solid #888;
+    min-height: 308px;    
+}
+.google-maps {
+    background: #E5E3DF;
+    height: 400px;
+    margin: 0 auto;
+    width: 100%;
+}
+.home-concept {background-size: contain;}
+.billto-shipto {border: none; margin : 0; padding: 0;}
+#com-form-login input[id="remember"]{
+    margin: 4px 0 0 -20px;
+}
+
+#mask{position: absolute;width: 100%;min-height: 100%;background: rgba(0,0,0,0.8);top: 0;left: 0;display: none;}
+
+/*#footer {background: #3a3a3a; color: #969696}*/
+/*#footer .footer-copyright {background: #0d0d0d; color: #959595}*/
+
+
+label.text-mhotel{color: #2295D2;}
+label.text-pro{color: #f8931d;}
+
+.border{
+    border: 1px solid black;
+    text-align: center;
+}
+
+.pricetable {
+    width: 50%;
+    float: left;
+    text-align: center;
+    border-right: solid 1px #fff;
+}
+
+.pricetable .room-price {
+    color: #ffffff;
+    height: 60px;
+    font-size: 14px;
+    padding-top: 18px;
+}
+
+.pricetable .room-price span.time{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+}
+.pricetable .room-price span {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.pricetable .room-name {
+    color: #000000;
+    padding-top: 18px;
+    height: 54px;
+    position: relative;
+    font-size: 16px;
+    border-bottom: dotted 1px #dbdbdb;
+}
+
+.pricetable:hover .room-name {
+    background: #ffffff;
+    height: 54px !important;
+    margin-top: -5px;
+}
+
+.pricetable:hover .lastChild {
+    background: #ffffff;
+}
+
+.numberroom{
+    padding-top: 18px;
+    height: 54px;
+}
+
+.border-0 {border-top: 3px solid #7b8798}
+.border-1 {border-top: 3px solid #5291ec}
+.border-2 {border-top: 3px solid #3da6bd}
+.border-3 {border-top: 3px solid #3fb130}
+.border-4 {border-top: 3px solid #ff9c00}
+.border-5 {border-top: 3px solid #e30e0e}
+.border-6 {border-top: 3px solid #c70096}
+.border-7 {border-top: 3px solid #0000FF}
+.background-0-0 {background : #899A9D}
+.background-0 {background : #f1f1f1}
+.background-1 {background : #5291ec}
+.background-2 {background : #3da6bd}
+.background-3 {background : #3fb130}
+.background-4 {background : #ff9c00}
+.background-5 {background : #e30e0e}
+.background-6 {background : #c70096}
+.background-7 {background : #0000FF}
+
+.promotion h2, .promotion span, .promotion p{
+    color: red;
+}
+.padding-0{padding-left: 0px; padding-right: 0px;}
+
+span.addtocart-button {display: inline-block; border-radius: 4px;}
+.pricetable:hover .price-row {
+    background: #ffffff;
+}
+.pricetable:hover .addtocart-button {
+    background-color: #e50d08;
+    border: 1px solid #e50d08;
+    color: #fff;
+    text-decoration: none;
+}
+span.addtocart-button input.addtocart-button, span.addtocart-button input.notify-button {
+    background-color:#ffffff;
+    border:1px solid #8f8f8f !important;
+    color:#787878;
+    text-shadow: none;
+}
+.addtocart-area {margin-top : 15px; margin-bottom: 15px; display: inline-block}
+.shop table.cart .remove .icon {color: #0088cc}
+.shop table.cart .product-remove button:hover, .shop table.cart .product-remove button:focus{background: #a6a6a6}
+.shop table.cart .remove {border: none; background: none}
+.checkout-button-top {float: right}
+.product-subtotal {width: 10%; text-align: right;}
+.order-view {margin-bottom: 15px;}
+.order-view .order-submit{margin-top: 15px;}
+
+.btn {margin-right: 10px;}
+
+/*********************************************
+* Responsive
+*********************************************/
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+}
+<<<<<<< .mine
+#padding{
+    padding-left: 0px;padding-right: 0px;
+}
+.pricetable{
+    width: 50%;
+}
+=======
+>>>>>>> .r50
+#promotion{
+    color: red;
+}
+.a{
+    background-color: #899A9D;
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+    #scroll{
+        display: none;
+        visibility: hidden;
+    }
+    .isotope-item {max-width: 380px;}
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+    .services ul {padding-left: 0}
+    .services h3 {text-transform: none}
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+
+}

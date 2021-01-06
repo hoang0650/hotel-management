@@ -1,0 +1,17 @@
+﻿@using FailTracker.Web.Domain
+@model FailTracker.Web.Domain.ModuleType
+@{
+    var options = Enum.GetValues(typeof(ModuleType))
+    .Cast<ModuleType>()
+    .Select(t => new SelectListItem
+    {
+        Text = t.ToString(),
+        Value = t.ToString(),
+        Selected = t == Model
+    })
+    .ToArray();
+
+}
+@Html.DropDownList("", options)
+
+

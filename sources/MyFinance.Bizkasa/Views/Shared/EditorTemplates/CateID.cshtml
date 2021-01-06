@@ -1,0 +1,17 @@
+﻿@using FailTracker.Web.Data
+@using FailTracker.Web.Domain
+@using FailTracker.Web.Infrastructure
+@model string
+@{
+    var dbContext = Context.GetContainer().GetInstance<ApplicationDbContext>();
+    var availableUsers = dbContext.Categories.Where(x => x.CategoryType == CategoryType.HANGBAY && x.IsHidden == true).Select(u => new SelectListItem
+     {
+         Text = u.Name,
+         Value = u.Name,
+         Selected = u.Name == Model
+     }).ToArray();
+}
+
+@Html.DropDownList("", availableUsers)
+
+

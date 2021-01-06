@@ -1,0 +1,139 @@
+﻿<div id="ViewInvoiceDetail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title" id="myLargeModalLabel">Hóa đơn thanh toán Phòng - {{Invoice.RoomName}}</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="profile-user-info profile-user-info-striped">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Khách hàng </div>
+
+                                <div class="profile-info-value">
+                                    <span class="editable editable-click">{{Invoice.CustomerName}} <label ng-show="Invoice.CompanyName!=undefined">( {{Invoice.CompanyName}} )</label> </span>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row" ng-show="Invoice.CheckInDate!=undefined">
+                                <div class="profile-info-name"> Vào lúc </div>
+
+                                <div class="profile-info-value">
+                                    <span class="editable editable-click">{{Invoice.CheckInDate|date:"HH:mm"}}</span>
+                                    <span class="editable editable-click">{{Invoice.CheckInDate|date:"dd/MM/yyyy"}} </span>
+                                </div>
+                            </div>
+
+
+                            <div class="profile-info-row" ng-show="Invoice.CheckOutDate!=undefined">
+                                <div class="profile-info-name"> Trả lúc: </div>
+
+                                <div class="profile-info-value">
+                                    <span class="editable editable-click">{{Invoice.CheckOutDate|date:"HH:mm"}}</span>
+                                    <span class="editable editable-click">{{Invoice.CheckOutDate|date:"dd/MM/yyyy"}} </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="profile-user-info profile-user-info-striped">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Mã hóa đơn </div>
+
+                                <div class="profile-info-value">
+                                    <span class="editable editable-click" id="username">{{Invoice.Id}}</span>
+                                </div>
+                            </div>
+                            <div class="profile-info-row" ng-show="Invoice.RoomClassName!=undefined">
+                                <div class="profile-info-name"> Loại phòng </div>
+
+                                <div class="profile-info-value">
+                                    <span class="editable editable-click" id="age">{{Invoice.RoomClassName}}</span>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Ngày tạo </div>
+
+                                <div class="profile-info-value">
+                                    <span class="editable editable-click" id="age">{{Invoice.CreatedDate|date:"dd/MM/yyyy"}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="hr hr8 hr-double hr-dotted"></div>
+                <div>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="center">#</th>
+                                <th>Dịch vụ</th>
+                                <th class="hidden-xs">Diễn giải</th>
+                                <th>Thành tiền (vnđ)</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="row in Invoice.InvoiceDetails">
+                                <td class="center">{{$index+1}}</td>
+                                <td>
+                                   {{row.Descriptions}}
+                                </td>
+                                <td class="hidden-xs">
+                                    {{row.Notes}}
+                                </td>
+                                <td class="text-right"> {{row.SubAmount|number}}</td>
+                            </tr>
+                            <tr ng-show="Invoice.Surcharge>0">
+                                <td colspan="3" class="text-right">Phụ thu  </td>
+                                <td class="text-right"> {{Invoice.Surcharge|number}}</td>
+                            </tr>
+                            <tr ng-show="Invoice.Deductible>0">
+                                <td colspan="3" class="text-right">Giảm trừ  </td>
+                                <td class="text-right"> {{Invoice.Deductible|number}}</td>
+                            </tr>
+                            <tr>
+                                
+                                <td colspan="3" class="text-right">Tổng tiền  </td>
+                                <td class="text-right"> {{Invoice.TotalAmount|number}}</td>
+                            </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <div class="hr hr8 hr-double hr-dotted"></div>
+                <div class="row">
+                    <div class="col-sm-5 pull-right">
+                        <h4 class="pull-right">
+                            Tổng thanh toán :
+                            <span class="red">{{Invoice.TotalAmount|number}}</span>
+                        </h4>
+                    </div>
+                    @*<div class="col-sm-7 pull-left" ng-hide="Invoice.InvoiceStatus==2">
+                        <label class="pos-rel">
+                            <input type="checkbox" class="ace" ng-model="Invoice.isPay">
+                            <span class="lbl">Đã thanh toán</span>
+                        </label>
+                    </div>*@
+                </div>
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="PrintInvoice()" ng-show="Filter.InvoiceType==1">In hóa đơn</button>
+                <button type="button" class="btn btn-danger" ng-click="UpdateStatusInvocie()" ng-hide="Invoice.InvoiceStatus==2">Thanh toán</button>
+                
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Hủy</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

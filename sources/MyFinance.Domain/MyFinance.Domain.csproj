@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{48F672E8-4513-4F7E-A296-C0CCC87F9AA1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyFinance.Domain</RootNamespace>
+    <AssemblyName>MyFinance.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessModel\CameraDTO.cs" />
+    <Compile Include="BusinessModel\CustomerModel.cs" />
+    <Compile Include="BusinessModel\FloorModel.cs" />
+    <Compile Include="BusinessModel\GalleryModel.cs" />
+    <Compile Include="BusinessModel\InvoiceRowModel.cs" />
+    <Compile Include="BusinessModel\OrderModel.cs" />
+    <Compile Include="BusinessModel\PageModel.cs" />
+    <Compile Include="BusinessModel\ReportModel.cs" />
+    <Compile Include="BusinessModel\RequestCheckOutModel.cs" />
+    <Compile Include="BusinessModel\RequestLoginModel.cs" />
+    <Compile Include="BusinessModel\RoomClassRowModel.cs" />
+    <Compile Include="BusinessModel\RoomSearchModel.cs" />
+    <Compile Include="BusinessModel\ShiftDTO.cs" />
+    <Compile Include="BusinessModel\SystemConfigModel.cs" />
+    <Compile Include="BusinessModel\TokenModel.cs" />
+    <Compile Include="BusinessModel\UserViewModel.cs" />
+    <Compile Include="BusinessModel\UtilityModel.cs" />
+    <Compile Include="BusinessModel\WidgetModel.cs" />
+    <Compile Include="BusinessModel\RoomModel.cs" />
+    <Compile Include="BusinessModel\CategoryModel.cs" />
+    <Compile Include="BusinessModel\HotelModel.cs" />
+    <Compile Include="BusinessModel\UserModel.cs" />
+    <Compile Include="Entities\Camera.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Countries.cs" />
+    <Compile Include="Entities\Gallery.cs" />
+    <Compile Include="Entities\History.cs" />
+    <Compile Include="Entities\Hotel.cs" />
+    <Compile Include="Entities\HotelConfig.cs" />
+    <Compile Include="Entities\Invoice.cs" />
+    <Compile Include="Entities\InvoiceDetail.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\Room.cs" />
+    <Compile Include="Entities\Shift.cs" />
+    <Compile Include="Entities\Token.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Widget.cs" />
+    <Compile Include="Enum\Enum.cs" />
+    <Compile Include="InsideModel\InsideUserModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mapping\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyFinance.Utils\MyFinance.Utils.csproj">
+      <Project>{454e7439-95f4-427b-b2aa-a78acbb49807}</Project>
+      <Name>MyFinance.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

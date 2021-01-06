@@ -1,0 +1,236 @@
+﻿
+
+
+
+    <!-- Page Content -->
+    <div class="page-content" ng-app="crudModule" ng-controller="UserController" ng-init="InitUser()">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/User">Danh sách người dùng</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative">
+        <div class="header-title">
+            <h1>
+                Danh sách người dùng
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" href="#">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" id="refresh-toggler" href="#">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" id="fullscreen-toggler" href="#">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body">
+        <div class="row">
+
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-header ">
+                        <span class="widget-caption"><a href="~/User/Create" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add</a> | <button onclick="DeleteMutiple('/pk_admin/TinTuc/DeleteMultile'); return false;" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Delete</button> </span>
+                        <div class="widget-buttons">
+                            <a href="#" data-toggle="maximize">
+                                <i class="fa fa-expand"></i>
+                            </a>
+                            <a href="#" data-toggle="collapse">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                            <a href="#" data-toggle="dispose">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <table class="table table-striped table-bordered table-hover" id="simple">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        <div class="checker"><span class=""><input type="checkbox" class="group-checkable" data-set="#flip .checkboxes"></span></div>
+                                    </th>
+                                    <th>
+                                        Tên tài khoản
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th class="text-center">
+                                        Điên thoại
+                                    </th>
+
+                                    <th class="text-center">
+                                        Người tạo
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody data-ng-repeat="stud in Users">
+
+                                <tr>
+                                    <td>
+                                        <div class="checker" style="min-width:15px;"><span class=""><input type="checkbox" class="checkboxes" name="Id_group" value=""></span></div>
+                                    </td>
+                                    <td>
+                                        {{stud.UserName}}
+                                    <td>
+                                        {{stud.Email}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{stud.Phone}}
+                                    </td>
+
+                                    <td>
+                                        {{stud.Name}}
+                                    </td>
+                                    <td class="center ">
+                                        <a id="bootbox-options" ng-click="pop()" href="javasctipt:">AddUser</a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /Page Body -->
+
+
+    <div id="userhotel" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="To" required="">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        <div class="checker"><span class=""><input type="checkbox" class="group-checkable" data-set="#flip .checkboxes"></span></div>
+                                    </th>
+                                    <th>
+                                        UserName
+                                    </th>
+                                    <th>
+                                        Họ và tên
+                                    </th>
+
+
+                                    <th class="text-center">
+                                        Email
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="us in Users ">
+
+                                <tr>
+                                    <td>
+                                        <div class="checker" style="min-width:15px;"><span class=""><input type="checkbox" class="checkboxes" name="Id_group" value="" ng-model="us.isChecked" ng-change="Selected()"></span></div>
+                                    </td>
+                                    <td>
+                                        {{us.userName}}
+                                    <td>
+                                        {{us.lastName}} {{us.fisrtName}}
+                                    </td>
+
+
+                                    <td>
+                                        {{us.email}}
+                                    </td>
+                                    <td class="center ">
+                                        <a id="bootbox-options" ng-click="pop()" href="javasctipt:">AddUser</a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="btn-group">
+
+                        <button type="button" class="btn btn-blue active" ng-click="SaveUserHotel()">Chọn</button>
+                    </div>
+
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+
+
+
+
+</div>
+
+<!-- /Page Content -->
+@section Scripts {
+    <!--Page Related Scripts-->
+    <script src="/Content/assets/js/datatable/jquery.dataTables.min.js"></script>
+    <script src="/Content/assets/js/datatable/ZeroClipboard.js"></script>
+    <script src="/Content/assets/js/datatable/dataTables.tableTools.min.js"></script>
+    <script src="/Content/assets/js/datatable/dataTables.bootstrap.min.js"></script>
+    <script src="/Content/assets/js/datatable/datatables-init.js"></script>
+    <!--Page Related Scripts-->
+    <script src="/Content/assets/js/bootbox/bootbox.js"></script>
+    <!--Page Related Scripts-->
+    <script src="/Content/assets/js/toastr/toastr.js"></script>
+
+    <script src="~/Scripts/app/Modules/userModule.js"></script>
+    <script src="~/Scripts/app/services/hotelservices.js"></script>
+    <script src="~/Scripts/app/services/userServices.js"></script>
+    <script src="~/Scripts/app/controllers/HotelController.js"></script>
+<script src="~/Scripts/app/controllers/UserController.js"></script>
+    <script>
+        InitiateSimpleDataTable.init();
+        $(".bootbox-confirm").on('click', function (e) {
+            var link = $(this).attr("href"); // "get" the intended link in a var
+            e.preventDefault();
+            bootbox.confirm("Bạn có chắc không?", function (result) {
+                if (result) {
+                    window.location = link;
+                }
+            });
+        });
+        ActiveMenu('#VanBan', '#TinTuc');
+
+       
+
+    </script>
+}

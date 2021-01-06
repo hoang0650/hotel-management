@@ -1,0 +1,424 @@
+﻿
+<div id="Checkout" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title" id="myLargeModalLabelCheckout">Thanh toán Phòng - {{Order.RoomName}}</h5>
+            </div>
+            <div class="modal-body form-horizontal">
+                <div class="form-group">
+                    <div class="row">
+
+
+                        <div class="col-sm-6">
+                            <div class="profile-user-info profile-user-info-striped">
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Khách hàng </div>
+
+                                    <div class="profile-info-value">
+                                        @*<span class="editable editable-click">{{Order.CustomerName}}</span>*@
+                                        <input type="text" class="form-control " ng-model="Order.CustomerName" />
+                                    </div>
+                                </div>
+
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Vào lúc </div>
+
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click">{{Order.CheckInTime.Hours}}:{{Order.CheckInTime.Minutes}}</span>
+                                        <span class="editable editable-click">{{Order.CheckInDateView}} </span>
+                                    </div>
+                                </div>
+
+
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Trả lúc: </div>
+
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click">{{Order.CheckOutTime.Hours}}:{{Order.CheckOutTime.Minutes}}</span>
+                                        <span class="editable editable-click">{{Order.CheckOutDateView}} </span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="profile-user-info profile-user-info-striped">
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> CMT </div>
+
+                                    <div class="profile-info-value">
+                                        @*<span class="editable editable-click" id="username">{{Order.PassportId}}</span>*@
+                                        <input type="text" class="form-control " ng-model="Order.PassportId" />
+                                    </div>
+                                </div>
+
+
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Loại phòng </div>
+
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click" id="age">{{Order.RoomClassName}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Giá </div>
+
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click">{{Order.Price| number}}</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="profile-user-info profile-user-info-striped">
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> Tính theo </div>
+                                    <div class="profile-info-value" ng-init="GetCaculatorMode()">
+                                        <select class="form-control" ng-options="row.Key as row.Value  for row in CaculatorModes" ng-model="CaculatorMode" ng-change="ChangCalculatorMode()"></select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="profile-user-info profile-user-info-striped">
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name">Tính qua đêm </div>
+                                    <div class="profile-info-value">
+                                        <label>
+                                            <input type="checkbox" class="ace " ng-model="Order.isByNight" ng-checked="Order.isByNight" ng-change="isBynightClickChange()"><span class="lbl"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                       
+                    </div>
+                    
+
+                </div>
+
+                <div class="widget-box transparent ">
+                    <div class="widget-header">
+                        <a class="widget-title" data-toggle="collapse" href="#" data-target="#tienphong">Tiền phòng (1)</a>
+
+
+                        <div class="widget-toolbar">
+                            <span class="label label-warning">
+                                {{Order.RoomAmount|number}}
+                            </span>
+                            <a data-toggle="collapse" href="#" data-target="#tienphong">
+                                <i class="1 ace-icon fa bigger-125 fa-chevron-down"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="widget-body collapse" id="tienphong">
+                        <div class="widget-main">
+                            <div class="profile-user-info profile-user-info-striped">
+                                <div class="profile-info-row" ng-repeat="item in Order.TimeUseds">
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click">{{item.Description}}</span>
+                                    </div>
+                                    <div class="profile-info-name"> {{item.SumAmount| number}} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-box transparent "  ng-show="Order.AttachmentAmount>0">
+                    <div class="widget-header">
+                        <a class="widget-title smaller" data-toggle="collapse" href="#" data-target="#hdkygui">Hóa đơn chưa thanh toán</a>
+
+
+                        <div class="widget-toolbar">
+                            <span class="label label-warning">
+                                {{Order.AttachmentAmount|number}}
+                            </span>
+                            <a data-toggle="collapse" href="#" data-target="#hdkygui">
+                                <i class="1 ace-icon fa bigger-125 fa-chevron-down"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="widget-body collapse" id="hdkygui">
+                        <div class="widget-main">
+                            <div class="profile-user-info profile-user-info-striped">
+                                <div class="profile-info-row" ng-repeat="item in Order.OrderAttachments">
+                                    <div class="profile-info-value" ng-click="viewOrderAttach(item.OrderId)">
+                                        <span class="editable editable-click">{{item.Note}}</span>
+                                    </div>
+                                    <div class="profile-info-name"> {{item.TotalAmount| number}} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget-box transparent " >
+                    <div class="widget-header ">
+                        <a class="widget-title smaller" data-toggle="collapse" href="#" data-target="#dichvu">Tiền dịch vụ(ăn, uống..) (2)</a>
+
+
+                        <div class="widget-toolbar">
+                            <span class="label label-warning">
+                                {{Order.MiniBarAmount|number}}
+                            </span>
+                            <a data-toggle="collapse" href="#" data-target="#dichvu">
+                                <i class="1 ace-icon fa bigger-125 fa-chevron-down"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="widget-body collapse" id="dichvu">
+                        <div class="widget-main">
+                            <div class="profile-user-info profile-user-info-striped" ng-show="Order.MiniBars.length>0">
+                                <div class="profile-info-row" ng-repeat="item in Order.MiniBars">
+                                    <button type="button" class="close" ng-click="RemoveSeviceFromOrder(item)">×</button>
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click">{{item.Title}} </span>
+                                        <span class="editable editable-click">{{item.Price|number}} x {{item.Quantity}}</span>
+                                    </div>
+                                    <div class="profile-info-name"> {{item.SubAmount| number}} </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <select class="form-control" ng-options="row as row.Name + '( '+ row.PricePaid +' )' group by row.GroupName for row in Widgets" ng-model="OrderService">
+                                        <option label="chọn dịch vụ"></option>
+                                    </select>
+
+                                </div>
+
+                                <div class="col-md-3">
+                                    <select class="form-control" ng-options="a for a in UnitServices" ng-model="Quantity">
+                                        <option label="Chọn số lượng"></option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" title="Thêm mới dịch vụ" class="btn btn-primary" ng-click="addSeviceToOrder('dichvu')">
+                                        <i class="ace-icon fa fa-plus fa-1x icon-only"></i>Thêm dịch vụ
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-box transparent ">
+                    <div class="widget-header ">
+                        <a class="widget-title smaller" data-toggle="collapse" href="#" data-target="#phuthu">Các khoản phụ thu (3)</a>
+
+
+                        <div class="widget-toolbar">
+                            <span class="label label-warning">
+                                {{Order.SurchargeAmount|number}}
+                            </span>
+                            <a data-toggle="collapse" href="#" data-target="#phuthu">
+                                <i class="1 ace-icon fa bigger-125 fa-chevron-down"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="widget-body collapse" id="phuthu">
+                        <div class="widget-main">
+                            <div class="profile-user-info profile-user-info-striped" ng-show="Order.Surcharges.length>0">
+                                <div class="profile-info-row" ng-repeat="item in Order.Surcharges">
+                                    <button type="button" class="close" ng-click="RemoveSeviceFromOrder(item)">×</button>
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click">{{item.Title}} </span>
+                                        <span class="editable editable-click">{{item.Price|number}} x {{item.Quantity}}</span>
+                                    </div>
+                                    <div class="profile-info-name"> {{item.SubAmount| number}} </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <input type="text" placeholder="Nhập nội dung phụ thu" class="form-control " ng-model="Surcharge.Title" />
+                                </div>
+
+                                <div class="col-md-5">
+                                    <input type="text" placeholder="Nhập số tiền phụ thu" class="form-control " ng-model="Surcharge.Price" format="number" />
+
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" title="Thêm mới phụ thu" class="btn btn-primary" ng-click="addSurchargeToOrder('phuthu')">
+                                        <i class="ace-icon fa fa-plus fa-1x icon-only"></i>Thêm phụ thu
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-box transparent ">
+                    <div class="widget-header ">
+                        <a class="widget-title smaller" data-toggle="collapse" href="#" data-target="#km">Khuyến mãi, giảm trừ</a>
+
+
+                        <div class="widget-toolbar">
+                            <span class="label label-warning">
+                                -  {{Order.DeductibleAmount|number}}
+                            </span>
+                            <a href="#" data-toggle="collapse" data-target="#km" >
+                                <i class="1 ace-icon fa bigger-125 fa-chevron-down"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="widget-body collapse" id="km">
+                        <div class="widget-main">
+                            <div class="profile-user-info profile-user-info-striped" ng-show="Order.Deductibles.length>0">
+                                <div class="profile-info-row" ng-repeat="item in Order.Deductibles">
+                                    <button type="button" class="close" ng-click="RemoveSeviceFromOrder(item)">×</button>
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click">{{item.Title}} </span>
+                                        <span class="editable editable-click">{{item.Price|number}} x {{item.Quantity}}</span>
+                                    </div>
+                                    <div class="profile-info-name"> {{item.SubAmount| number}} </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <input type="text" placeholder="Nội dung khuyến mãi, giảm trừ" class="form-control " ng-model="Deductible.Title" />
+                                </div>
+
+                                <div class="col-md-5">
+                                    <input type="text" placeholder="Nhập số tiền " class="form-control " ng-model="Deductible.Price" format="number" />
+
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" title="Thêm mới khuyến mãi" class="btn btn-primary" ng-click="addDeductibleToOrder('km')">
+                                        <i class="ace-icon fa fa-plus fa-1x icon-only"></i>Thêm khuyến mãi
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget-box transparent " >
+                    <div class="widget-header ">
+                        <a class="widget-title smaller"  data-toggle="collapse" href="#" data-target="#tratruoc">Trả trước</a>
+
+
+                        <div class="widget-toolbar">
+                            <span class="label label-warning">
+                                - {{Order.PrepaidAmount|number}}
+                            </span>
+                            <a href="#" data-toggle="collapse" data-target="#tratruoc">
+                                <i class="1 ace-icon fa bigger-125 fa-chevron-down"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="widget-body collapse" id="tratruoc">
+                        <div class="widget-main">
+                            <div class="profile-user-info profile-user-info-striped" ng-show="Order.Prepaids.length>0">
+                                <div class="profile-info-row" ng-repeat="item in Order.Prepaids">
+                                    @*<button type="button" class="close" ng-click="RemoveSeviceFromOrder(item)">×</button>*@
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click">{{item.Title}} </span>
+                                        <span class="editable editable-click">{{item.Price|number}} x {{item.Quantity}}</span>
+                                    </div>
+                                    <div class="profile-info-name"> {{item.SubAmount| number}} </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <input type="text" placeholder="Nhập nội dung trả trước" class="form-control " ng-model="Prepaid.Title" />
+                                </div>
+
+                                <div class="col-md-5">
+                                    <input type="text" placeholder="Nhập số tiền" class="form-control " ng-model="Prepaid.Price" format="number" />
+
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" title="Thêm mới trả trước" class="btn btn-primary" ng-click="addPrepaidToOrder('tratruoc')">
+                                        <i class="ace-icon fa fa-plus fa-1x icon-only"></i>Thêm trả trước
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="form-group">
+                    <label class="col-md-2 control-label no-padding-right" for="form-field-1"> Ghi chú</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" ng-model="Order.Notes" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="profile-user-info profile-user-info-striped payment">
+                     
+                        <div class="profile-info-row">
+                            <div class="profile-info-name">Khách trả </div>
+
+                            <div class="profile-info-value">
+                                <input id="form-field-1" type="text" class="form-control text-right" ng-model="Order.Cashed" format="number" />
+                            </div>
+                        </div>
+
+                        <div class="profile-info-row">
+                            <div class="profile-info-name"> <b> Tổng tiền <i>(1) +(2) + (3 nếu có)</i> </b></div>
+
+                            <div class="profile-info-value">
+                               
+                                <div class="widget-title blue padding-right-22 text-right">
+                                    <b> {{Order.TotalAmount|number}}</b>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-info" ng-click="CheckOutOrder('true')">
+                   Chưa thanh toán
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="UpdateOrder()">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    Save
+                </button>
+                <button type="button" class="btn btn-danger" ng-click="CheckOutOrder()">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    Check Out (F9)
+                </button>
+               
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

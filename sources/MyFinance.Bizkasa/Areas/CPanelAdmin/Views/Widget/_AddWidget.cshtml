@@ -1,0 +1,74 @@
+﻿<div id="Addwidget" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">Thêm mới dịch vụ</h4>
+            </div>
+            <div class="modal-body form-horizontal ">
+                <div class="">
+                    <div class="row">
+                        <div class="col-xs-12 ">
+                            <div class="form-group">
+                                <label for="txtgiaphong1" class="col-sm-3 control-label">
+                                    Tên dịch vụ:
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="txtgiaphong1" class=" col-xs-10 input-sm" placeholder="Tên dịch vụ" ng-model="Widget.Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txgiuong" class="col-sm-3 control-label">
+                                    Nhóm dịch vụ:
+                                </label>
+                                <div class="col-sm-4">
+                                    <select ng-model="Widget.GroupId" ng-options="row.Id as row.Name for row in GroupWidgets"></select>
+                                    <a> <span class="fa fa-plus-circle bigger-160" ng-click="popGroupWidget()"></span></a>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="txnguoi" class="col-sm-3 control-label">
+                                    Giá
+                                </label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="txnguoi" class="col-xs-10 input-xs" placeholder="giá bán" ng-model="Widget.PricePaid" format="number">
+                                </div>
+
+                                
+                                <div class="col-sm-6">
+                                    <label>
+                                        <input type="checkbox" class="ace " ng-model="Widget.IsRecept" ng-checked="Widget.IsRecept"><span class="lbl">   Cho phép nhập kho</span>
+                                    </label>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txnote" class="col-sm-3 control-label">
+                                    Ghi chú
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="txnote" class="col-xs-10 input-xs" placeholder="ghi chú" ng-model="Widget.Note">
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" ng-click="AddWidget()">Cập nhập</button>
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Hủy</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

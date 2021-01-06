@@ -1,0 +1,177 @@
+﻿
+@{
+    ViewBag.Title = "Giao ca - giao tiền";
+}
+
+<div class="main-content" ng-controller="InvoiceController">
+
+
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="~/CPanelAdmin/AdminIndex">Trang chủ</a>
+            </li>
+
+            <li>
+                Giao ca- giao tiền
+            </li>
+
+        </ul><!-- /.breadcrumb -->
+        <div class="toolbar">
+
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="page-content-container">
+
+            <div class="row">
+
+                <div class="col-xs-12">
+                    <div class="table-header">
+                        Thống kê tiền trong ca
+                    </div>
+                    <div class="dataTables_wrapper" role="grid" ng-init="SummaryInShift()">
+                        <table class="table table-hover dataTable" id="list">
+                            <thead>
+                                <tr role="row">
+                                    <th>Tên nhân viên</th>
+                                    <th>Tiền nhận từ hóa đơn <i>(1)</i></th>
+                                    <th>Tiền nhận từ đặt cọc <i>(2)</i></th>
+                                    @*<th>Tiền chi <i>(3)</i></th>*@
+                                    <th>Thực thu trong ca <i>(1) + (2)</i></th>
+                                </tr>
+                            </thead>
+
+                            <tbody style="border-bottom: none;">
+                                <tr>
+
+                                    <td>@MyFinance.Utils.WorkContext.BizKasaContext.UserName</td>
+                                    <td class="text-right">
+                                        {{SummaryShift.InvoiceAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                        {{SummaryShift.ReceiptAmount|number}}
+                                    </td>
+                                    @*<td class="text-right">
+                                            {{SummaryShift.DeliveryAmount|number}}
+                                        </td>*@
+
+                                    <td class="text-right">{{SummaryShift.TotalAmount|number}}</td>
+
+                                </tr>
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-right"><b>Tổng tiền</b> </td>
+                                    <td class="qty text-right"><b>{{SummaryShift.TotalAmount|number}}</b></td>
+
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                    <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-header">
+                        Giao ca hiện tại
+                    </div>
+                    <div class="dataTables_wrapper" role="grid">
+                        <table class="table table-hover dataTable" id="list">
+                            <thead>
+                                <tr role="row">
+                                    <th>Thời gian</th>
+                                    <th>
+                                        Tiền nhận ca trước
+                                        <i>
+                                            (1)
+                                        </i>
+                                    </th>
+                                    <th>
+                                        Tiền thu trong ca<i>
+                                            (2)
+                                        </i>
+                                    </th>
+                                    <th>
+                                        Tiền giao quản lý<i>
+                                            (3)
+                                        </i>
+                                    </th>
+                                    <th>
+                                        Tiền giao ca<i>
+                                            (1) +   (2) - (3)
+                                        </i>
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody style="border-bottom: none;">
+                                <tr>
+
+                                    <td>{{SummaryShift.ShiftPrev.StartTimeView}} - hiện tại</td>
+                                    <td class="text-right">
+                                        {{SummaryShift.ShiftPrev.OpenAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                        {{SummaryShift.TotalAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                        {{SummaryShift.ShiftPrev.DeliveryManagerAmount|number}}
+                                        @*<input type="text" ng-model="Shift.DeliveryManagerAmount" ng-blur="ComputedOpenAmount()" format="number" class="form-control" />*@
+
+                                    </td>
+
+                                    <td class="text-right">
+                                        {{Shift.OpenAmount|number}}
+                                    </td>
+                                    <td>
+                                        <button id="btnSearch" class="btn btn-primary " ng-click="ShiftPopup()">
+                                            <i class="icon-search icon-on-right bigger-110"></i>
+                                            <span class="hidden-320">Giao ca</span>
+                                        </button>
+                                        <button  class="btn btn-primary " ng-click="TransferPopup(Shift.OpenAmount)">
+                                            <i class="ace-icon fa fa-exchange bigger-110"></i>
+                                            <span class="hidden-320">Giao tiền cho quản lý</span>
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                    <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @{ Html.RenderPartial("_addShift"); }
+    @{ Html.RenderPartial("_transferMoneyManager"); }
+</div>
+@section Scripts {
+
+
+    <script src="~/Areas/CPanelAdmin/Script/Invoice/Invoice.js"></script>
+    <link href="~/Areas/CPanelAdmin/Content/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
+    <script src="~/Areas/CPanelAdmin/Script/Paging/paging.js"></script>
+
+}
+
+

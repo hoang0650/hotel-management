@@ -1,0 +1,195 @@
+﻿
+@{
+    ViewBag.Title = "Báo cáo doanh thu";
+}
+
+<div class="main-content" ng-controller="ReportController">
+    
+    <div class="page-content">
+        <div class="page-content-container">  
+            <div class="form-horizontal">
+                <div class="form-group">
+
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input class="form-control date-picker" id="id-date-revenue" type="text" data-date-format="dd-mm-yyyy" placeholder="Chọn thời gian">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar bigger-110"></i>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        <div class="input-group">
+
+                            <span class="padding-left-10">
+                                <button id="btnSearch" class="btn btn-primary " ng-click="GetRevenue()">
+                                    <i class="icon-search icon-on-right bigger-110"></i>
+                                    <span class="hidden-320">Tìm kiếm</span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>         
+            <div class="row">
+                
+
+                    
+
+                    <div class="dataTables_wrapper" role="grid" >
+                        <table class="table table-hover dataTable" ng-init="GetRevenue()">
+                            <thead>
+                                <tr role="row">
+                                    <th></th>
+                                    <th>Lượt phòng</th>
+                                    <th>Số khách</th>
+                                    <th>Tiền phòng</th>
+                                    <th>Tiền dịch vụ</th>
+                                    <th>Phụ thu</th>
+                                    <th>Khuyến mãi</th>
+                                    <th>Trả trước</th>
+                                    <th>Tổng tiền</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody style="border-bottom: none;">
+                                <tr class="border-color-blue">
+                                    <td class="bg-info">Hôm nay</td>
+                                    <td class="text-right">{{Revenue.Today.NumRoomUsed}}</td>
+                                    <td class="text-right">{{Revenue.Today.NumCustomer}}</td>
+                                    <td class="text-right">
+                                       {{Revenue.Today.RoomAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                       {{Revenue.Today.ServiceAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                       {{Revenue.Today.SurchargeAmount|number}}
+                                    </td>
+
+                                    <td class="text-right">{{Revenue.Today.DeductibleAmount|number}}</td>
+                                    <td class="text-right">{{Revenue.Today.PrepaidAmount|number}}</td>
+                                    <td class="text-right">{{Revenue.Today.Cashed|number}}</td>
+
+                                </tr>
+                                <tr>
+                                    <td class="bg-info">Hôm qua</td>
+                                    <td class="text-right">{{Revenue.Yesterday.NumRoomUsed}}</td>
+                                    <td class="text-right">{{Revenue.Yesterday.NumCustomer}}</td>
+                                    <td class="text-right">
+                                        {{Revenue.Yesterday.RoomAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                        {{Revenue.Yesterday.ServiceAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                        {{Revenue.Yesterday.SurchargeAmount|number}}
+                                    </td>
+
+                                    <td class="text-right">{{Revenue.Yesterday.DeductibleAmount|number}}</td>
+                                    <td class="text-right">{{Revenue.Yesterday.PrepaidAmount|number}}</td>
+                                    <td class="text-right">{{Revenue.Yesterday.Cashed|number}}</td>
+
+                                </tr>
+                                <tr>
+                                    <td class="bg-info">Tuần này</td>
+                                    <td class="text-right">{{Revenue.ThisWeek.NumRoomUsed}}</td>
+                                    <td class="text-right">{{Revenue.ThisWeek.NumCustomer}}</td>
+                                    <td class="text-right">
+                                        {{Revenue.ThisWeek.RoomAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                        {{Revenue.ThisWeek.ServiceAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                        {{Revenue.ThisWeek.SurchargeAmount|number}}
+                                    </td>
+
+                                    <td class="text-right">{{Revenue.ThisWeek.DeductibleAmount|number}}</td>
+                                    <td class="text-right">{{Revenue.ThisWeek.PrepaidAmount|number}}</td>
+                                    <td class="text-right">{{Revenue.ThisWeek.Cashed|number}}</td>
+
+                                </tr>
+                                <tr>
+                                    <td class="bg-info">Tháng này</td>
+                                    <td class="text-right">{{Revenue.ThisMonth.NumRoomUsed}}</td>
+                                    <td class="text-right">{{Revenue.ThisMonth.NumCustomer}}</td>
+                                    <td class="text-right">
+                                        {{Revenue.ThisMonth.RoomAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                        {{Revenue.ThisMonth.ServiceAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                        {{Revenue.ThisMonth.SurchargeAmount|number}}
+                                    </td>
+
+                                    <td class="text-right">{{Revenue.ThisMonth.DeductibleAmount|number}}</td>
+                                    <td class="text-right">{{Revenue.ThisMonth.PrepaidAmount|number}}</td>
+                                    <td class="text-right">{{Revenue.ThisMonth.Cashed|number}}</td>
+
+                                </tr>
+                                <tr ng-repeat="item in Revenue.ByDate" ng-class="$even?'bg-info':''">
+                                    <td>{{item.CreatedDateView}}</td>
+                                    <td class="text-right">{{item.NumRoomUsed}}</td>
+                                    <td class="text-right">{{item.NumCustomer}}</td>
+                                    <td class="text-right">
+                                        {{item.RoomAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                        {{item.ServiceAmount|number}}
+                                    </td>
+                                    <td class="text-right">
+                                        {{item.SurchargeAmount|number}}
+                                    </td>
+
+                                    <td class="text-right">{{item.DeductibleAmount|number}}</td>
+                                    <td class="text-right">{{item.PrepaidAmount|number}}</td>
+                                    <td class="text-right">{{item.Cashed|number}}</td>
+
+                                </tr>
+
+                                <tr ng-show="Revenue.Totals">
+                                    <td>Tổng cộng</td>
+                                    <td class="text-right"> <b> {{Revenue.Totals.NumRoomUsed}}</b></td>
+                                    <td class="text-right"><b> {{Revenue.Totals.NumCustomer}}</b></td>
+                                    <td class="text-right">
+                                        <b>{{Revenue.Totals.RoomAmount|number}}</b>
+                                    </td>
+                                    <td class="text-right">
+                                        <b>{{Revenue.Totals.ServiceAmount|number}}</b>
+                                    </td>
+                                    <td class="text-right">
+                                        <b>{{Revenue.Totals.SurchargeAmount|number}}</b>
+                                    </td>
+
+                                    <td class="text-right"><b>{{Revenue.Totals.DeductibleAmount|number}}</b></td>
+                                    <td class="text-right"><b>{{Revenue.Totals.PrepaidAmount|number}}</b></td>
+                                    <td class="text-right"><b>{{Revenue.Totals.Cashed|number}}</b></td>
+
+                                </tr>
+                            </tbody>
+                            
+                        </table>
+
+                    </div>
+
+                
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+@section Scripts {
+    <script src="~/Areas/CPanelAdmin/Script/Report/report.js"></script>
+
+}
+
+
+

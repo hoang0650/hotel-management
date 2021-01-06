@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content" ng-controller="UtilityController">
+
+    <!-- Page length options -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Danh sách tiện ích</h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+            <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+        </div>
+
+        @*<div class="panel-body">
+                It is possible to easily customise the options shown in the length menu using the <code>lengthMenu</code> initialisation option. This parameter can take one of two forms: 1) A <code>1D</code> array of options which will be used for both the displayed option and the value; 2) A <code>2D</code> array in which the first array is used to define the value options and the second array the displayed options. The example below shows a 2D array being used to include a <code>"Show all"</code> records option.
+            </div>*@
+
+        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer" ng-init="GetUtilities()">
+            <div class="datatable-header">
+            <div id="DataTables_Table_0_filter" class="dataTables_filter">              
+                <button type="button" class="btn bg-teal-400 btn-labeled" data-toggle="modal" data-target="#AddUtility"><b><i class=" icon-file-plus"></i></b> Thêm mới</button>
+                </div>
+            </div>
+            <div class="datatable-scroll">
+                <table class="table datatable-show-all dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc">Mã</th>
+                            <th class="sorting">Tiện ích</th>
+                            <th class="sorting">Tình trạng</th>
+                            <th class="sorting">Loại</th>
+                            <th class="text-center sorting_disabled" rowspan="1" colspan="1" aria-label="Actions" style="width: 100px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="item in UtilityGroups">
+                        <tr class="border-double active">
+                            <th colspan="5">{{item.Name}}</th>
+                        </tr>
+                        <tr role="row" class="odd" ng-repeat="row in item.Utilities">
+                            <td>{{row.Id}}</td>
+                            <td class="hidden-480">
+                                <label class="no-padding-left">
+                                    {{row.Name}}
+                                </label>
+
+                            </td>
+                            <td class="hidden-480">
+                                <label class="no-padding-left">
+                                    {{row.IsDeleted?"Đang ẩn":"Hoạt động"}}
+                                </label>
+                            </td>
+                            <td class="hidden-480">
+                                <label class="no-padding-left">
+                                    {{row.UtilityType==2?"Tiện ích khách sạn":"Tiện ích loại phòng"}}
+                                </label>
+                            </td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li><a href="javascript:" data-popup="tooltip" title="" data-original-title="Edit" ng-click="GetUtilityForEdit(row.Id)"><i class="icon-pencil7"></i></a></li>
+                                
+                                </ul>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <!-- /page length options -->
+
+    @{Html.RenderPartial("_AddUtility");}
+    @{Html.RenderPartial("_AddUtilityGroup");}
+</div>
+
+
+@section Scripts {
+    <script src="~/Scripts/App/Utility.js"></script>
+    
+}

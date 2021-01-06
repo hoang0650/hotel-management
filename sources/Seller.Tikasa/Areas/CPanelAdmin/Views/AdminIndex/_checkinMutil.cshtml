@@ -1,0 +1,228 @@
+﻿
+<div id="CheckInMutil" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabelCheckInMutil" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabelCheckInMutil">Nhận phòng khách đoàn</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs" id="myTab">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#info" aria-expanded="true">
+                                        @*<i class="green ace-icon fa fa-home bigger-120"></i>*@
+                                        Thông tin đăng ký
+                                    </a>
+                                </li>
+
+
+
+                                <li>
+                                    <a data-toggle="tab" href="#customer" aria-expanded="true">
+                                        @*<i class="green ace-icon fa fa-home bigger-120"></i>*@
+                                        Người đại diện
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a data-toggle="tab" href="#roomAvailable" aria-expanded="false">
+                                        Chọn phòng khả dụng
+                                        @*<span class="badge badge-danger">4</span>*@
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="info" class="tab-pane fade active in">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tên công ty/đoàn</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="form-field-1" ng-model="Order.CompanyName" placeholder="Tên công ty/đoàn" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Chọn thời gian</label>
+                                            <div class="col-sm-9">
+                                                <div class="input-group">
+                                                    <input class="form-control date-picker" id="id-date-mutil" type="text" data-date-format="dd-mm-yyyy">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar bigger-110"></i>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                            
+                                        </div>
+
+                                       
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Giá </label>
+                                            <div class="col-sm-9">
+                                                <input type="number" id="form-field-1" ng-model="Order.Price" placeholder="giá phòng" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trả trước </label>
+                                            <div class="col-sm-3">
+                                                <input type="number" id="form-field-1" ng-model="Order.Prepay" placeholder="" class="form-control">
+                                            </div>
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Khuyến mãi </label>
+                                            <div class="col-sm-3">
+                                                <input type="number" id="form-field-1" placeholder="" ng-model="Order.Deductible" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ghi chú </label>
+                                            <div class="col-sm-9">
+                                                <textarea id="form-field-1" placeholder="" ng-model="Order.Notes" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+
+                                <div id="roomAvailable" class="tab-pane fade">
+                                    <div class="row">
+                                        <table id="simple-table" class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="center">
+                                                        <label class="pos-rel">
+                                                            <input type="checkbox" class="ace">
+                                                            <span class="lbl"></span>
+                                                        </label>
+                                                    </th>
+                                                    <th>Loại phòng</th>
+                                                    <th>Giá</th>
+                                                    <th>Tổng</th>
+                                                    <th>
+                                                        Chọn
+                                                    </th>
+                                                    <th>Trống</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody ng-repeat="item in RoomForCheckinMutil">
+                                                <tr>
+                                                    <td class="center">
+                                                        <label class="pos-rel">
+                                                            <input type="checkbox" class="ace">
+                                                            <span class="lbl"></span>
+                                                        </label>
+                                                    </td>
+
+                                                    <td>
+                                                        {{item.Name}}
+                                                    </td>
+                                                    <td>{{item.Price|number}}</td>
+                                                    <td>{{item.RoomTotal}}</td>
+                                                    <td><input type="text" ng-model="item.Quanlity" value="{{item.Quanlity}}" ng-change="EnterRoomClick(item)" format="number" /></td>
+
+                                                    <td>{{item.RoomAvailable-item.Quanlity|number}}</td>
+
+                                                </tr>
+                                                <tr ng-show="item.Quanlity>0 && item.Rooms.length>0">
+                                                    <td colspan="6">
+                                                        <div ng-repeat="r in item.Rooms" class="room-avai">
+                                                            <label class="left" ng-show="r.RoomStatus!=1">
+                                                                <input type="checkbox" class="ace" ng-checked="r.Selected" ng-model="r.Selected" ng-change="SelectedClick(item)">
+                                                                <span class="lbl">  {{r.Name}}  </span>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div id="customer" class="tab-pane fade">
+
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> CMND/Passport </label>
+                                            <div class="col-sm-3">
+                                                <input type="text" id="form-field-1" ng-model="Customer.PassportId" placeholder="CMND/Passport" class="form-control">
+                                            </div>
+
+                                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Ngày cấp </label>
+                                            <div class="col-sm-3">
+                                                <div class="input-group">
+                                                    <input class="form-control date-picker" id="id-date-picker-PassportCreatedDate" type="text" data-date-format="dd-mm-yyyy">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar bigger-110"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Tên Khách hàng </label>
+                                            <div class="col-sm-3">
+                                                <input type="text" id="form-field-1" ng-model="Customer.Name" placeholder="Tên Khách hàng" class="form-control">
+                                            </div>
+                                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Điện thoại </label>
+                                            <div class="col-sm-3">
+                                                <input type="text" id="form-field-1" ng-model="Customer.Mobile" placeholder="Điện thoại" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Email </label>
+                                            <div class="col-sm-3">
+                                                <input type="text" id="form-field-1" ng-model="Customer.Email" placeholder="Email" class="form-control">
+                                            </div>
+                                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Quốc tịch </label>
+                                            <div class="col-sm-3">
+                                                <select id="form-field-1" class="form-control">
+                                                    <option value="AL">Việt Nam</option>
+                                                    <option value="AL">English</option>
+                                                    <option value="AL">Alabama</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Địa chỉ </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="form-field-1" ng-model="Customer.Address" placeholder="Địa chỉ" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Ghi chú </label>
+                                            <div class="col-sm-9">
+                                                <textarea id="form-field-1" placeholder="Ghi chú" ng-model="Customer.Notes" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div id="dropdown2" class="tab-pane fade">
+                                    <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" ng-click="AddOrderMutil()">Cập nhập</button>
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Hủy</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

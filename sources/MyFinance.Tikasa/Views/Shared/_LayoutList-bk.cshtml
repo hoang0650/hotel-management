@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    @*<link rel="shortcut icon" type="image/ico" href="@ViewBag.Meta.Favicon" />
+        <link rel="icon" type="image/ico" href="@ViewBag.Meta.Favicon" />*@
+    <meta http-equiv="content-language" content="vi" />
+    <meta name="description" content="@Html.Raw(ViewBag.Description)" />
+    <meta name="keywords" content="@Html.Raw(ViewBag.Keywords)" />
+    <meta name="robots" content="index, follow" />
+    <meta name="geo.region" content="VN-SG" />
+    <meta name="geo.placename" content="@Html.Raw(ViewBag.Address)" />
+    @*<meta property="og:site_name" content="@Html.Raw(ViewBag.Meta.ApplicationName)" />*@
+    <meta property="og:title" content="@Html.Raw(ViewBag.Title)" />
+    <meta property="og:description" content="@Html.Raw(ViewBag.Description)" />
+    <meta property="og:url" itemprop="url" content='@Request.Url.AbsoluteUri' />
+    @*<meta property="og:image" content="@ViewBag.Meta.Seo_Image" />*@
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" itemprop="inLanguage" content="vi_VN" />
+    <link rel="canonical" href="@Request.Url.AbsoluteUri" />
+    @*<link rel="image_src" href="@ViewBag.Meta.Seo_Image" />*@
+
+    @Styles.Render("~/Content/csslist")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="wrap-page">
+        <header id="header">
+            <div class="header-container container">
+                <h1 class="logo">
+                    <a href="@Url.Action("Index","Home")" title="" class="logo-img">
+                        <img src="~/Content/images/tikasalogo.png" alt="" />
+                    </a>
+                </h1>
+                <a href="#" class="search-link">Tìm quanh đây</a>
+                <div class="box-login pull-right">
+                    <div class="pull-left">
+                        <a id="login" class="headerLink modal-Login" href="/dang-nhap" data-target="#myModalLogin" data-toggle="modal">Đăng nhập</a>
+                    </div>
+                    <div class="pull-left">
+                        <a id="register" class="headerLink register modal-Login" href="/dang-ky" data-target="#myModalRegister" data-toggle="modal">Đăng ký</a>
+                    </div>
+                </div>
+                <!--language-->
+                @*<div class="language-wrap language-notLogin language-vi">
+                    <div class="language-container">
+                        <div class="dropdown">
+                            <div id="choose-language" class="position-relative " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Tiếng Việt <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </div>
+                            <ul class="dropdown-menu list-language" aria-labelledby="choose-language">
+                                <li class="select-lg">
+                                    <div id="vi">Tiếng Việt</div>
+                                </li>
+                                <li>
+                                    <div id="en">English</div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+        </header>
+
+
+     
+            @RenderBody()
+
+
+        
+        
+    </div>
+    @*<script data-main="/Scripts/App/main.js" src="~/Scripts/require.js"></script>*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

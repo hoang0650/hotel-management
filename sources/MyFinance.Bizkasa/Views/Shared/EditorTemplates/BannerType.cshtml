@@ -1,0 +1,17 @@
+﻿@using FailTracker.Web.Domain
+@model FailTracker.Web.Domain.BannerType
+@{
+    var options = Enum.GetValues(typeof(BannerType))
+    .Cast<BannerType>()
+    .Select(t => new SelectListItem
+    {
+        Text = t.ToString(),
+        Value = t.ToString(),
+        Selected = t == Model
+    })
+    .ToArray();
+
+}
+@Html.DropDownList("", options)
+
+

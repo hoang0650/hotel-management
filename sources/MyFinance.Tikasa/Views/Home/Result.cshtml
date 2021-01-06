@@ -1,0 +1,100 @@
+﻿@using MyFinance.Tikasa.Infractstructure;
+
+
+@model PagedList<MyFinance.Domain.BusinessModel.HotelModel>
+
+@{
+    ViewBag.Title = "tìm kiếm";
+    ViewBag.Description = "nhà nghỉ";
+    ViewBag.Keywords = "nhà nghỉ";
+    ViewBag.Address = "nhà nghỉ";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+
+}
+<div id="content-body" class="listing-body">
+    <div class="category container">
+    <div class="search-block">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="box-search2">
+                        @using (Html.BeginForm("Result", "Home", FormMethod.Get, new { @class = "form-horizontal", @id = "form-Search" }))
+                        {
+                            <div class="txtlocation">
+                                @Html.TextBox("keyword", null, new { @class = "form-control", @placeholder = "Tên nhà nghỉ, khách sạn hoặc khu vực cần tìm..." })
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </div>
+                        }
+                        
+                          
+                     </div>
+            </div>
+        </div>
+    </div>
+        <!--product-list-->
+        <ul class="booking-list loop-hotel style_list">
+            @foreach (var item in Model)
+            {
+
+           
+            <li class="booking-item post-9005 st_hotel type-st_hotel status-publish has-post-thumbnail hentry hotel_facilities-airport-transport hotel_facilities-toilet hotel_facilities-towels hotel_facilities-wi-fi-internet hotel_theme-best-value hotel_theme-boutique hotel_theme-budget hotel_theme-classic hotel_theme-luxury hotel_theme-party hotel_theme-resort-hotel hotel-services-babysittingchild-services hotel-services-concierge-service hotel-services-gift-shop hotel-services-laundry">
+                <div class="feature_class st_featured">Featured</div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="booking-item-img-wrap st-popup-gallery">
+                            <a class="st-gp-item"  href="@Url.RouteUrl(new {hotelId=item.Id,hotelname=MyFinance.Utils.CommonUtil.ToAscii(item.Name)})">
+                                <img width="360" height="270" src="@string.Format("http://api.bizkasa.com{0}", item.Logo)" class="attachment-360x270 size-360x270 wp-post-image" alt="">
+                            </a>
+                            <div class="booking-item-img-num"><i class="fa fa-picture-o"></i>10</div>                <div class="hidden">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="color-inherit"  href="@Url.RouteUrl(new {hotelId=item.Id,hotelname=MyFinance.Utils.CommonUtil.ToAscii(item.Name)})">
+                            <h5 class="booking-item-title">
+                                @item.Name
+                            </h5>
+                        </a>
+                        <p class="booking-item-address"><i class="fa fa-map-marker"></i> @item.Address</p>
+                        <p class="booking-item-price-list-item "><i class="fa fa-dollar"></i> Giờ đầu : @string.Format("{0:N0}",item.FisrtHour) đ</p>
+                        <p class="booking-item-price-list-item"><i class="fa fa-dollar"></i> Giờ tiếp : @string.Format("{0:N0}", item.NextHour) đ</p>
+                    
+                           <p class="booking-item-address">@Html.Raw(item.Description)</p>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="booking-item-price-from">Qua đêm</span>
+                        <span class="booking-item-price">@string.Format("{0:N0}", item.OverNight) đ</span>
+                        <a class="btn btn-primary btn_book"  href="@Url.RouteUrl(new {hotelId=item.Id,hotelname=MyFinance.Utils.CommonUtil.ToAscii(item.Name)})">Xem Ngay</a>
+
+                    </div>
+                </div>
+            </li>
+
+            }
+            
+         
+
+        </ul>
+        <div class="row">
+            <!-- pager -->
+            <div class="pager">
+
+                @Html.Pager(
+            Model.PageIndex,
+            Model.TotalPages,
+            x => Url.Action("Result", new { page = x, keyword = ViewData["keyword"] }))
+
+            </div>
+
+        </div>
+       
+    </div>
+</div>
+  <div id="footer">
+      @{ Html.RenderPartial("_Footer");}
+    </div>
+
+
+
+    
+

@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewBag.Title = "Quản lý phiếu thu, chi";
+}
+
+
+<div class="main-content" ng-app="appModule" ng-controller="InvoiceController">
+        <div class="page-content">
+            <div class="page-content-container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="col-xs-12">
+                            <div class="col-xs-12 no-padding">
+                                <div class="form-group" style="overflow: hidden;" ng-init="InitFilterModel()">
+                                    <div class="col-sm-12 no-padding-left">
+                                        <div class="col-sm-3">
+                                            <div class="input-group">
+                                                <input class="form-control date-picker" id="id-date" type="text" data-date-format="dd-mm-yyyy" placeholder="Chọn thời gian">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar bigger-110"></i>
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                        @*<div class="col-sm-2 no-padding-left">
+                                            <select class="form-control" ng-options="row.Key as row.Value for row in PaymentMethods" ng-model="Filter.PaymentMethod">
+                                                <option value="">Hình thức thanh toán</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2 no-padding-left">
+                                            <select class="form-control" ng-options="row.Key as row.Value for row in InvoiceStatus" ng-model="Filter.InvoiceStatus">
+                                                <option value="">Trạng thái thanh toán</option>
+                                            </select>
+                                        </div>*@
+                                        <div class="col-sm-2 no-padding-left">
+                                            <input type="text" id="filter" name="txtSearch" value="" placeholder="Tên, mă, SĐT khách hàng" class="col-xs-12" ng-model="Filter.Keyword">
+                                        </div>
+
+                                        <div class="col-sm-3 no-padding-left no-padding-right">
+                                            <div class="input-group" style="width:100%">
+
+                                                <span class="padding-left-10">
+                                                    <button id="btnSearch" class="btn btn-primary " ng-click="GetInvoices()">
+                                                        <i class="icon-search icon-on-right bigger-110"></i>
+                                                        <span class="hidden-320">Tìm kiếm</span>
+                                                    </button>
+                                                    <a href="@Url.Action("ExportInvoice", "Invoice")" class="btn btn-primary ">
+                                                        <i class="icon-download-alt"></i>
+                                                        Export Excel
+                                                    </a>
+                                                    
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="dataTables_wrapper" role="grid" ng-init="GetInvoices()">
+                            <table class="table table-hover dataTable" id="list">
+                                <thead>
+                                    <tr role="row">
+                                        <th>STT</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Phòng</th>
+                                        <th>Loại phòng</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Tình trạng</th>
+                                        <th>Khuyến mãi</th>
+                                        <th>Tổng tiền</th>
+
+                                        @*<th></th>*@
+                                    </tr>
+                                </thead>
+
+                                <tbody style="border-bottom: none;">
+                                    <tr ng-repeat="item in Invoices" ng-click="ViewInvoiceDetail(item.Id)">
+                                        <td>{{((Filter.Page.currentPage-1) * Filter.Page.pageSize) +($index+1)}}</td>
+                                        <td class="hidden-480">
+                                            <label class="no-padding-left" ng-show="item.CustomerName.length>0">
+                                                {{item.CustomerName}}
+                                            </label>
+                                            <label class="no-padding-left" ng-show="item.CompanyName.length>0">
+                                                {{item.CompanyName}}
+                                            </label>
+                                        </td>
+                                        <td class="hidden-480">
+                                            <label class="no-padding-left">
+                                                {{item.RoomName}}
+                                            </label>
+                                        </td>
+                                        <td class="hidưden-480">
+                                            <label class="no-padding-left">
+                                                {{item.RoomClassName}}
+                                            </label>
+                                        </td>
+
+                                        <td>{{item.CreatedDateView}}</td>
+                                        <td><span class="" ng-class="item.InvoiceStatus == 2?'label label-warning': item.InvoiceStatus == 1?'label label-danger':'label label-success '">{{ item.InvoiceStatus == 2?'Công nợ': item.InvoiceStatus == 1?'Chưa thanh toán':'Đã thanh toán'}}</span> </td>
+                                       
+                                        <td class="text-right">{{item.Deductible|number}}</td>
+                                        <td class="text-right">{{item.Cashed>0?(item.Cashed+item.Prepaid):item.Prepaid|number}}</td>
+
+                                    </tr>
+
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+
+                                        <td colspan="6" class="text-right"><b>Tổng tiền</b> </td>
+                                        <td class="qty text-right "><b>{{SumAmount.Debit|number}}</b></td>
+                                        <td class="qty text-right "><b>{{SumAmount.Paid|number}}</b></td>
+
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+                        <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+
+
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <div class="pull-left">
+                        <span>Tìm thấy  <span class="total-highlight">{{Filter.Page.total}}</span> hóa đơn </span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <paging class="small pull-right"
+                            page="Filter.Page.currentPage"
+                            page-size="Filter.Page.pageSize"
+                            total="Filter.Page.total"
+                            show-prev-next="true"
+                            show-first-last="false"
+                        paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total)">
+                    </paging>
+                </div>
+            </div>
+        </div>
+
+ 
+    
+    
+    @{ Html.RenderPartial("_PrintInvoice");  }
+    @{ Html.RenderPartial("_ViewInvoiceDetail");  }
+    @{ Html.RenderPartial("_AddInvoice");  }
+    @{ Html.RenderPartial("_AddInvoiceDetail");  }
+
+
+
+</div>
+@section Scripts {
+   
+<script src="~/Areas/CPanelAdmin/Script/Paging/paging.js"></script>
+<script src="~/Areas/CPanelAdmin/Script/Invoice/Invoice.js"></script>
+<link href="~/Areas/CPanelAdmin/Content/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
+
+}
+
+
+
+
+

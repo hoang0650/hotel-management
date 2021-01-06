@@ -1,0 +1,362 @@
+﻿@model MyFinance.Domain.BusinessModel.HotelModel
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+
+<div id="content-body" class="detail-body">
+    <div id="namePage" data-namepage="Home"></div>
+    <div class="banner" id="banner">
+        <div class="background-banner background-img banner-zoom">
+            <div class="background-banner-line"></div>
+            <div class="background-banner-rgba"></div>
+        </div>
+        <div class="slogan">
+            <div class="img-slogan background-img">
+                <img src="images/slogan.png" alt="" />
+            </div>
+            <div class="search">
+                <div class="search-wrap">
+                    <div class="search-content">
+                        <form id="form-Search" action="/danh-sach-tin" method="post" novalidate="novalidate">
+                            <div class="txtlocation">
+                                <input autocomplete="off" class="form-control" id="SearchLocation" name="SearchLocation" placeholder="Ngôi nhà của bạn sẽ ở đâu ?" type="text" value="">
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--detail-->
+    <div class="container-detail container">
+      <div class="gap gap-small"></div>
+        <div class="gap gap-small"></div>
+        <div class="search-block">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="box-search2">
+                                    @using (Html.BeginForm("Result", "Home", FormMethod.Get, new { @class = "form-horizontal", @id = "form-Search" }))
+                                    {
+                                        <div class="txtlocation">
+                                            @Html.TextBox("keyword", null, new { @class = "form-control", @placeholder = "Tên nhà nghỉ, khách sạn hoặc khu vực cần tìm..." })
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                        </div>
+                                    }
+
+                                 </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gap gap-small"></div>
+        <div class="booking-item-details">
+            <div class="vc_row wpb_row st bg-holder">
+                <div class=" ">
+                    <div class="row">
+                        <div class="wpb_column column_container col-md-9">
+                            <div class="wpb_wrapper">
+                                <header class="">
+                                    <h1 class="lh1em featured_single" itemprop="name">@Model.Name           </h1>
+                                    <p class="lh1em text-small" itemprop="address"><i class="fa fa-map-marker"></i> @Model.Address</p>
+                                    <ul class="list list-inline text-small">
+                                        <li>
+                                            <a href="mailto:abc@def.com  "><i class="fa fa-envelope"></i> @Model.Email</a>
+                                        </li>
+
+                                        <li>
+                                            <a target="_blank" href="#"> <i class="fa fa-home"></i> @Model.Website</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="tel:12345678910"> <i class="fa fa-phone"></i>@Model.Phone</a>
+                                        </li>
+
+                                    </ul>
+                                </header>
+                            </div>
+                        </div>
+
+                        <div class="wpb_column column_container col-md-3">
+                            <div class="wpb_wrapper">
+                                <p class="booking-item-header-price text-right">
+                                    <small>Qua đêm</small>
+                                    <span class="text-lg">@string.Format("{0:N0}", Model.OverNight) đ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div><!--End .row-->
+                </div><!--End .container-->
+
+                <div class="gap gap-small"></div>
+                <!--main content-->
+                <div class="vc_row wpb_row st bg-holder">
+                    <div class="row">
+                        <!--left col--->
+                        <div class="wpb_column column_container col-md-6">
+                            <ul class="nav-detail-page nav nav-tabs ui-tabs-nav vc_clearfix ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+                                <li class="ui-state-default ui-corner-top " role="tab" tabindex="0">
+                                    <a href="#tab-slider" class="ui-tabs-anchor">
+                                        <i class="fa fa-camera"></i> Hình ảnh
+                                    </a>
+                                </li>
+                                <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="-1">
+                                    <a href="#tab-googlemap" class="ui-tabs-anchor">
+                                        <i class="fa fa-map-marker"></i> Bản đồ
+                                    </a>
+                                </li>
+                                @*<li class="ui-state-default ui-corner-top" role="tab">
+                                    <a href="#tab-video" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">
+                                        <i class="fa fa-youtube-play"></i> Video
+                                    </a>
+                                </li>*@
+                            </ul>
+                            <!--images slider-->
+                            <div id="tab-slider" class="ui-tabs-panel wpb_ui-tabs-hide vc_clearfix ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false" style="display: block">
+                                <div class="fotorama" data-nav="thumbs" data-thumb-height="80">
+                                    <div data-thumb-width="80" data-thumb-height="80" data-thumb="images/temp/holtel1.jpg" data-img="images/temp/holtel1.jpg">&nbsp;</div>
+                                    <div data-thumb-width="80" data-thumb-height="80" data-thumb="images/temp/holtel2.jpg" data-img="images/temp/holtel2.jpg">&nbsp;</div>
+                                    <div data-thumb-width="80" data-thumb-height="80" data-thumb="images/temp/holtel3.jpg" data-img="images/temp/holtel3.jpg">&nbsp;</div>
+                                    <div data-thumb-width="80" data-thumb-height="80" data-thumb="images/temp/holtel4.jpg" data-img="images/temp/holtel4.jpg">&nbsp;</div>
+                                    <div data-thumb-width="80" data-thumb-height="80" data-thumb="images/temp/holtel5.jpg" data-img="images/temp/holtel5.jpg">&nbsp;</div>
+                                    <div data-thumb-width="80" data-thumb-height="80" data-thumb="images/temp/holtel6.jpg" data-img="images/temp/holtel6.jpg">&nbsp;</div>
+                                    <div data-thumb-width="80" data-thumb-height="80" data-thumb="images/temp/holtel7.jpg" data-img="images/temp/holtel7.jpg">&nbsp;</div>
+                                    <div data-thumb-width="80" data-thumb-height="80" data-thumb="images/temp/holtel8.jpg" data-img="images/temp/holtel8.jpg">&nbsp;</div>
+                                    <div data-thumb-width="80" data-thumb-height="80" data-thumb="images/temp/holtel3.jpg" data-img="images/temp/holtel3.jpg">&nbsp;</div>
+                                </div>
+                            </div>
+                            <div class="ui-tabs-panel wpb_ui-tabs-hide vc_clearfix ui-widget-content ui-corner-bottom" id="tab-googlemap">
+                                <div class="google-map" id="map_canvas" style="height:400px;width:550px">
+                                    google map
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <!--right col-->
+                        <div class="wpb_column column_container col-md-2">
+                            <div class="wpb_wrapper">
+                                <div class="booking-item-meta">
+                                    <p class="booking-item-address"><i class="fa fa-dollar"></i> <span class="lbl">Giờ đầu :</span> @string.Format("{0:N0}", Model.FisrtHour) đ</p>
+                                    <p class="booking-item-address"><i class="fa fa-dollar"></i> <span class="lbl">Giờ tiếp :</span> @string.Format("{0:N0}", Model.NextHour) đ</p>
+                                    
+
+                                    <div class="gap gap-small"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="wpb_column column_container col-md-4">
+                            <div class="vc_column-inner ">
+                                <div class="wpb_wrapper">
+                                    <h3>Cùng khu vực</h3>
+                                    <div class="list_hotel_related">
+
+                                        <ul class="booking-list">
+                                            <li>
+                                                <a href="#">
+                                                    <div class="booking-item booking-item-small">
+                                                        <div class="row">
+                                                            <div class="col-xs-4">
+                                                                <img width="800" height="600" src="http://z8e0944c0fq469vst36jkhqn.wpengine.netdna-cdn.com/wp-content/uploads/st_uploadfont/529075_13101100100016956062-800x600.jpg" class="wp-post-image" alt="">
+                                                            </div>
+                                                            <div class="col-xs-5">
+                                                                <h5 class="booking-item-title">Hotel Chavanel</h5>
+                                                                <ul class="icon-group booking-item-rating-stars">
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <span class="booking-item-price-from">
+
+                                                                    price from
+                                                                </span>
+                                                                <span class="booking-item-price">$354,00</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="booking-list">
+                                            <li>
+                                                <a href="#">
+                                                    <div class="booking-item booking-item-small">
+                                                        <div class="row">
+                                                            <div class="col-xs-4">
+                                                                <img width="800" height="600" src="http://z8e0944c0fq469vst36jkhqn.wpengine.netdna-cdn.com/wp-content/uploads/st_uploadfont/529075_13101100100016956062-800x600.jpg" class="wp-post-image" alt="">
+                                                            </div>
+                                                            <div class="col-xs-5">
+                                                                <h5 class="booking-item-title">Hotel Chavanel</h5>
+                                                                <ul class="icon-group booking-item-rating-stars">
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <span class="booking-item-price-from">
+
+                                                                    price from
+                                                                </span>
+                                                                <span class="booking-item-price">$354,00</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="booking-list">
+                                            <li>
+                                                <a href="#">
+                                                    <div class="booking-item booking-item-small">
+                                                        <div class="row">
+                                                            <div class="col-xs-4">
+                                                                <img width="800" height="600" src="http://z8e0944c0fq469vst36jkhqn.wpengine.netdna-cdn.com/wp-content/uploads/st_uploadfont/529075_13101100100016956062-800x600.jpg" class="wp-post-image" alt="">
+                                                            </div>
+                                                            <div class="col-xs-5">
+                                                                <h5 class="booking-item-title">Hotel Chavanel</h5>
+                                                                <ul class="icon-group booking-item-rating-stars">
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <span class="booking-item-price-from">
+
+                                                                    price from
+                                                                </span>
+                                                                <span class="booking-item-price">$354,00</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="booking-list">
+                                            <li>
+                                                <a href="#">
+                                                    <div class="booking-item booking-item-small">
+                                                        <div class="row">
+                                                            <div class="col-xs-4">
+                                                                <img width="800" height="600" src="http://z8e0944c0fq469vst36jkhqn.wpengine.netdna-cdn.com/wp-content/uploads/st_uploadfont/529075_13101100100016956062-800x600.jpg" class="wp-post-image" alt="">
+                                                            </div>
+                                                            <div class="col-xs-5">
+                                                                <h5 class="booking-item-title">Hotel Chavanel</h5>
+                                                                <ul class="icon-group booking-item-rating-stars">
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <span class="booking-item-price-from">
+
+                                                                    price from
+                                                                </span>
+                                                                <span class="booking-item-price">$354,00</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="booking-list">
+                                            <li>
+                                                <a href="#">
+                                                    <div class="booking-item booking-item-small">
+                                                        <div class="row">
+                                                            <div class="col-xs-4">
+                                                                <img width="800" height="600" src="http://z8e0944c0fq469vst36jkhqn.wpengine.netdna-cdn.com/wp-content/uploads/st_uploadfont/529075_13101100100016956062-800x600.jpg" class="wp-post-image" alt="">
+                                                            </div>
+                                                            <div class="col-xs-5">
+                                                                <h5 class="booking-item-title">Hotel Chavanel</h5>
+                                                                <ul class="icon-group booking-item-rating-stars">
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                    <li><i class="fa  fa-star"></i></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <span class="booking-item-price-from">
+
+                                                                    price from
+                                                                </span>
+                                                                <span class="booking-item-price">$354,00</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="gap gap-small"></div>
+    <div class="gap gap-small"></div>
+    <div class="gap gap-small"></div>
+    <!--footer-->
+    <div id="footer">
+        <div class="container">
+            <ul>
+                <li><a href="#" title="">Quảng cáo</a> </li>
+                <li><a href="#" title="">Doanh nghiệp</a> </li>
+                <li><a href="#" title="">Giới thiệu</a> </li>
+                <li><a href="#" title="">Cài đặt</a> </li>
+                <li><a href="#" title="">Điều khoản</a> </li>
+                <li><a href="#" title="">Bảo mật</a> </li>
+            </ul>
+        </div>
+    </div>
+   
+</div>
+@section scripts{
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf7hUxmzsiDyklIfcM93ESrtZXmG9Dqq4&sensor=false"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var myLatlng = new google.maps.LatLng(@Model.Latitude,@Model.Longitude);
+        var myOptions = {
+            zoom: 18,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+        var marker = new google.maps.Marker({
+            position: myLatlng, 
+            map: map, 
+            title:"Hello World!"
+        }); 
+
+
+
+    });
+
+</script>
+
+    }

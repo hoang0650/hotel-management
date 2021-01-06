@@ -1,0 +1,271 @@
+﻿
+<div id="sidebar" class="sidebar h-sidebar navbar-collapse collapse" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
+    <script type="text/javascript">
+        try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
+    </script>
+
+    <ul class="nav nav-list" style="top: 0px;" id="menu">
+        <li class="hover">
+            <a href="@Url.Action("Index","AdminIndex")">
+                <i class="menu-icon fa fa-tachometer"></i>
+                <span class="menu-text">Tổng quan</span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+        <li class="hover">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-stack-exchange" title="Đơn hàng"></i>
+                <span class="menu-text">
+                    Đối tác - khách hàng
+                </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu can-scroll">
+                <li class="hover">
+                    <a href="/khach-hang.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Khách hàng
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="hover">
+                    <a href="/nha-cung-cap.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Nhà cung cấp
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="hover">
+                    <a href="/khu-vuc.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Khu vực
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+            </ul>
+        </li>
+
+
+        <!--Kho hàng-->
+        <li class="active open hover">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-folder-open" title="Thống kê"></i>
+                <span class="menu-text">Kho hàng</span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu ace-scroll can-scroll" style="max-height: 176px;">
+                <li class="hover">
+                    <a href="/hang-hoa.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Hàng hóa
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                <li class="hover">
+                    <a href="/kho-hang.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Kho
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="hover">
+                    <a href="/nhom-hang.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Nhóm hàng
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="hover">
+                    <a href="/don-vi.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Đơn vị tính
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+            <div class="scroll-track scroll-detached no-track scroll-thin scroll-margin scroll-visible scroll-active" style="display: none; height: 175px; top: 69px; left: 183px;"><div class="scroll-bar" style="height: 117px; top: 0px;"></div></div>
+        </li>
+
+        <!--Hàng hóa-->
+        <li class="hover">
+            <a href="#">
+                <i class="menu-icon fa fa-gift" title="Thống kê"></i>
+                <span class="menu-text">Hàng hóa</span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu ace-scroll can-scroll" style="max-height: 176px;">
+                <li class="hover">
+                    <a href="/nhap-hang.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Nhập hàng
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="hover">
+                    <a href="/xuat-hang.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Xuất hàng
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+
+            </ul>
+            <div class="scroll-track scroll-detached no-track scroll-thin scroll-margin scroll-visible scroll-active" style="display: none; height: 175px; top: 69px; left: 183px;"><div class="scroll-bar" style="height: 117px; top: 0px;"></div></div>
+        </li>
+        <!--Hóa đơn-->
+        @*<li class="hover">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-tags" title="Thống kê"></i>
+                <span class="menu-text">Quản lý công nợ</span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu ace-scroll can-scroll" style="max-height: 176px;">
+                <li class="hover">
+                    <a href="/cong-no-ncc.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Nhà cung cấp
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="hover">
+                    <a href="/cong-no-kh.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Khách hàng
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+
+            </ul>
+            <div class="scroll-track scroll-detached no-track scroll-thin scroll-margin scroll-visible scroll-active" style="display: none; height: 175px; top: 69px; left: 183px;"><div class="scroll-bar" style="height: 117px; top: 0px;"></div></div>
+        </li>*@
+        <!--Hóa đơn-->
+        <li class="hover">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-credit-card" title="Thống kê"></i>
+                <span class="menu-text">Hóa đơn</span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu ace-scroll can-scroll" style="max-height: 176px;">
+                <li class="hover">
+                    <a href="/hoa-don-nhap.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Hóa đơn nhập
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="hover">
+                    <a href="/hoa-don-xuat.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Hóa đơn xuất
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+
+            </ul>
+            <div class="scroll-track scroll-detached no-track scroll-thin scroll-margin scroll-visible scroll-active" style="display: none; height: 175px; top: 69px; left: 183px;"><div class="scroll-bar" style="height: 117px; top: 0px;"></div></div>
+        </li>
+        <!--Thống kê-->
+        <li class="hover">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-line-chart" title="Thống kê"></i>
+                <span class="menu-text"> Thống kê</span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu ace-scroll can-scroll" style="max-height: 176px;">
+                <li class="hover">
+                    <a href="/thong-ke-ton-kho.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Tồn kho
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="hover">
+                    <a href="/tong-hop.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Tổng hợp
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="hover">
+                    <a href="/thong-ke-doanh-thu.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Doanh thu
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+            </ul><div class="scroll-track scroll-detached no-track scroll-thin scroll-margin scroll-visible scroll-active" style="display: none; height: 175px; top: 69px; left: 183px;"><div class="scroll-bar" style="height: 117px; top: 0px;"></div></div>
+        </li>
+        <!--Nhân viên-->
+        <li class="hover">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-database" title="Lưu trữ"></i>
+                <span class="menu-text">Lưu trữ</span>
+            </a>
+
+        </li>
+        <button type="button" class="sidebar-collapse btn btn-white btn-primary" data-target="#sidebar" style="float:right">
+            <i class="ace-icon fa fa-angle-double-down" data-icon1="ace-icon fa fa-angle-double-up" data-icon2="ace-icon fa fa-angle-double-down"></i>
+        </button>
+    </ul><!-- /.nav-list -->
+
+    <script type="text/javascript">
+        try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+    </script>
+</div>
+
+

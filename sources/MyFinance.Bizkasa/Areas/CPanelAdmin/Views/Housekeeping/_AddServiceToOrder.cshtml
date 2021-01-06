@@ -1,0 +1,39 @@
+﻿<div id="addServiceToOrder" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabeladdServiceToOrder" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title" id="myLargeModalLabeladdServiceToOrder">
+                    Thêm dịch vụ
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Dịch vụ </label>
+                        <div class="col-sm-4">
+                            <select chosen options="Widgets" data-placeholder="Chọn dịch vụ ..." class="chosen-select-deselect form-control" tabindex="2" ng-options="row as row.Name + '( '+ row.PricePaid +' )' group by row.GroupName for row in Widgets" ng-model="OrderService"></select>
+                            @*<select id="form-field-1" class="form-control" ng-options="row as row.Name + '( '+ row.Price +' )' group by row.GroupName for row in Widgets" ng-model="OrderService"></select>*@
+                        </div>
+
+                        <div class="col-sm-3">
+                            <label>X</label>
+                            <select id="form-field-1" ng-options="a for a in UnitServices" ng-model="Quantity"></select>
+                            <a class="icon-plus-add" ng-click="addSeviceToOrder()">
+                                <i class="ace-icon icon-plus-sign bigger-160"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Hủy</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

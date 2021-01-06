@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutV2.cshtml";
+}
+
+<!-- Banner slider -->
+<div class="crosscover" >
+    <div class="crosscover-overlay">
+        <div class="container">
+            <!-- title -->
+            <div class="home-title-head">
+                <img class="home-arrow-left" src="~/Content/V2/images/arrow-left.png">
+                <img class="home-arrow-right" src="~/Content/V2/images/arrow-right.png">
+                <h1>Hệ thống quản lý khách sạn</h1>
+                <h4>nhà nghỉ, Online tốt nhất Việt Nam</h4>
+            </div>
+            <!-- end title -->
+            <div class="padding-home-mid">
+                <div class="col-lg-7 col-md-6 col-sm-6 col-xs-6">
+                    <!-- slider hinh du an -->
+                    <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
+                        <div data-thumb="~/Content/V2/images/duan.jpg" data-src="/Content/V2/images/duan.jpg"></div>
+                        <div data-thumb="~/Content/V2/images/duan.jpg" data-src="/Content/V2/images/duan.jpg"></div>
+                        <div data-thumb="~/Content/V2/images/duan.jpg" data-src="/Content/V2/images/duan.jpg"></div>
+                        <div data-thumb="~/Content/V2/images/duan.jpg" data-src="/Content/V2/images/duan.jpg"></div>
+                        <div data-thumb="~/Content/V2/images/duan.jpg" data-src="/Content/V2/images/duan.jpg"></div>
+                    </div>
+                    <!-- end slider hinh du an -->
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-6 col-xs-6">
+                    <!-- Box dang ky -->
+                    <div class="home-box-register" ng-controller="HomeController">
+                        <div class="home-box-register-title">
+                            <h3>Đăng ký sử dụng miễn phí</h3>
+                            <div class="home-line-title"><img src="~/Content/V2/images/line-title-home.jpg"></div>
+                        </div>
+                        <div class="home-box-register-form-wp">
+                            <div class="home-box-register-form">
+                                <div class="form-group">
+                                    <label>Tên khách sạn</label>
+                                    <input type="text" class="form-control home-form-ks" placeholder="Nhập tên khách sạn" ng-model="HotelRegisterModel.Name">
+                                </div>
+                                <div class="form-float-wp">
+                                    <div class="form-group form-float padding-right">
+                                        <label>Số tầng</label>
+                                        <input type="number" max="30" class="form-control home-form-floor" placeholder="Nhập số tầng" ng-model="HotelRegisterModel.NumFloors">
+                                    </div>
+                                    <div class="form-group form-float padding-left">
+                                        <label>Số phòng</label>
+                                        <input type="number" class="form-control home-form-rooms" placeholder="Nhập số phòng" ng-model="HotelRegisterModel.NumRooms">
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tên đăng nhập</label>
+                                    <input type="text" class="form-control home-form-username" placeholder="Nhập Email" ng-model="HotelRegisterModel.User.Email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Mật khẩu</label>
+                                    <input type="password" class="form-control home-form-pass" placeholder="Nhập tên mật khẩu" ng-model="HotelRegisterModel.User.Password">
+                                </div>
+                                <div class="form-group">
+                                    <label>Xác nhận mật khẩu</label>
+                                    <input type="password" class="form-control home-form-pass" placeholder="Nhập lại mật khẩu" ng-model="HotelRegisterModel.User.ComfirmPassword">
+                                </div>
+                                <button type="submit" class="btn btn-default" ng-click="RegisterHotel()">Đăng ký</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end box dang ky -->
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="crosscover-list">
+        <div class="crosscover-item"> <img src="~/Content/V2/images/banner-1.jpg" alt="image01" /> </div>
+        <div class="crosscover-item"> <img src="~/Content/V2/images/banner-2.jpg" alt="image01" /> </div>
+        <div class="crosscover-item"> <img src="~/Content/V2/images/banner-3.jpg" alt="image01" /> </div>
+        <div class="crosscover-item"> <img src="~/Content/V2/images/banner-4.jpg" alt="image01" /> </div>
+        <div class="crosscover-item"> <img src="~/Content/V2/images/banner-5.jpg" alt="image01" /> </div>
+    </div>
+</div>
+<!-- End banner slider --> 
+
+@section Scripts {
+    <script src="~/Scripts/app/Home/Home.js"></script>
+
+}

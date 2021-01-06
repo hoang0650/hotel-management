@@ -1,0 +1,30 @@
+﻿<header id="header">
+    <div class="header-container container">
+        <h1 class="logo">
+            <a href="@Url.Action("Index","Home")" title="" class="logo-img">
+                <img src="~/Content/images/tikasalogo.png" alt="" />
+            </a>
+        </h1>
+        @using (Html.BeginForm("GetNearBy", "Home", FormMethod.Post, new { @class = "form-horizontal", @id = "form-nearBy" }))
+        {
+           <input type="hidden" id="longitude" name="Longitude" />
+        <input type="hidden" id="latitude" name="Latitude" />
+        }
+       <div class="col-md-2 pull-left" >
+           <a id="nearBy" href="#" class="search-link">Tìm quanh đây</a>
+       </div>
+        <div class="box-login pull-right">          
+            <div class="pull-left">
+                <a class="headerLink " href="http://bizkasa.com" target="_blank"> Phần mềm quản lý nhà nghỉ </a>
+            </div>
+            <div class="pull-left">
+                <a class="headerLink modal-Login" href="" >Đăng nhập</a>
+            </div>
+            <div class="pull-left">
+                <a id="register" class="headerLink register modal-Login" href="/dang-ky" data-target="#myModalRegister" data-toggle="modal">Đăng ký</a>
+            </div>
+           
+        </div>
+
+    </div>
+</header>

@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Thêm mới khách sạn";
+}
+
+<div class="main-content" ng-app="appModule" ng-controller="HotelController">
+    <div class="page-content">
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div id="home" class="tab-pane fade active in form-horizontal">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Tên khách sạn </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="form-field-1" ng-model="HotelRegisterModel.Name" placeholder="Tên khách sạn" class="form-control">
+
+                            </div>
+
+
+                        </div>
+                      
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">Tổng số tầng </label>
+                            <div class="col-sm-2">
+
+                                <input type="text" id="form-field-1" ng-model="HotelRegisterModel.NumFloors" placeholder="Số tầng" class="form-control">
+
+                            </div>
+
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">Tổng số Phòng </label>
+                            <div class="col-sm-2">
+
+                                <input type="text" id="form-field-1" ng-model="HotelRegisterModel.NumRooms" placeholder="Số Phòng" class="form-control">
+
+                            </div>
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Ngày hết hạn </label>
+                            <div class="input-group" ng-init="initDate()">
+                                <input class="form-control date-picker" id="id-date" type="text" data-date-format="dd-mm-yyyy" placeholder="Chọn thời gian">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar bigger-110"></i>
+                                </span>
+                            </div>
+                          
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Email đăng nhập </label>
+                            <div class="col-sm-2">
+
+                                <input type="text" id="form-field-1" ng-model="HotelRegisterModel.User.Email" placeholder="Chỉ nhập email nếu thêm khách sạn cho tk đã tồn tại" class="form-control">
+
+                            </div>
+
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Mật khẩu </label>
+                            <div class="col-sm-2">
+
+                                <input type="password" id="form-field-1" ng-model="HotelRegisterModel.User.Password" placeholder=" Mật khẩu" class="form-control">
+
+                            </div>
+
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Xác nhận mật khẩu </label>
+                            <div class="col-sm-2">
+
+                                <input type="password" id="form-field-1" ng-model="HotelRegisterModel.User.ComfirmPassword" placeholder="Xác nhận mật khẩu" class="form-control">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Quản lý nhiều ks </label>
+                            <div class="col-sm-2">
+
+                                <input type="checkbox" ng-model="HotelRegisterModel.IsOwner">
+
+                            </div>
+                        </div>
+                      
+
+                        <div class="clearfix form-actions">
+                            <div class="col-md-offset-3 col-md-9">
+
+                                <button type="button" class="btn btn-primary" ng-click="RegisterHotel()()">
+                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                    Cập nhật
+                                </button>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    <script src="~/Areas/CPanelAdmin/Script/Hotel/Hotel.js"></script>
+}

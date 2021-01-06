@@ -1,0 +1,102 @@
+﻿
+@model  MyFinance.Domain.BusinessModel.UserLoginViewModel
+<div id="navbar" class="navbar navbar-fixed navbar-fixed-top">
+
+    <div class="navbar-container" id="navbar-container">
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+            <span class="sr-only">Toggle sidebar</span>
+
+            <span class="icon-bar"></span>
+
+            <span class="icon-bar"></span>
+
+            <span class="icon-bar"></span>
+        </button>
+
+        <div class="navbar-header pull-left">
+            @if (Model.OwnerHotels == null)
+            {
+                <a href="#" class="navbar-brand">
+                        <small>
+                            @*<i class="fa fa-windows"></i> *@
+                        <img src="@Model.Logo" style="width:50px" />
+                        @Model.HotelName
+                    </small>
+                </a>
+        }
+
+        @if (Model.OwnerHotels != null)
+        {
+            <ul class="nav ace-nav">
+
+                @foreach (var item in Model.OwnerHotels)
+                {
+                    if (item.IsSelected)
+                    {
+                        <li class="active">
+                            <a href="#"> @item.HotelName</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Url.Action("ChangeViewHotel","Home",new {hotelId=item.HotelId })"> @item.HotelName</a>
+                        </li>
+                    }
+
+                }
+            </ul>
+
+        }
+
+    </div>
+
+    <div class="navbar-buttons navbar-header pull-right" role="navigation">
+        <ul class="nav ace-nav">
+
+            @*@Html.Action("InfoDisk","AdminIndex")*@
+
+                @*<li class="purple">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                            <span class="badge badge-important">8</span>
+                        </a>
+
+                    </li>*@
+                <li class="light-blue">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        @*<img class="nav-user-photo" src="dist/avatars/user.jpg" alt="Jason's Photo">*@
+                        <span class="user-info">
+                            <small>Xin chào,</small>
+                            @Model.UserName
+                        </span>
+
+                        <i class="ace-icon fa fa-caret-down"></i>
+                    </a>
+
+                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+
+
+                        <li>
+                            <a href="~/CPanelAdmin/User/Detail">
+                                <i class="ace-icon fa fa-cog bigger-110 blue"></i>
+                                Đổi mật khẩu
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="~/CPanelAdmin/Home/LogOut">
+                                <i class="ace-icon fa fa-power-off bigger-110 blue"></i>
+                                Thoát
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
+    <!-- /.navbar-container -->
+</div>

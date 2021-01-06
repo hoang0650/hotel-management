@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Cấu hình tính toán sử dụng phòng";
+}
+
+
+<div class="main-content">
+
+    <div class="page-content" ng-controller="SystemConfigController" ng-init="InitData()">
+
+        <div class="row">
+
+            <div class="col-sm-12">
+                <div class="widget-box">
+                    <div class="widget-header">
+                        <h4 class="widget-title">Cấu hình sử dụng </h4>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="widget-main form-horizontal ">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Tính giờ qua đêm từ </label>
+                                <div class="col-sm-2">
+                                    <select id="form-field-1" class="form-control" ng-options="row.Key as row.Name for row in Hours" ng-model="Configs.StartOverNight"></select>
+                                </div>
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> đến </label>
+                                <div class="col-sm-2">
+                                    <select id="form-field-1" class="form-control" ng-options="row.Key as row.Name for row in Hours" ng-model="Configs.EndOverNight"></select>
+                                </div>
+
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Thời gian trả phòng </label>
+                                <div class="col-sm-2">
+                                    <select id="form-field-1" class="form-control" ng-options="row.Key as row.Name for row in Hours" ng-model="Configs.TimeCheckOut"></select>
+                                </div>
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Thời gian nhận phòng </label>
+                                <div class="col-sm-2">
+                                    <select id="form-field-1" class="form-control" ng-options="row.Key as row.Name for row in Hours" ng-model="Configs.TimeCheckIn"></select>
+                                </div>
+
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Số phút làm tròn </label>
+                                <div class="col-sm-2">
+                                    <select id="form-field-1" class="form-control" ng-options="row.Value as row.Name for row in TimeRounds" ng-model="Configs.TimeRound"></select>
+                                </div>
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Phụ thu quá khách </label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" ng-model="Configs.OverCustomer" format="number" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1">Bật tính năng dọn phòng </label>
+                                <div class="col-sm-2">
+                                    <label class="no-padding-left">
+                                        <input type="checkbox" class="ace ng-pristine" ng-model="Configs.HasCleaner"><span class="lbl"></span>
+                                    </label>
+
+                                </div>
+
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <label class=" control-label no-padding-right" for="form-field-1">Cài đặt màu cho tình trạng phòng </label>
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <div class="bootstrap-colorpicker col-sm-2" ng-repeat="row in RoomStatus">
+                                    <label class="control-label no-padding-right" for="form-field-1">{{row.Value}} </label>
+                                    <input id="{{row.Key}}" type="text" value="" @*class="input-small"*@ ng-model="row.Color" my-main-directive ng-blur="BindColor(row)">
+                                    <span class="btn-colorpicker" ng-style="{'background-color':row.Color}"></span>
+
+                                </div>
+
+                            </div>
+
+                            <hr />
+
+                            <div class="clearfix ">
+                                <div class="col-md-offset-3 col-md-9">
+
+                                    <button type="button" class="btn btn-info btn-sm" ng-click="AddConfig()">
+                                        <i class="ace-icon fa fa-key bigger-110"></i>Lưu
+                                    </button>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+@section Scripts {
+    <script src="~/Areas/CPanelAdmin/Content/js/bootstrap-colorpicker.min.js"></script>
+    <script src="~/Areas/CPanelAdmin/Script/Room/SystemConfig.js"></script>
+
+}

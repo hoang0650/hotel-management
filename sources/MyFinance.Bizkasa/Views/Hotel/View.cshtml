@@ -1,0 +1,104 @@
+﻿@model FailTracker.Web.pk_admin.Models.Hotel.CreateHotelFormModel
+@{
+    ViewBag.Title = "Chỉnh sửa tin tức " + Model.Name;
+
+}
+
+<!-- Page Content -->
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="/pk_admin">Home</a>
+            </li>
+            <li>
+                <a href="/pk_admin/Hotel">Danh sách khách sạn</a>
+            </li>
+            <li class="active">Chỉnh sửa</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative">
+        <div class="header-title">
+            <h1>
+                Danh sách khách sạn
+                <small>
+                    <i class="fa fa-angle-right"></i>
+                    Chỉnh sửa
+                </small>
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" href="#">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" id="refresh-toggler" href="@Request.Url.AbsoluteUri">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" id="fullscreen-toggler" href="#">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget radius-bordered">
+                            <div class="widget-body">
+                                @using (Html.BeginForm("Edit", "Hotel", FormMethod.Post, new { @class = "form-horizontal" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label"></label>
+                                        <div class="col-lg-8">
+                                            <img class="thumbnail" style="max-width:150px; margin-bottom:0;" src="@(ViewBag.Image == null ? "~/Content/Images/default-thumb.gif" : ViewBag.Image)" alt="...">
+                                        </div>
+                                    </div>
+                                    @Html.EditorForModel()
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-4 col-lg-8">
+                                            <input class="btn btn-blue" type="submit" value="Cập nhật" />
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->
+<!--Page Related Scripts-->
+@section Scripts {
+    <script src="/Content/assets/js/validation/bootstrapValidator.js"></script>
+    @Scripts.Render("~/bundles/libraries")
+    <!--Summernote Scripts-->
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/ckeditor/adapters/jquery.js"></script>
+    <script src="~/Content/ckfinder/ckfinder.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(function () {
+                $('#Body').ckeditor();
+                CKFinder.setupCKEditor(null, '/ckfinder/');
+            });
+        });
+        $("#Img_Thumbnail_btn").click(function () {
+            GetCkFinder("Img_Thumbnail");
+        });
+        ActiveMenu('#VanBan', '#TinTuc');
+    </script>
+}

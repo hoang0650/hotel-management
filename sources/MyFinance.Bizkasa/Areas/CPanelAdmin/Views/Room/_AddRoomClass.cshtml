@@ -1,0 +1,241 @@
+﻿<div id="AddCate" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">Thêm mới loại phòng</h4>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="row">
+
+
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-lg-2 col-sm-2 col-xs-2 ">
+                                    <div class="form-group">
+                                        <label for="txtgiaphong1">
+                                            Loại phòng
+                                        </label>
+                                        <input type="text" id="txtgiaphong1" class="form-control input-sm" placeholder="Loại phòng" ng-model="Roomtype.Name">
+
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txgiuong">
+                                            Số giường
+                                        </label>
+                                        <input type="text" id="txgiuong" class="form-control input-xs" placeholder="Số giường" ng-model="Roomtype.NumBed" format="number">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txnguoi">
+                                            Số người
+                                        </label>
+                                        <input type="text" id="txnguoi" class="form-control input-xs" placeholder="Số người" ng-model="Roomtype.NumCustomer" format="number">
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txgiangay">
+                                            Giá theo ngày
+                                        </label>
+                                        <input type="text" id="txgiangay" class="form-control input-xs" placeholder="Giá theo ngày" ng-model="Roomtype.PriceByDay" format="number">
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="txgiadem">
+                                            Giá qua đêm
+                                        </label>
+                                        <input type="text" id="txgiadem" class="form-control input-xs" placeholder="Giá qua đêm" ng-model="Roomtype.PriceByNight" format="number">
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txgiathang">
+                                            Giá theo tháng
+                                        </label>
+                                        <input type="text" id="txgiathang" class="form-control input-xs" placeholder="Giá theo tháng" ng-model="Roomtype.PriceByMonth" format="number">
+
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-5 col-sm-5 col-xs-5">
+                                    <div class="widget">
+                                        <div class="widget-header">
+                                            <a href="javascript:" class="widget-caption" ng-click="CheckoutDayclick()">
+                                                <i class="ace-icon fa fa-plus-circle"></i>
+                                                Phụ thu quá giờ Checkout (theo ngày)
+                                            </a>
+                                        </div>
+                                        <div class="widget-body">
+                                            <div class="form-inline" ng-repeat="a in CheckoutDayList">
+                                                <label class="col-sm-2  control-label no-padding-right"> Quá</label>
+                                                <div class="form-group">
+                                                    <select class="form-control input-short input-xs " ng-change="CheckoutDaySelectedclick($index)" ng-model="a.Key" ng-options="hour.Value as hour.Name for hour in a.Hours"></select>
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <input type="text" class="form-control input-xs" placeholder="Nhập tiền phụ thu" ng-model="a.Value" format="number">
+                                                    <a href="#" ng-click="CheckoutDayRemoveclick($index)">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="space-2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="space-4"></div>
+                                    <div class="widget">
+                                        <div class="widget-header">
+                                            <a class="widget-caption" ng-click="CheckoutNightclick()">
+                                                <i class="ace-icon fa fa-plus-circle"></i>
+                                                Phụ thu quá giờ Checkout (theo đêm)
+                                            </a>
+                                        </div>
+                                        <div class="widget-body">
+                                            <div class="form-inline" ng-repeat="a in CheckoutNightList">
+                                                <label class="col-sm-2  control-label no-padding-right">Quá</label>
+                                                <div class="form-group">
+                                                    <select class="form-control input-short input-xs " ng-change="CheckoutNightSelectedclick($index)" ng-model="a.Key" ng-options="hour.Value as hour.Name for hour in a.Hours"></select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control input-xs" placeholder="Nhập tiền phụ thu" ng-model="a.Value" format="number">
+                                                    <a href="#" ng-click="CheckoutNightRemoveclick($index)">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="space-4"></div>
+                                    <div class="widget">
+                                        <div class="widget-header">
+                                            <a class="widget-caption" ng-click="PriceByDayclick()">
+                                                <i class="ace-icon fa fa-plus-circle"></i>
+                                                Giá bán theo giờ
+                                            </a>
+                                        </div>
+                                        <div class="widget-body">
+                                            <div class="form-inline" ng-repeat="a in PriceByDayList">
+                                                <label class="col-sm-2  control-label no-padding-right"> Quá</label>
+                                                <div class="form-group">
+                                                    <select class="form-control input-short input-xs " ng-change="PriceByDaySelectedclick($index)" ng-model="a.Key" ng-options="hour.Value as hour.Name for hour in a.Hours"></select>
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <input type="text" class="form-control input-xs" placeholder="Nhập tiền phụ thu" ng-model="a.Value" format="number">
+
+                                                    <a href="#" ng-click="PriceByDayRemoveclick($index)">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-5 col-sm-5 col-xs-5">
+                                    <div class="widget">
+                                        <div class="widget-header">
+                                            <span class="widget-caption" ng-click="CheckinDayclick()">
+                                                <i class="ace-icon fa fa-plus-circle"></i>
+                                                Phụ thu  Checkin sớm (theo ngày)
+                                            </span>
+                                        </div>
+                                        <div class="widget-body">
+                                            <div class="form-inline" ng-repeat="a in CheckinDayList">
+                                                <label class="col-sm-2  control-label no-padding-right"> Quá</label>
+                                                <div class="form-group">
+                                                    <select class="form-control input-short input-xs " ng-change="CheckinDaySelectedclick($index)" ng-model="a.Key" ng-options="hour.Value as hour.Name for hour in a.Hours"></select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control input-xs" placeholder="Nhập tiền phụ thu" ng-model="a.Value" format="number">
+
+                                                    <a href="#" ng-click="CheckinDayRemoveclick($index)">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="widget">
+                                        <div class="widget-header">
+                                            <a class="widget-caption" ng-click="CheckinNightclick()">
+                                                <i class="ace-icon fa fa-plus-circle"></i>
+                                                Phụ thu  Checkin sớm (theo đêm)
+                                            </a>
+                                        </div>
+                                        <div class="widget-body">
+                                            <div class="form-inline" ng-repeat="a in CheckinNightList">
+                                                <label class="col-sm-2  control-label no-padding-right"> Quá</label>
+                                                <div class="form-group">
+                                                    <select class="form-control input-short input-xs " ng-change="CheckinNightSelectedclick($index)" ng-model="a.Key" ng-options="hour.Value as hour.Name for hour in a.Hours"></select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control input-xs" placeholder="Nhập tiền phụ thu" ng-model="a.Value" format="number">
+                                                    <a href="#" ng-click="CheckinNightRemoveclick($index)">
+                                                        <i class="glyphicon glyphicon-remove"></i>
+                                                    </a>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="widget">
+                                        <div class="widget-header">
+                                            <a class="widget-caption" ng-click="AddtionCustomerclick()">
+                                                <i class=" ace-icon fa fa-plus-circle">
+                                                </i>
+                                                Phụ thu  thêm khách
+                                            </a>
+                                        </div>
+                                        <div class="widget-body">
+                                            <div class="form-inline" ng-repeat="a in AddtionCustomerList">
+                                                <div class="form-group">
+                                                    <select class="form-control input-short input-xs " ng-change="AddtionCustomerSelectedclick($index)" ng-model="a.Key" ng-options="hour.Value as hour.Name for hour in a.Hours"></select>
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control input-xs" placeholder="Nhập tiền phụ thu" ng-model="a.Value" format="number">
+
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <a href="#" ng-click="AddtionCustomerRemoveclick($index)">
+                                                        <i class="glyphicon glyphicon-remove"></i>
+                                                    </a>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" ng-click="AddRoomClass()">Cập nhập</button>
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Hủy</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

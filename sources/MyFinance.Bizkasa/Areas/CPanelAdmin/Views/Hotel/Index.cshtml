@@ -1,0 +1,279 @@
+﻿
+@{
+    ViewBag.Title = "Cập nhật thông tin khách sạn";
+}
+
+<div class="main-content" ng-app="appModule" ng-controller="HotelController" id="hotelinfo">
+    <div class="page-content">
+
+
+        <div class="row" ng-init="GetHotelInfo()">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home" aria-expanded="true">
+                                <i class="green ace-icon fa fa-home bigger-120"></i>
+                                Thông tin chung
+                            </a>
+                        </li>                      
+
+                        <li class="">
+                            <a data-toggle="tab" href="#features" aria-expanded="false">
+                                <i class="green ace-icon fa fa-bars bigger-120"></i>
+                                Tiện ích
+                            </a>
+                        </li>
+                        <li class="">
+                            <a data-toggle="tab" href="#image" aria-expanded="false">
+                                <i class="green ace-icon fa fa-picture-o bigger-120"></i>
+                                Hình ảnh
+
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade active in form-horizontal">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Tên khách sạn </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="form-field-1" ng-model="Hotel.Name" placeholder="Tên khách sạn" class="form-control">
+
+                                    </div>
+
+
+                                </div>
+                                @*<div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Tên công ty </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="form-field-1" ng-model="Hotel.Name" placeholder="Tên công ty(nếu có)" class="form-control">
+
+                                    </div>
+
+
+                                </div>*@
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Điện thoại </label>
+                                    <div class="col-sm-2">
+
+                                        <input type="text" id="form-field-1" ng-model="Hotel.Phone" placeholder="Điện thoại" class="form-control">
+
+                                    </div>
+
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Email </label>
+                                    <div class="col-sm-2">
+
+                                        <input type="text" id="form-field-1" ng-model="Hotel.Email" placeholder="Email" class="form-control">
+
+                                    </div>
+
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Website </label>
+                                    <div class="col-sm-2">
+
+                                        <input type="text" id="form-field-1" ng-model="Hotel.Website" placeholder="Website" class="form-control">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Địa chỉ </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="form-field-1" ng-model="Hotel.Address" placeholder="Địa chỉ khách sạn" class="form-control">
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Giới thiệu </label>
+                                    <div class="col-sm-10">
+                                        <textarea ng-model="Hotel.Description" data-ck-editor></textarea>
+
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Chính sách </label>
+                                    <div class="col-sm-10">
+                                        <textarea ng-model="Hotel.Policy" data-ck-editor></textarea>
+
+                                    </div>
+
+                                </div>
+
+                              
+
+                            </div>
+                        </div>
+
+                        <div id="image" class="tab-pane fade">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+
+                                    <ul class="ace-thumbnails clearfix">
+
+                                        <li ng-repeat="img in Hotel.Images">
+                                            <a href="{{img.Url}}" data-rel="colorbox" class="cboxElement">
+                                                <img ng-show="img.Url!=''" width="150" height="150" alt="150x150" src="{{img.Url}}" />
+                                                @*<div class="text">
+                                                    <div class="inner">Đặt làm</div>
+                                                </div>*@
+                                            </a>
+
+                                            <div class="tools tools-bottom">
+                                                <a href="#" ng-click="SetLogo(img.Url)">
+                                                    <i class="ace-icon fa fa-camera"></i>
+                                                </a>
+
+                                                @*<a href="#">
+                                                    <i class="ace-icon fa fa-paperclip"></i>
+                                                </a>
+
+                                                <a href="#">
+                                                    <i class="ace-icon fa fa-pencil"></i>
+                                                </a>
+
+                                                <a href="#">
+                                                    <i class="ace-icon fa fa-times red"></i>
+                                                </a>*@
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label class="ace-file-input ace-file-multiple">
+                                                <span class="ace-file-container" data-title="Nhấp chọn để tải ảnh" id="btnUpBlogImage">
+                                                    <span class="ace-file-name" data-title="No File ..."><i class=" ace-icon ace-icon fa fa-picture-o"></i></span>
+                                                </span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a>
+                                            </label>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="features" class="tab-pane fade">
+                            <div class="row" ng-init="GetHotelUtilityBy()">
+                                <div class="col-xs-12 col-sm-12">
+                                    @*<label class="control-label bolder blue">Chọn tiện ích cho loại phòng</label>*@
+                                    <div class="control-group" ng-repeat="row in HotelUtilities">
+
+                                        <div class="checkbox col-sm-2">
+                                            <label>
+                                                <input name="form-field-checkbox" class="ace ace-checkbox-2" type="checkbox" ng-model="row.IsSelected">
+                                                <span class="lbl"> {{row.Name}}</span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="clearfix">
+                        <div class="col-md-offset-3 col-md-9">
+
+                            <button type="button" class="btn btn-primary" ng-click="AddHotel()">
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                Cập nhật
+                            </button>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+<script src="~/Areas/CPanelAdmin/Plugin/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/CPanelAdmin/Script/Hotel/Hotel.js"></script>
+<script type="text/javascript" src="~/Areas/CPanelAdmin/Content/js/plupload/plupload.full.min.js"></script>
+
+    <script type="text/javascript">
+
+   
+        $(document).ready(function () {
+
+            var uploader = new plupload.Uploader({
+                runtimes: 'html5,flash,silverlight',
+                browse_button: 'btnUpBlogImage',
+                //container: 'containerUp',
+                max_file_size: '1mb',
+                multi_selection: false,
+                //resize: { width: 460, height: 613, quality: 90 },
+                resize: false,
+                multipart_params: { albumid: -1 },
+                url: '/CPanelAdmin/Gallery/UploadImage',
+                flash_swf_url: '~/Areas/CPanelAdmin/Content/js/plupload.flash.swf',
+                silverlight_xap_url: '~/Areas/CPanelAdmin/Content/js/plupload.silverlight.xap',
+                filters: [
+                    { title: "Image files", extensions: "jpg,gif,png,jpeg" }
+                ]
+            });
+
+            uploader.init();
+
+            uploader.bind('FilesAdded', function (up, files) {
+                if (files[0].name.length > 100) {
+                    toastr.warning('Tên hình quá dài.');
+                    files[0].status = plupload.FAILED;
+                }
+                else {
+                    if (uploader.state != 2 & files.length > 0) {
+                        uploader.start();
+                    }
+                }
+
+            });
+
+            uploader.bind('FileUploaded', function (up, file, response) {
+                var rp = JSON.parse(response.response);
+                if (!rp.IsError) {
+                    var data = JSON.parse(rp.Data);
+                    data.Data = "http://" + data.Data;
+                    var scope = angular.element(document.getElementById('hotelinfo')).scope();
+                    var row = {
+                        Id: 0,
+                        Url: data.Data
+                    };
+                    scope.$apply(function () {
+                        scope.Hotel.Images.push(row);
+                    });
+
+
+                } else {
+                    file.status = plupload.FAILED;
+                    toastr.error(rp.Message);
+                }
+                return false;
+            });
+
+            uploader.bind('Error', function (up, err) {
+                if (err.file.size > 1048576) {
+                    toastr.error('Hình tải lên phải có dung lượng không quá 1MB');
+                    up.refresh(); // Reposition Flash/Silverlight
+                } else {
+                    toastr.error(err.message);
+                    up.refresh(); // Reposition Flash/Silverlight
+                }
+
+            });
+
+
+
+
+        });
+
+</script>
+
+}

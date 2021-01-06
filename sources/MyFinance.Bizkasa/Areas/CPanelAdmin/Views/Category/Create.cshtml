@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "Thêm mới danh mục";
+}
+
+<!-- Page Content -->
+<div class="page-content" ng-app="crudModule" ng-controller="CategoryController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="/pk_admin">Home</a>
+            </li>
+            <li>
+                <a href="/pk_admin/tin-tuc">Danh sách tin tức</a>
+            </li>
+            <li class="active">Thêm mới</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative">
+        <div class="header-title">
+            <h1>
+                Danh sách tin tức
+                <small>
+                    <i class="fa fa-angle-right"></i>
+                    Thêm mới
+                </small>
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" href="#">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" id="refresh-toggler" href="@Request.Url.AbsoluteUri">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" id="fullscreen-toggler" href="#">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget radius-bordered">
+                            <div class="widget-body">
+                               
+
+
+                                
+                                    @*<div class="form-title">
+                                            User Information
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="input-icon icon-right">
+                                                <input type="text" class="form-control" id="userameInput" placeholder="Username">
+                                                <i class="glyphicon glyphicon-user circular"></i>
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="input-icon icon-right">
+                                                <input type="text" class="form-control" id="emailInput" placeholder="Email Address">
+                                                <i class="fa fa-envelope-o circular"></i>
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="input-icon icon-right">
+                                                <input type="text" class="form-control" id="passwordInput" placeholder="Password">
+                                                <i class="fa fa-lock circular"></i>
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="input-icon icon-right">
+                                                <input type="text" class="form-control" id="confirmPasswordInput" placeholder="Confirm Password">
+                                                <i class="fa fa-lock circular"></i>
+                                            </span>
+                                        </div>*@
+                                    <div class="form-title">
+                                        Hotel Information
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Name" ng-model="Name">
+                                                    <i class="fa fa-user"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Phone" ng-model="Phone">
+                                                    <i class="fa fa-user"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Phone">
+                                                    <i class="glyphicon glyphicon-earphone"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Mobile">
+                                                    <i class="glyphicon glyphicon-phone"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="wide">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" placeholder="Birth Date">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Birth Place">
+                                                    <i class="fa fa-globe"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" class="colored-blue">
+                                                <span class="text">Auto Sign In After Registration</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-blue" ng-click="AddHotel()">Register</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->
+<!--Page Related Scripts-->
+@section Scripts {
+    <script src="/Content/assets/js/validation/bootstrapValidator.js"></script>
+    @Scripts.Render("~/bundles/libraries")
+    <!--Summernote Scripts-->
+<script src="/Content/assets/js/toastr/toastr.js"></script>
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/ckeditor/adapters/jquery.js"></script>
+    <script src="~/Content/ckfinder/ckfinder.js"></script>
+<script src="~/Scripts/app/Modules/userModule.js"></script>
+<script src="~/Scripts/app/services/categoryservices.js"></script>
+<script src="~/Scripts/app/services/userServices.js"></script>
+<script src="~/Scripts/app/controllers/CategoryController.js"></script>
+    @*<script>
+    $(document).ready(function () {
+        $(function () {
+            $('#Body').ckeditor();
+            CKFinder.setupCKEditor(null, '/ckfinder/');
+        });
+        $("#Title").val("");
+    });
+    $("#Img_Thumbnail_btn").click(function () {
+        GetCkFinder("Img_Thumbnail");
+    });
+    ActiveMenu('#VanBan', '#TinTuc');
+    </script>*@
+
+}
+
+

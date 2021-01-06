@@ -1,0 +1,71 @@
+﻿ <!-- Primary modal -->
+<div id="AddUtility" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h6 class="modal-title">Thêm mới tiện ích</h6>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Basic layout-->
+                        <form action="#" class="form-horizontal">
+                            <div class="panel panel-flat">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Tên:</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" placeholder="Nhập tên tiện ích" ng-model="Utility.Name">
+                                        </div>
+                                    </div>
+
+                                   
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-3">Nhóm:</label>
+                                        <div class="col-lg-8">
+                                            <select class="form-control" ng-model="Utility.GroupId" ng-options="row.Id as row.Name for row in Groups"></select>
+                                           
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-icon btn-rounded" data-toggle="modal" data-target="#AddUtilityGroup"><i class=" icon-plus-circle2"></i></button>
+                                    </div>    
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-3">Thuộc loại:</label>
+                                        <div class="col-lg-9">
+                                            <select class="form-control" ng-model="Utility.FeatureType" ng-options="row.Id as row.Name for row in UtilityType"></select>
+
+                                        </div>
+                                        
+                                    </div>    
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-3"></label>
+                                        <div class="checkbox checkbox-switchery">
+                                            <label>
+                                                <input type="checkbox" class="switchery">
+                                                Đang ẩn
+                                            </label>
+                                        </div>
+                                    </div>                             
+                                   
+                                </div>
+                            </div>
+                        </form>
+                        <!-- /basic layout -->
+
+                    </div>
+
+                    
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" ng-click="AddOrUpdateUtility()">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /primary modal -->
+

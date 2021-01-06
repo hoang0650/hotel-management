@@ -1,0 +1,97 @@
+﻿<div id="AddGroupwidget" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">Thêm mới nhóm dịch vụ</h4>
+            </div>
+            <div class="modal-body form-horizontal ">
+                <div class="">
+                    <div class="row">
+                        <div class="col-xs-12 ">
+                            <div class="form-group">
+                                <label for="txtgroup" class="col-sm-3 control-label">
+                                    Nhóm dịch vụ:
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="txtgroup" class=" col-xs-10 input-sm" placeholder="Nhóm dịch vụ" ng-model="GroupWidget.Name">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txnotegroup" class="col-sm-3 control-label">
+                                    Ghi chú
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="txnotegroup" class="col-xs-10 input-xs" placeholder="ghi chú" ng-model="GroupWidget.Note">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txnotegroup" class="col-sm-3 control-label">
+                                   
+                                </label>
+                                <div class="col-sm-3">
+                                    <button type="button" class="btn btn-danger" ng-click="AddGroupWidget()">Thêm mới</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+
+
+                            <div class="dataTables_wrapper" role="grid">
+                                <table class="table table-hover dataTable ng-scope ng-table" ng-table="tableParams" id="list">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="width-27px"></th>
+                                            <th class="border">Tên nhóm dịch vụ</th>
+                                            <th class="center">Ghi chú</th>
+                                            <th class="center">Thao tác</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody style="border-bottom: none;" >
+                                        <tr style="cursor: pointer;" class="oddrow" ng-click="GetRoomclassRow(item.Id)" ng-repeat="item in GroupWidgets">
+                                            <td class="hidden-480">
+                                                <label class="no-padding-left">
+                                                    <input type="checkbox" class="ace ng-pristine"><span class="lbl"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+
+                                                {{item.Name}}
+                                                <!-- ngIf: p.productItems.length > 1 -->
+                                            </td>
+
+
+                                            <td class="center hidden-480">
+                                                {{item.Note}}
+                                            </td>
+                                            <td class="center">
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                   
+                                                    <a ng-click="DeleteGroupWidget(item.Id)">
+                                                        <i class="ace-icon fa fa-trash-o bigger-120" title="Xóa"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+                
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

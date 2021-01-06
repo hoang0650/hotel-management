@@ -1,0 +1,457 @@
+﻿@{
+    ViewBag.Title = "Hệ thống quản lý khách sạn - Thông tin loại phòng";
+}
+
+<div class="main-content" ng-app="appModule" ng-controller="RoomTypeController">
+    <div class="page-content">
+        <div class="row" ng-init="GetRoomClassById()">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home" aria-expanded="true">
+                                <i class="green ace-icon fa fa-home bigger-120"></i>
+                                Thông tin chung
+                            </a>
+                        </li>
+                       
+
+                        <li class="">
+                            <a data-toggle="tab" href="#configPrice" aria-expanded="true">
+                                <i class="green ace-icon fa fa-cog bigger-120"></i>
+                                Cài đặt giá
+                            </a>
+                        </li>
+
+                        @*<li class="">
+                            <a data-toggle="tab" href="#features" aria-expanded="false">
+                                <i class="green ace-icon fa fa-bars bigger-120"></i>
+                                Tiện ích
+
+                            </a>
+                        </li>
+                        <li class="">
+                            <a data-toggle="tab" href="#image" aria-expanded="false">
+                                <i class="green ace-icon fa fa-picture-o bigger-120"></i>
+                                Hình ảnh
+
+                            </a>
+                        </li>*@
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade active in form-horizontal">
+                            <div class="row">
+
+                                <div class="form-group">
+                                    <label for="txtgiaphong1" class="col-sm-3">
+                                        Loại phòng
+                                    </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="txtgiaphong1" class="form-control input-sm " placeholder="Loại phòng" ng-model="RoomClassModel.RoomClass.Name">
+                                    </div>
+                                    <label for="txgiuong" class="col-sm-3">
+                                        Số giường
+                                    </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="txgiuong" class="form-control input-xs" placeholder="Số giường" ng-model="RoomClassModel.RoomClass.NumBed">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txnguoi" class="col-sm-3">
+                                        Số người
+                                    </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="txnguoi" class="form-control input-xs " placeholder="Số người" ng-model="RoomClassModel.RoomClass.NumCustomer">
+                                    </div>
+                                    @*<label for="txgiangay" class="col-sm-3">
+                                        Giá theo ngày
+                                    </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="txgiangay" class="form-control input-xs" placeholder="Giá theo ngày" ng-model="Roomtype.PriceByDay" format="number">
+                                    </div>*@
+                                </div>
+
+                                @*<div class="form-group">
+
+                                    <label for="txgiadem" class="col-sm-3">
+                                        Giá qua đêm
+                                    </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="txgiadem" class="form-control input-xs" placeholder="Giá qua đêm" ng-model="Roomtype.PriceByNight" format="number">
+                                    </div>
+                                    <label for="txgiathang" class="col-sm-3">
+                                        Giá theo tháng
+                                    </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="txgiathang" class="form-control input-xs" placeholder="Giá theo tháng" ng-model="Roomtype.PriceByMonth" format="number">
+                                    </div>
+                                </div>*@
+
+
+
+
+                            </div>
+                        </div>
+                        
+
+                        <div id="image" class="tab-pane fade">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+
+                                    <ul class="ace-thumbnails clearfix">
+
+                                        <li ng-repeat="img in RoomClassModel.Images">
+                                            <a href="{{img.Url}}" data-rel="colorbox" class="cboxElement">
+                                                <img width="150" height="150" alt="150x150" src="{{img.Url}}">
+                                                <div class="text">
+                                                    <div class="inner">Sample Caption on Hover</div>
+                                                </div>
+                                            </a>
+
+                                            <div class="tools tools-bottom">
+                                                <a href="#">
+                                                    <i class="ace-icon fa fa-link"></i>
+                                                </a>
+
+                                                <a href="#">
+                                                    <i class="ace-icon fa fa-paperclip"></i>
+                                                </a>
+
+                                                <a href="#">
+                                                    <i class="ace-icon fa fa-pencil"></i>
+                                                </a>
+
+                                                <a href="#">
+                                                    <i class="ace-icon fa fa-times red"></i>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label class="ace-file-input ace-file-multiple">
+                                                <span class="ace-file-container" data-title="Nhấp chọn để tải ảnh" id="btnUpBlogImage">
+                                                    <span class="ace-file-name" data-title="No File ..."><i class=" ace-icon ace-icon fa fa-picture-o"></i></span>
+                                                </span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a>
+                                            </label>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="features" class="tab-pane fade">
+                            <div class="row" ng-init="GetListRoomType()">
+                                <div class="col-xs-12 col-sm-12">
+                                    <label class="control-label bolder blue">Chọn tiện ích cho loại phòng</label>
+                                    <div class="control-group" ng-repeat="row in Roomtypes">
+
+                                        <div class="checkbox col-sm-2">
+                                            <label>
+                                                <input name="form-field-checkbox" class="ace ace-checkbox-2" type="checkbox" ng-model="row.IsSelected">
+                                                <span class="lbl"> {{row.Name}}</span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="configPrice" class="tab-pane fade">
+                            <div class="col-md-9 form-group">
+                                <a class="btn btn-primary" data-toggle="modal" ng-click="ShowPopUpConfig()">
+                                    <i class="ace-icon fa fa-plus bigger-110"></i>
+                                    Thêm cấu hình
+                                </a>
+                            </div>
+                            <div class="dataTables_wrapper" role="grid">
+                                <table class="table table-hover dataTable ng-scope ng-table" ng-table="tableParams" id="list">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="width-27px border hidden-480"></th>
+                                            <th class="border">Tên cấu hình</th>
+                                            <th class="center border hidden-480">giá phòng (vnđ)</th>
+                                            <th class="center border">Cài đặt giá</th>
+                                            <th class="center width hidden-480">Cài đặt phụ thu</th> 
+                                            <th class="center border">Đặt làm mặc định</th>
+                                            <th class="center border">Kích hoạt</th>                                          
+                                            <th class="center border hidden-480">ghi chú</th>
+                                            <th class="hidden-480 text-center">Thao tác</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody style="border-bottom: none;" class="ng-scope" >
+
+
+                                        <tr style="cursor: pointer;" class="oddrow" ng-repeat="item in RoomClassModel.ConfigPrices">
+                                            <td class="hidden-480">
+                                                <label class="no-padding-left">
+                                                    <input type="checkbox" class="ace ng-pristine ng-valid"><span class="lbl"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                {{item.ConfigPriceRow.Name}}
+                                            </td>
+
+                                            <td class="width-10 hidden-480">
+                                                <div>
+                                                    <span>
+                                                        Giá theo ngày: {{item.ConfigPriceRow.PriceByDay|number}}
+                                                    </span>
+
+                                                </div>
+                                                <div>
+                                                    <span>
+                                                        Giá qua đêm: {{item.ConfigPriceRow.PriceByNight|number}}
+                                                    </span>
+
+                                                </div>
+                                                <div>
+                                                    <span>
+                                                        Giá theo tháng: {{item.ConfigPriceRow.PriceByMonth|number}}
+                                                    </span>
+                                                </div>
+
+                                            </td>
+                                            <td class="width-10 hidden-480 ng-binding">
+                                                <div ng-repeat="a in item.ConfigPriceRow.PriceByDayList">
+                                                    <div>
+                                                        <label>{{a.Key==1?"Giờ đầu":"Giờ thứ " +a.Key}}  là {{a.Value|number}}</label>
+                                                    </div>
+
+
+                                                </div>
+                                                <div ng-show="item.ConfigPriceRow.PriceByDayList.length>0">
+                                                    <span>Vượt quá thời gian trên tính 1 ngày</span>
+                                                </div>
+
+                                            </td>
+                                            <td class=" width-10">
+                                                <div>
+                                                    <label>
+                                                        <i class="ace-icon fa fa-hand-o-right"> </i>
+                                                        Phụ thu trả phòng quá giờ tính theo ngày
+                                                    </label>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="a in item.ConfigPriceRow.CheckoutDayList">
+                                                            <i class="ace-icon fa fa-check bigger-110 green"> </i>
+                                                            
+                                                            <span ng-show="item.ConfigPriceRow.CheckoutDayList!=undefined">
+                                                                Quá {{a.Key+" giờ"}} cộng thêm <strong> {{a.Value|number}}</strong>
+                                                            </span>
+                                                        </li>
+
+                                                    </ul>
+
+                                                </div>
+
+                                                <div>
+                                                    <label>
+                                                        <i class="ace-icon fa fa-hand-o-right"> </i>
+                                                        Phụ thu trả phòng quá giờ tính qua đêm
+                                                    </label>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="a in item.ConfigPriceRow.CheckoutNightList">
+                                                            <i class="ace-icon fa fa-check bigger-110 green"> </i>
+                                                           
+                                                            <span ng-show="item.ConfigPriceRow.CheckoutNightList!=undefined">
+                                                                Quá {{a.Key+" giờ"}} cộng thêm <strong> {{a.Value|number}}</strong>
+                                                            </span>
+                                                        </li>
+
+
+                                                    </ul>
+
+                                                </div>
+
+
+                                                <div>
+                                                    <label>
+                                                        <i class="ace-icon fa fa-hand-o-right"> </i>
+                                                        Phụ thu nhận phòng sớm tính theo ngày
+                                                    </label>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="a in item.CheckinDayList">
+                                                            <i class="ace-icon fa fa-check bigger-110 green"> </i>
+                                                           
+                                                            <span ng-show="item.ConfigPriceRow.CheckinDayList!=undefined">
+                                                                Quá {{a.Key+" giờ"}} cộng thêm <strong> {{a.Value|number}}</strong>
+                                                            </span>
+                                                        </li>
+
+
+
+                                                    </ul>
+
+                                                </div>
+
+
+                                                <div>
+                                                    <label>
+                                                        <i class="ace-icon fa fa-hand-o-right"> </i>
+                                                        Phụ thu nhận phòng sớm tính qua đêm
+                                                    </label>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="a in item.ConfigPriceRow.CheckinNightList">
+                                                            <i class="ace-icon fa fa-check bigger-110 green"> </i>
+                                                          
+                                                            <span ng-show="item.ConfigPriceRow.CheckinNightList!=undefined">
+                                                                Quá {{a.Key+" giờ"}} cộng thêm <strong> {{a.Value|number}}</strong>
+                                                            </span>
+                                                        </li>
+
+
+
+                                                    </ul>
+
+                                                </div>
+
+                                                <div>
+                                                    <label>
+                                                        <i class="ace-icon fa fa-hand-o-right"> </i>
+                                                        Phụ thu thêm khách
+                                                    </label>
+                                                    <ul class="list-unstyled">
+                                                        <li ng-repeat="a in item.ConfigPriceRow.AddtionCustomerList">
+                                                            <i class="ace-icon fa fa-check bigger-110 green"> </i>
+                                                           
+                                                            <span ng-show="item.ConfigPriceRow.AddtionCustomerList!=undefined">
+                                                                Quá {{a.Key+" người"}} cộng thêm <strong> {{a.Value|number}}</strong>
+                                                            </span>
+                                                        </li>
+
+
+                                                    </ul>
+
+                                                </div>
+                                            </td>
+
+                                            <td class="center">
+                                                {{item.ConfigPriceRow.IsDefault?'Có':'Không'}}
+                                            </td>
+                                            <td class="center">
+                                                {{item.ConfigPriceRow.IsActive?'Đã kích hoạt':'Chưa kích hoạt'}}
+                                            </td>
+                                            <td class="center width-5 hidden-480"></td>
+                                            <td class="center width-7">
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                    <a href="javascript:" ng-click="SelectedConfigRow(item.ConfigPriceRow.Id)">
+                                                        <i class="menu-icon fa fa-pencil-square-o bigger-130"> </i>
+                                                    </a>
+                                                    <a ng-really-message="Bạn có chắc chắn muốn xóa  ?" ng-really-click="reallyDeleteConfigPrice(item.ConfigPriceRow)" item="item">
+                                                        <i class="icon-trash bigger-130" title="Xóa hẳn hàng hóa"> </i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- ngIf: p.productItems.length > 1 -->
+                                    </tbody><!-- end ngRepeat: p in params.data -->
+                                </table>
+
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                    <div class="clearfix">
+                        <div class="col-md-offset-3 col-md-9 form-group">
+
+                            <button type="button" class="btn btn-primary" ng-click="UpdateRoomClass()">
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                Cập nhật
+                            </button>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @{ Html.RenderPartial("_AddConfigPrice");  }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Areas/CPanelAdmin/Script/Room/RoomType.js"></script>
+    <script type="text/javascript" src="~/Areas/CPanelAdmin/Content/js/plupload/plupload.full.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var uploader = new plupload.Uploader({
+                runtimes: 'html5,flash,silverlight',
+                browse_button: 'btnUpBlogImage',
+                //container: 'containerUp',
+                max_file_size: '1mb',
+                multi_selection: false,
+                //resize: { width: 460, height: 613, quality: 90 },
+                resize: false,
+                multipart_params: { albumid: -1 },
+                url: '/CPanelAdmin/Gallery/UploadImage',
+                flash_swf_url:'~/Areas/CPanelAdmin/Content/js/plupload.flash.swf',
+                silverlight_xap_url:'~/Areas/CPanelAdmin/Content/js/plupload.silverlight.xap',
+                filters: [
+                    { title: "Image files", extensions: "jpg,gif,png,jpeg" }
+                ]
+            });
+
+            uploader.init();
+
+            uploader.bind('FilesAdded', function (up, files) {
+                if (files[0].name.length > 100) {
+                    toastr.warning('Tên hình quá dài.');
+                    files[0].status = plupload.FAILED;
+                }
+                else {
+                    if (uploader.state != 2 & files.length > 0) {
+                        uploader.start();
+                    }
+                }
+
+            });
+
+            uploader.bind('FileUploaded', function (up, file, response) {
+                var rp = JSON.parse(response.response);
+                if (!rp.IsError) {
+                    var data = JSON.parse(rp.Data);
+                    data.Data = "http://" + data.Data;
+                    var scope = angular.element(document.getElementById('roomtypedetail')).scope();
+                    var row = {
+                        Id:0,
+                        RoomTypeId: scope.Roomtype.Id,
+                        Url: data.Data
+                    };
+                    scope.$apply(function () {
+                        scope.Roomtype.Images.push(row);
+                    });
+
+
+                } else {
+                    file.status = plupload.FAILED;
+                    toastr.error(rp.Message);
+                }
+                return false;
+            });
+
+            uploader.bind('Error', function (up, err) {
+                if (err.file.size > 1048576) {
+                    toastr.error('Hình tải lên phải có dung lượng không quá 1MB');
+                    up.refresh(); // Reposition Flash/Silverlight
+                } else {
+                    toastr.error(err.message);
+                    up.refresh(); // Reposition Flash/Silverlight
+                }
+
+            });
+
+
+
+
+            });
+
+    </script>
+}

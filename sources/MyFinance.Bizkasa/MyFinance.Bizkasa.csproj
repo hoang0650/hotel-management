@@ -1,0 +1,1300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FC3AED44-445C-4552-8048-A7D307401605}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyFinance.Bizkasa</RootNamespace>
+    <AssemblyName>MyFinance.Bizkasa</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\Libs\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\Libs\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\Libs\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\Libs\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="LacViet.HPS.Common">
+      <HintPath>..\Libs\LacViet.HPS.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Libs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\Libs\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\Libs\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\Libs\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\Libs\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Mvc, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Microsoft.Practices.Unity.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\Libs\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\Libs\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\Libs\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\Libs\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\Libs\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\Libs\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\Libs\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\Libs\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\Libs\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\Libs\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\AdminIndexController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\AreaController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\CPanelAdmin\Controllers\CatalogController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\CatalogProjectCompleteController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\FloorController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\GalleryController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\HistoryController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\HotelController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\HousekeepingController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\InvoiceController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\OrderController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\ReportController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\RoomController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\ServiceController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\SystemConfigController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\UserController.cs" />
+    <Compile Include="Areas\CPanelAdmin\Controllers\WidgetController.cs" />
+    <Compile Include="Areas\CPanelAdmin\CPanelAdminAreaRegistration.cs" />
+    <Compile Include="Areas\CPanelAdmin\Models\InvoiceResultModel.cs" />
+    <Compile Include="Areas\CPanelAdmin\Models\Room\RoomClassModel.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HotelController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infractstructure\ExceptionHandler.cs" />
+    <Compile Include="Infractstructure\UrlHelper.cs" />
+    <Compile Include="Infractstructure\Utils.cs" />
+    <Compile Include="IoC\CustomControllerActivator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IoC\UnityControllerFactory .cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IoC\UnityDependencyResolver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Maps\Maps.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\CPanelAdmin\Content\avatars\avatar.png" />
+    <Content Include="Areas\CPanelAdmin\Content\avatars\avatar1.png" />
+    <Content Include="Areas\CPanelAdmin\Content\avatars\avatar2.png" />
+    <Content Include="Areas\CPanelAdmin\Content\avatars\avatar3.png" />
+    <Content Include="Areas\CPanelAdmin\Content\avatars\avatar4.png" />
+    <Content Include="Areas\CPanelAdmin\Content\avatars\avatar5.png" />
+    <Content Include="Areas\CPanelAdmin\Content\avatars\profile-pic.jpg" />
+    <Content Include="Areas\CPanelAdmin\Content\avatars\user.jpg" />
+    <Content Include="Areas\CPanelAdmin\Content\css\ace-ie.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\ace-part2.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\ace-rtl.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\ace-skins.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\ace.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\bootstrap-duallistbox.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\bootstrap-editable.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\bootstrap-multiselect.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\bootstrap-timepicker.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\bootstrap.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\chosen-sprite%402x.png" />
+    <Content Include="Areas\CPanelAdmin\Content\css\chosen-sprite.png" />
+    <Content Include="Areas\CPanelAdmin\Content\css\chosen.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\colorbox.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\colorpicker.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\colorpicker.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\css1.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\css2.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\css3.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\datepicker.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\daterangepicker.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\default.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\dropzone.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\flag-icon.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\flag-icon.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\font-awesome.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\font-awesome.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\fonts.googleapis.com.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\fullcalendar.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\images\border.png" />
+    <Content Include="Areas\CPanelAdmin\Content\css\images\controls.png" />
+    <Content Include="Areas\CPanelAdmin\Content\css\images\loading.gif" />
+    <Content Include="Areas\CPanelAdmin\Content\css\images\loading_background.png" />
+    <Content Include="Areas\CPanelAdmin\Content\css\images\meteorshower2.jpg" />
+    <Content Include="Areas\CPanelAdmin\Content\css\images\overlay.png" />
+    <Content Include="Areas\CPanelAdmin\Content\css\images\pattern.jpg" />
+    <Content Include="Areas\CPanelAdmin\Content\css\img\alpha.png" />
+    <Content Include="Areas\CPanelAdmin\Content\css\img\hue.png" />
+    <Content Include="Areas\CPanelAdmin\Content\css\img\saturation.png" />
+    <Content Include="Areas\CPanelAdmin\Content\css\jquery-ui.custom.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\jquery-ui.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\jquery.gritter.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\mobile.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\prettify.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\printer.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\select2-spinner.gif" />
+    <Content Include="Areas\CPanelAdmin\Content\css\select2.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\select2.png" />
+    <Content Include="Areas\CPanelAdmin\Content\css\select2x2.png" />
+    <Content Include="Areas\CPanelAdmin\Content\css\toastr.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\ui.jqgrid.css" />
+    <Content Include="Areas\CPanelAdmin\Content\css\ui.jqgrid.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\CPanelAdmin\Content\fonts\fonts.googleapis.com.css" />
+    <Content Include="Areas\CPanelAdmin\Content\fullcalendar\fullcalendar.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Areas\CPanelAdmin\Content\fullcalendar\gcal.js" />
+    <Content Include="Areas\CPanelAdmin\Content\fullcalendar\jquery.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\fullcalendar\lang\vi.js" />
+    <Content Include="Areas\CPanelAdmin\Content\fullcalendar\moment.js" />
+    <Content Include="Areas\CPanelAdmin\Content\fullcalendar\moment.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\fullcalendar\scheduler.css" />
+    <Content Include="Areas\CPanelAdmin\Content\fullcalendar\scheduler.min.css" />
+    <Content Include="Areas\CPanelAdmin\Content\fullcalendar\scheduler.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\images\ajax-loader.gif" />
+    <Content Include="Areas\CPanelAdmin\Content\images\email1.png" />
+    <Content Include="Areas\CPanelAdmin\Content\images\email2.png" />
+    <Content Include="Areas\CPanelAdmin\Content\images\email3.png" />
+    <Content Include="Areas\CPanelAdmin\Content\images\email4.png" />
+    <Content Include="Areas\CPanelAdmin\Content\images\spritemap%402x.png" />
+    <Content Include="Areas\CPanelAdmin\Content\images\spritemap.png" />
+    <Content Include="Areas\CPanelAdmin\Content\img\404.png" />
+    <Content Include="Areas\CPanelAdmin\Content\img\500.png" />
+    <Content Include="Areas\CPanelAdmin\Content\img\add-image.jpg" />
+    <Content Include="Areas\CPanelAdmin\Content\img\clear.png" />
+    <Content Include="Areas\CPanelAdmin\Content\img\loader5.GIF" />
+    <Content Include="Areas\CPanelAdmin\Content\img\loading.gif" />
+    <Content Include="Areas\CPanelAdmin\Content\js\ace-editable.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\ace-elements.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\ace-extra.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\ace.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\additional-methods.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\angular.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\AutoComlete\angucomplete-alt.css" />
+    <Content Include="Areas\CPanelAdmin\Content\js\AutoComlete\angucomplete-alt.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\AutoComlete\structure.css" />
+    <Content Include="Areas\CPanelAdmin\Content\js\bootbox.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\bootstrap-colorpicker.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\bootstrap-datepicker.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\bootstrap-datepicker.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\bootstrap-editable.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\bootstrap-markdown.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\bootstrap-multiselect.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\bootstrap-tag.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\bootstrap-timepicker.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\bootstrap-wysiwyg.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\bootstrap.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\Chart.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\chosen.jquery.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\brand.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\carkind.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\carline.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\carmaker.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\catalogynews.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\dichvu.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\info.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\news.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\page.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\product.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\slide.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\_cookieManager.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\controller\_sessionManager.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\dataTables.colVis.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\dataTables.tableTools.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\daterangepicker.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\dropzone.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\excanvas.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\fuelux.spinner.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\fuelux.tree.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\fuelux.wizard.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\fullcalendar.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\grid.locale-en.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\highcharts.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\html5shiv.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery-ui.custom.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery-ui.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery-ui.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.1.11.1.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.2.1.1.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.autosize.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.bootstrap-duallistbox.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.colorbox-min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.colorbox.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.dataTables.bootstrap.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.dataTables.bootstrap.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.dataTables.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.easypiechart.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.flot.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.flot.pie.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.flot.resize.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.gritter.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.hotkeys.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.inputlimiter.1.3.1.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.jqGrid.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.knob.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.maskedinput.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.mobile.custom.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.nestable.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.raty.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.slimscroll.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.sparkline.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.tagsinput.css" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.tagsinput.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.ui.touch-punch.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery.validate.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jquery1x.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jsmin\bootstrap.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jsmin\bootstrap.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jsmin\jquery-2.1.3.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jsmin\jquery.unobtrusive-ajax.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\jsmin\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\markdown.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\moment.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.plupload.queue\css\jquery.plupload.queue.css" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.plupload.queue\img\backgrounds.gif" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.plupload.queue\img\buttons-disabled.png" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.plupload.queue\img\buttons.png" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.plupload.queue\img\delete.gif" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.plupload.queue\img\done.gif" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.plupload.queue\img\error.gif" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.plupload.queue\img\throbber.gif" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.plupload.queue\img\transp50.png" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.plupload.queue\jquery.plupload.queue.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.ui.plupload\css\jquery.ui.plupload.css" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.ui.plupload\img\plupload-bw.png" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.ui.plupload\img\plupload.png" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\jquery.ui.plupload\jquery.ui.plupload.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\plupload.browserplus.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\plupload.flash.cors.swf" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\plupload.flash.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\plupload.flash.swf" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\plupload.full.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\plupload.full.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\plupload.gears.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\plupload.html4.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\plupload.html5.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\plupload.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\plupload\plupload.silverlight.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\prettify.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\respond.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\select2.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\spin.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\toastr\toastr.js" />
+    <Content Include="Areas\CPanelAdmin\Content\js\typeahead.jquery.min.js" />
+    <Content Include="Areas\CPanelAdmin\Content\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Areas\CPanelAdmin\Content\zclip\zclip.js" />
+    <Content Include="Areas\CPanelAdmin\Content\zclip\ZeroClipboard.swf" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\adapters\jquery.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\build-config.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\ckeditor.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\config.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\contents.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\af.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\ar.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\bg.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\bn.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\bs.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\ca.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\cs.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\cy.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\da.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\de.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\el.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\en-au.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\en-ca.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\en-gb.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\en.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\eo.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\es.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\et.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\eu.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\fa.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\fi.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\fo.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\fr-ca.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\fr.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\gl.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\gu.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\he.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\hi.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\hr.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\hu.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\id.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\is.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\it.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\ja.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\ka.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\km.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\ko.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\ku.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\lt.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\lv.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\mk.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\mn.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\ms.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\nb.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\nl.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\no.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\pl.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\pt-br.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\pt.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\ro.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\ru.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\si.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\sk.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\sl.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\sq.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\sr-latn.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\sr.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\sv.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\th.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\tr.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\tt.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\ug.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\uk.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\vi.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\zh-cn.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\lang\zh.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\icons.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\css\samples.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\img\github-top.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\img\header-bg.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\img\header-separator.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\img\logo.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\index.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\js\sample.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\js\sf.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\ajax.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\api.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\appendto.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\datafiltering.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\divreplace.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\htmlwriter\outputforflash.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\htmlwriter\outputhtml.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\index.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\inlineall.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\inlinebycode.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\inlinetextarea.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\jquery.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\magicline\magicline.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\readonly.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\replacebyclass.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\replacebycode.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\sample.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\sample.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\tabindex.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\uicolor.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\uilanguages.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\xhtmlstyle.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\index.html" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\dialog.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\editor.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\icons.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\icons_hidpi.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\images\close.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\images\hidpi\close.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\images\hidpi\lock-open.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\images\hidpi\lock.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\images\hidpi\refresh.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\images\lock-open.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\images\lock.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\images\refresh.png" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\images\spinner.gif" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\styles.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Customer\Customer.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Floor\Floor.js" />
+    <Content Include="Areas\CPanelAdmin\Script\History\History.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Hotel\Hotel.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Housekeeping\Housekeeping.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\ace-elements.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\ace-extra.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\ace.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\angucomplete-alt.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\angular-route.min.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\angular.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\appModule.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\bootstrap-datepicker.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\bootstrap-datetimepicker.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\bootstrap.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\chosen.jquery.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\daterangepicker.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\daypilot-all.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\directives.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\global.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\hotkeys.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\jquery-1.10.2.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\jquery.2.1.1.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\jquery.colorbox.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\jquery.gritter.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\moment.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\toastr.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Libs\ui-bootstrap-tpls-0.10.0.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Room\booking.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Room\RoomType.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Shared\AngularChosen.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Module\appModule.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Invoice\Invoice.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Module\ui-bootstrap-custom-0.13.4.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Module\ui-bootstrap-tpls-0.13.4.min.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Paging\paging.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Shared\ui-bootstrap-tpls-0.10.0.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Report\Report.js" />
+    <Content Include="Areas\CPanelAdmin\Script\User\User.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Room\Systemconfig.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Room\widget.js" />
+    <Content Include="Areas\CPanelAdmin\Script\Room\Room.js" />
+    <Content Include="bin\AutoMapper.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Microsoft.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Microsoft.Practices.ServiceLocation.dll" />
+    <Content Include="bin\Microsoft.Practices.Unity.Configuration.dll" />
+    <Content Include="bin\Microsoft.Practices.Unity.dll" />
+    <Content Include="bin\Microsoft.Practices.Unity.Mvc.dll" />
+    <Content Include="bin\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\MyFinance.Core.dll" />
+    <Content Include="bin\MyFinance.Core.pdb" />
+    <Content Include="bin\MyFinance.Domain.dll" />
+    <Content Include="bin\MyFinance.Domain.pdb" />
+    <Content Include="bin\MyFinance.Extention.dll" />
+    <Content Include="bin\MyFinance.Extention.pdb" />
+    <Content Include="bin\MyFinance.Utils.dll" />
+    <Content Include="bin\MyFinance.Utils.pdb" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Owin.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\WebActivatorEx.dll" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\details.css" />
+    <Content Include="Content\jquery-ui-timepicker-addon.min.css" />
+    <Content Include="Content\nn-styles.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\style_onlinebookings.css" />
+    <Content Include="Content\ubuntu.theme.css" />
+    <Content Include="Content\Upload\_images\Banner\1234120x413.jpg" />
+    <Content Include="Content\Upload\_images\Banner\banner_dreamstar-5.jpg" />
+    <Content Include="Content\Upload\_images\default-thumb.gif" />
+    <Content Include="Content\Upload\_images\HangBay\smBL_gif.png" />
+    <Content Include="Content\Upload\_images\HangBay\smVJ.gif" />
+    <Content Include="Content\Upload\_images\HangBay\smVN.gif" />
+    <Content Include="Content\Upload\_images\logo_dhv.png" />
+    <Content Include="Content\Upload\_images\NganHang\BIDV%281%29.gif" />
+    <Content Include="Content\Upload\_images\NganHang\BIDV.gif" />
+    <Content Include="Content\Upload\_images\NganHang\logo_dhv.png" />
+    <Content Include="Content\Upload\_images\NganHang\VCB.gif" />
+    <Content Include="Content\Upload\_thumbs\Images\Banner\1234120x413.jpg" />
+    <Content Include="Content\Upload\_thumbs\Images\Banner\banner_dreamstar-5.jpg" />
+    <Content Include="Content\Upload\_thumbs\Images\default-thumb.gif" />
+    <Content Include="Content\Upload\_thumbs\Images\HangBay\smBL_gif.png" />
+    <Content Include="Content\Upload\_thumbs\Images\HangBay\smVJ.gif" />
+    <Content Include="Content\Upload\_thumbs\Images\HangBay\smVN.gif" />
+    <Content Include="Content\Upload\_thumbs\Images\logo_dhv.png" />
+    <Content Include="Content\Upload\_thumbs\Images\NganHang\BIDV%281%29.gif" />
+    <Content Include="Content\Upload\_thumbs\Images\NganHang\BIDV.gif" />
+    <Content Include="Content\Upload\_thumbs\Images\NganHang\logo_dhv.png" />
+    <Content Include="Content\Upload\_thumbs\Images\NganHang\VCB.gif" />
+    <Content Include="Content\V2\css\animate.min.css" />
+    <Content Include="Content\V2\css\bootstrap.min.css" />
+    <Content Include="Content\V2\css\font-awesome.min.css" />
+    <Content Include="Content\V2\css\responsive.css" />
+    <Content Include="Content\V2\css\style-home.css" />
+    <Content Include="Content\V2\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\V2\fonts\fonts.css" />
+    <Content Include="Content\V2\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\V2\fonts\OpenSans-Bold-webfont.svg" />
+    <Content Include="Content\V2\fonts\OpenSans-BoldItalic-webfont.svg" />
+    <Content Include="Content\V2\fonts\OpenSans-ExtraBold-webfont.svg" />
+    <Content Include="Content\V2\fonts\OpenSans-ExtraBoldItalic-webfont.svg" />
+    <Content Include="Content\V2\fonts\OpenSans-Italic-webfont.svg" />
+    <Content Include="Content\V2\fonts\OpenSans-Light-webfont.svg" />
+    <Content Include="Content\V2\fonts\OpenSans-LightItalic-webfont.svg" />
+    <Content Include="Content\V2\fonts\OpenSans-Regular-webfont.svg" />
+    <Content Include="Content\V2\fonts\OpenSans-Semibold-webfont.svg" />
+    <Content Include="Content\V2\fonts\OpenSans-SemiboldItalic-webfont.svg" />
+    <Content Include="Content\V2\images\01.jpg" />
+    <Content Include="Content\V2\images\02.jpg" />
+    <Content Include="Content\V2\images\03.jpg" />
+    <Content Include="Content\V2\images\04.jpg" />
+    <Content Include="Content\V2\images\05.jpg" />
+    <Content Include="Content\V2\images\ajax-loader.gif" />
+    <Content Include="Content\V2\images\arrow-full.png" />
+    <Content Include="Content\V2\images\arrow-full1.png" />
+    <Content Include="Content\V2\images\arrow-left.png" />
+    <Content Include="Content\V2\images\arrow-right.png" />
+    <Content Include="Content\V2\images\banner-1.jpg" />
+    <Content Include="Content\V2\images\banner-2.jpg" />
+    <Content Include="Content\V2\images\banner-3.jpg" />
+    <Content Include="Content\V2\images\banner-4.jpg" />
+    <Content Include="Content\V2\images\banner-5.jpg" />
+    <Content Include="Content\V2\images\bg-header.jpg" />
+    <Content Include="Content\V2\images\camera-loader.gif" />
+    <Content Include="Content\V2\images\duan.jpg" />
+    <Content Include="Content\V2\images\facebook.png" />
+    <Content Include="Content\V2\images\google.png" />
+    <Content Include="Content\V2\images\icon-block.png" />
+    <Content Include="Content\V2\images\icon-email.png" />
+    <Content Include="Content\V2\images\icon-footer-1.png" />
+    <Content Include="Content\V2\images\icon-footer-2.png" />
+    <Content Include="Content\V2\images\icon-footer-3.png" />
+    <Content Include="Content\V2\images\icon-ks.png" />
+    <Content Include="Content\V2\images\icon-login.png" />
+    <Content Include="Content\V2\images\icon-password.png" />
+    <Content Include="Content\V2\images\icon-room.png" />
+    <Content Include="Content\V2\images\icon-sotang.png" />
+    <Content Include="Content\V2\images\icon-user.png" />
+    <Content Include="Content\V2\images\icon-username.png" />
+    <Content Include="Content\V2\images\line-title-home.jpg" />
+    <Content Include="Content\V2\images\logo.png" />
+    <Content Include="Content\V2\images\twitter.png" />
+    <Content Include="Content\V2\images\yt.png" />
+    <Content Include="Content\V2\js\bootstrap.js" />
+    <Content Include="Content\V2\js\bootstrap.min.js" />
+    <Content Include="Content\V2\js\camera.min.js" />
+    <Content Include="Content\V2\js\crosscover.js" />
+    <Content Include="Content\V2\js\crosscover.min.js" />
+    <Content Include="Content\V2\js\jquery.easing.1.3.js" />
+    <Content Include="Content\V2\js\jquery.min.js" />
+    <Content Include="Content\V2\js\jquery.mobile.customized.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="sample-log.xml" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\controllers\editIssueController.js" />
+    <Content Include="Scripts\app\controllers\CategoryController.js" />
+    <Content Include="Scripts\app\controllers\HotelController.js" />
+    <Content Include="Scripts\app\controllers\UserController.js" />
+    <Content Include="Scripts\app\failtrackerApp.js" />
+    <Content Include="Scripts\app\Home\Home.js" />
+    <Content Include="Scripts\app\Modules\userModule.js" />
+    <Content Include="Scripts\app\services\alerts.js" />
+    <Content Include="Scripts\app\services\exceptionOverride.js" />
+    <Content Include="Scripts\app\services\categoryservices.js" />
+    <Content Include="Scripts\app\services\hotelservices.js" />
+    <Content Include="Scripts\app\services\userServices.js" />
+    <Content Include="Scripts\app\utilities\bootstrapAlerts.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\errors.json" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\animated.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\core.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\fixed-width.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\font-awesome.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\icons.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\larger.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\list.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\mixins.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\path.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\stacked.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\less\variables.less" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\_animated.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\_core.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\_icons.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\_larger.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\_list.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\_mixins.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\_path.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\_stacked.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Areas\CPanelAdmin\Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\CPanelAdmin\Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\CPanelAdmin\Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\CPanelAdmin\Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\Indexbk.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Service\Create.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Service\Createdfd.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Service\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Shared\_Footer.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Shared\_LayoutAdmin2.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Shared\_LayoutAdmin3.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Shared\_LayoutAdminPage.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Shared\_LayoutLogOn.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Shared\_LeftNavigation.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Shared\_LeftNavigationTwo.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Shared\_MainNavigation.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Shared\_TopNavigation.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Web.config" />
+    <Content Include="Areas\CPanelAdmin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Room\Create.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Room\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Widget\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_checkinSinglebk.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_checkinMutil.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_checkOut.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Room\_AddRoomClass.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\SystemConfig\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\User\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\User\_AddUser.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_checkOutCompany.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_ListCompanycheckin.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_PanelTime.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_AddCustomerToOrder.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_AddServiceToOrder.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_Booking.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_StaticRooms.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_OrderBookingList.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Invoice\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Shared\_ViewInvoiceDetail.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Invoice\_PrintInvoice.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Content\fonts\SourceSansPro-Regular.ttf" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_RoomAvailable.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Invoice\Payment.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Invoice\_AddInvoice.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Invoice\_AddInvoiceDetail.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Widget\_AddGroupWidget.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Widget\_AddWidget.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Home\Logon.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Home\Error.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_PrintOrder.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Widget\_AddInvoice.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Widget\_AddInvoiceDetail.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Report\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Hotel\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Customer\_InvoiceByCustomer.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Customer\_AddOrUpdateCustomer.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Customer\_ViewInvoiceDetail.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_EditRoom.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Floor\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Floor\_InsertOrUpdateFloor.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Customer\CheckIn.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Hotel\Create.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\CPanelAdmin\Views\Report\_PanelTime.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\User\Detail.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Room\Details.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\History\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Hotel\List.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Report\ReportByRoom.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Report\ReportByService.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Report\ReportGoodsReceipt.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Report\ReportRoomHistory.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Floor\_InsertRoom.cshtml" />
+    <Content Include="Content\V2\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\V2\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\V2\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\V2\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\V2\fonts\FontAwesome.otf" />
+    <Content Include="Content\V2\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\V2\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\V2\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\V2\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\V2\fonts\OpenSans-Bold-webfont.eot" />
+    <Content Include="Content\V2\fonts\OpenSans-Bold-webfont.ttf" />
+    <Content Include="Content\V2\fonts\OpenSans-Bold-webfont.woff" />
+    <Content Include="Content\V2\fonts\OpenSans-BoldItalic-webfont.eot" />
+    <Content Include="Content\V2\fonts\OpenSans-BoldItalic-webfont.ttf" />
+    <Content Include="Content\V2\fonts\OpenSans-BoldItalic-webfont.woff" />
+    <Content Include="Content\V2\fonts\OpenSans-ExtraBold-webfont.eot" />
+    <Content Include="Content\V2\fonts\OpenSans-ExtraBold-webfont.ttf" />
+    <Content Include="Content\V2\fonts\OpenSans-ExtraBold-webfont.woff" />
+    <Content Include="Content\V2\fonts\OpenSans-ExtraBoldItalic-webfont.eot" />
+    <Content Include="Content\V2\fonts\OpenSans-ExtraBoldItalic-webfont.ttf" />
+    <Content Include="Content\V2\fonts\OpenSans-ExtraBoldItalic-webfont.woff" />
+    <Content Include="Content\V2\fonts\OpenSans-Italic-webfont.eot" />
+    <Content Include="Content\V2\fonts\OpenSans-Italic-webfont.ttf" />
+    <Content Include="Content\V2\fonts\OpenSans-Italic-webfont.woff" />
+    <Content Include="Content\V2\fonts\OpenSans-Light-webfont.eot" />
+    <Content Include="Content\V2\fonts\OpenSans-Light-webfont.ttf" />
+    <Content Include="Content\V2\fonts\OpenSans-Light-webfont.woff" />
+    <Content Include="Content\V2\fonts\OpenSans-LightItalic-webfont.eot" />
+    <Content Include="Content\V2\fonts\OpenSans-LightItalic-webfont.ttf" />
+    <Content Include="Content\V2\fonts\OpenSans-LightItalic-webfont.woff" />
+    <Content Include="Content\V2\fonts\OpenSans-Regular-webfont.eot" />
+    <Content Include="Content\V2\fonts\OpenSans-Regular-webfont.ttf" />
+    <Content Include="Content\V2\fonts\OpenSans-Regular-webfont.woff" />
+    <Content Include="Content\V2\fonts\OpenSans-Semibold-webfont.eot" />
+    <Content Include="Content\V2\fonts\OpenSans-Semibold-webfont.ttf" />
+    <Content Include="Content\V2\fonts\OpenSans-Semibold-webfont.woff" />
+    <Content Include="Content\V2\fonts\OpenSans-SemiboldItalic-webfont.eot" />
+    <Content Include="Content\V2\fonts\OpenSans-SemiboldItalic-webfont.ttf" />
+    <Content Include="Content\V2\fonts\OpenSans-SemiboldItalic-webfont.woff" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\CHANGES.md" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\LICENSE.md" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\scayt\README.md" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\plugins\wsc\README.md" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\README.md" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\old\sample_posteddata.php" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="Areas\CPanelAdmin\Plugin\ckeditor\skins\moono\readme.md" />
+    <Content Include="Areas\CPanelAdmin\Views\Report\ReportRevenue.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Room\_AddConfigPrice.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_AddMoreRoomBooking.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_ConfigPriceSelectedByRoomClass.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Housekeeping\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Housekeeping\_AddServiceToOrder.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Housekeeping\_checkinSingle.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Home\Install.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\CPanelAdmin\Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\CPanelAdmin\Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\CPanelAdmin\Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\CPanelAdmin\Content\fonts\FontAwesome.otf" />
+    <Content Include="Areas\CPanelAdmin\Views\Room\StaticRoom.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Dashboard\Widget.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Dashboard\_AddGroupWidget.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Dashboard\_AddInvoice.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Dashboard\_AddInvoiceDetail.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Dashboard\_AddWidget.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Invoice\Shift.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Invoice\_addShift.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Report\ShiftHistory.cshtml" />
+    <Content Include="Properties\DataSources\MyFinance.Domain.BusinessModel.FloorRowModel.datasource" />
+    <Content Include="Properties\DataSources\MyFinance.Domain.BusinessModel.OrderRowForCheckoutModel.datasource" />
+    <Content Include="Areas\CPanelAdmin\Views\Report\Revenue.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Hotel\Add.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Widget\_AddInvoiceShort.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Hotel\_Edit.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Hotel\Camera.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Hotel\ViewCamera.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Hotel\_objectCamera.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Hotel\CameraDetail.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Hotel\ListCamera.cshtml" />
+    <Content Include="DataFiles\RevenueTemplate.xlsx" />
+    <Content Include="DataFiles\CustomerTemplate.xlsx" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\Index.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\AdminIndex\_checkinSingle.cshtml" />
+    <Content Include="Areas\CPanelAdmin\Views\Invoice\_transferMoneyManager.cshtml" />
+    <None Include="Properties\PublishProfiles\bizkasa.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\cloudflare.js" />
+    <Content Include="Scripts\ElinesCommon.js" />
+    <Content Include="Scripts\frontend.js" />
+    <Content Include="Scripts\HomePageSearch.js" />
+    <Content Include="Scripts\index.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery-1.js" />
+    <Content Include="Scripts\jquery-ui-sliderAccess.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon.min.js" />
+    <Content Include="Scripts\jquery.flexslider-min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Home\_AccountArea.cshtml" />
+    <Content Include="Views\Shared\_Alerts.cshtml" />
+    <Content Include="Views\Hotel\Index.cshtml" />
+    <Content Include="Views\Hotel\View.cshtml" />
+    <Content Include="Views\Hotel\Create.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_EmtyLayout.cshtml" />
+    <Content Include="Views\Hotel\Edit.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Home\_RegisterHotel.cshtml" />
+    <Content Include="Views\Shared\_LayoutTravelo.cshtml" />
+    <Content Include="Views\Shared\_LayoutV2.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\CPanelAdmin\Views\Gallery\" />
+    <Folder Include="Areas\CPanelAdmin\Views\Order\" />
+    <Folder Include="Content\Upload\files\" />
+    <Folder Include="Content\Upload\flash\" />
+    <Folder Include="Content\Upload\_images\News\" />
+    <Folder Include="Views\Room\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyFinance.ApiService\MyFinance.ApiService.csproj">
+      <Project>{ba69bb65-147a-42d8-a6f5-5d1e57e2d783}</Project>
+      <Name>MyFinance.ApiService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFinance.Business\MyFinance.Business.csproj">
+      <Project>{f9da2a8c-8bbd-4ed9-80c1-f5a8ff559151}</Project>
+      <Name>MyFinance.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFinance.Core\MyFinance.Core.csproj">
+      <Project>{26c6db72-a895-4297-a638-837cf5a5ed98}</Project>
+      <Name>MyFinance.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFinance.Data\MyFinance.Data.csproj">
+      <Project>{a9f879bc-ca11-4470-a655-8541b5da41a1}</Project>
+      <Name>MyFinance.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFinance.Domain\MyFinance.Domain.csproj">
+      <Project>{48f672e8-4513-4f7e-a296-c0ccc87f9aa1}</Project>
+      <Name>MyFinance.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFinance.Extention\MyFinance.Extention.csproj">
+      <Project>{408c9d72-dc60-4c5d-b12a-3c053fa4dae0}</Project>
+      <Name>MyFinance.Extention</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFinance.Utils\MyFinance.Utils.csproj">
+      <Project>{454e7439-95f4-427b-b2aa-a78acbb49807}</Project>
+      <Name>MyFinance.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <!-- <Import Project="$(MSBuildExtensionsPath32)\Microsoft\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" /> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64237</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:37437/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

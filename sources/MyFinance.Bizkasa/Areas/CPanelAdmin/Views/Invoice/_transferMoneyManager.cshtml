@@ -1,0 +1,62 @@
+﻿<div id="transferManager" class="modal fade" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title" id="myLargeModalLabel">
+                    Giao tiền cho quản lý
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right"> Số tiền có thể chuyển </label>
+                        <div class="col-sm-7">
+                            <label  class="control-label" ng-bind="Shift.MaxTransferAmount|number" format="number"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right"> Tiền giao cho quản lý </label>
+                        <div class="col-sm-7">
+                            <input type="text" placeholder="Nhập số tiền cần bàn giao" class="form-control" ng-model="Shift.TransferAmount" format="number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">Tài khoản quản lý  </label>
+                        <div class="col-sm-7">
+                            <select class="form-control" ng-options="row.Id as row.Email  for row in Admins" ng-model="Shift.ManagerId">
+                                <option value="">-- Chọn tài khoản nhận tiền --</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right" for="form-field-1"> Mật khẩu </label>
+                        <div class="col-sm-7">
+                            <input type="password" ng-model="Shift.ManagerPassword" placeholder="Nhập mật khẩu" class="form-control">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right" for="form-field-1"> Ghi chú </label>
+                        <div class="col-sm-7">
+                            <textarea placeholder="" ng-model="Shift.Notes" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" ng-click="TransferToManager()">Lưu</button>
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Hủy</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

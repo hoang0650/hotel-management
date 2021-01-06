@@ -1,0 +1,29 @@
+﻿
+<div id="StaticRooms" class="modal fade" tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>               
+                    <h5 class="modal-title" id="myLargeModalLabel">
+                        Tình trạng sử dụng phòng từ  <label class="red"> {{SearchRoomModel.FromDateView}}</label> đến <label class="red">  {{SearchRoomModel.ToDateView}}</label>
+                        <a class="col-sm-3" ng-click="changeDateFilter()">
+                            [Chọn thời gian]
+                            <i class="ace-icon fa fa-pencil-square-o"></i>
+                        </a>
+
+                    </h5>
+               
+            </div>
+            <div class="modal-body">
+                <div class="row ">
+                    <div id="timeline"></div>   
+                </div>
+                
+            </div>
+            @*<div class="modal-footer">
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Đóng</button>
+
+            </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

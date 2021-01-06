@@ -1,0 +1,153 @@
+﻿<div id="RegisterHotel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabeladdCustomerToOrder" aria-hidden="true">
+   
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title" id="myLargeModalLabeladdCustomerToOrder">
+                    Đăng ký sử dụng
+                </h5>
+            </div>
+            <div class="modal-body" style="min-height:450px">
+                <div class="row featured-boxes login">
+                    <div class="col-md-7">
+                        <div class="featured-box featured-box-secundary default" style="height:100%;">
+                            <div class="box-content">
+                                <h4>Thông tin khách sạn </h4>
+                                <form method="post" id="userForm" name="userForm" class="form-validate" action="/user.html">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="adminForm user-details table table-responsive">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="key" title="E-Mail">
+                                                            <label class="email" for="email_field">
+                                                                Tên khách sạn *
+                                                            </label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="email_field" name="email" size="30" value="" class="required" maxlength="100" aria-required="true" required="required" ng-model="HotelRegisterModel.Name">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="key" title="E-Mail">
+                                                            <label class="email" for="email_field">
+                                                                Số phòng *
+                                                            </label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="email_field" ng-model="HotelRegisterModel.NumRooms" name="email" size="30" value="" class="required" maxlength="100" aria-required="true" required="required">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="key" title="E-Mail">
+                                                            <label class="email" for="email_field">
+                                                                Số tầng *
+                                                            </label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="email_field" ng-model="HotelRegisterModel.NumFloors" name="email" size="30" value="" class="required" maxlength="100" aria-required="true" required="required">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="key" title="First Name">
+                                                            <label class="first_name" for="first_name_field">
+                                                                Email *
+                                                            </label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="first_name_field" ng-model="HotelRegisterModel.Email" name="first_name" size="30" value="" class="required" maxlength="32" aria-required="true" required="required">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="key" title="Last Name">
+                                                            <label class="last_name" for="last_name_field">
+                                                                Điện thoại *
+                                                            </label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="last_name_field" ng-model="HotelRegisterModel.Phone" name="last_name" size="30" value="" maxlength="32">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="key" title="Address 1">
+                                                            <label class="address_1" for="address_1_field">
+                                                                Địa chỉ *
+                                                            </label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="address_1_field" name="address_1" ng-model="HotelRegisterModel.Address" size="30" value="" class="required" maxlength="64" aria-required="true" required="required">
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <span class="remember-box checkbox">
+                                        <label for="remember">
+                                            <input type="checkbox" ng-model="HotelRegisterModel.IsChecked" id="remember" name="remember" class="inputbox" value="yes" alt=" Đồng ý với điều khoản sử dụng của chúng tôi">
+                                            Đồng ý với điều khoản sử dụng của chúng tôi
+                                        </label>
+                                    </span>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="featured-box featured-box-secundary default">
+                            <div class="box-content">
+                                <h4>Tài khoản quản trị</h4>
+                                <form id="com-form-login" action="/" method="post" name="com-login">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12" id="com-form-login-username">
+                                                <label>Tên tài khoản</label>
+                                                <input type="text" name="username" ng-model="HotelRegisterModel.User.Email" class="inputbox form-control input-lg" size="18" alt="Tên tài khoản" value="Tên tài khoản" onblur="if (this.value == '')
+                                    this.value = 'Tên tài khoản';" onfocus="if (this.value == 'Tên tài khoản')
+                                                this.value = '';">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12" id="com-form-login-password">
+
+                                                <label>Mật khẩu</label>
+                                                <input id="modlgn-passwd" ng-model="HotelRegisterModel.User.Password" type="password" name="password" class="inputbox form-control input-lg" size="18" alt="Mật khẩu" value="Mật khẩu" onblur="if (this.value == '')
+                                    this.value = 'Mật khẩu';" onfocus="if (this.value == 'Mật khẩu')
+                                                this.value = '';">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12" id="com-form-login-password">
+
+                                                <label>Xác nhận Mật khẩu</label>
+                                                <input id="modlgn-passwd" type="password" ng-model="HotelRegisterModel.User.ComfirmPassword" name="password" class="inputbox form-control input-lg" size="18" alt="Mật khẩu" value="Mật khẩu" onblur="if (this.value == '')
+                                    this.value = 'Mật khẩu';" onfocus="if (this.value == 'Mật khẩu')
+                                                this.value = '';">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" ng-click="RegisterHotel()">Đồng ý</button>                
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Hủy</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

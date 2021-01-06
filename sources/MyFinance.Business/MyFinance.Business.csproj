@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F9DA2A8C-8BBD-4ED9-80C1-F5A8FF559151}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyFinance.Business</RootNamespace>
+    <AssemblyName>MyFinance.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\Libs\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\Libs\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Inside\InsideHotelBusiness.cs" />
+    <Compile Include="Inside\InsideUserBusiness.cs" />
+    <Compile Include="CategoryBusiness.cs" />
+    <Compile Include="CustomerBusiness.cs" />
+    <Compile Include="GalleryBusiness.cs" />
+    <Compile Include="HistoryBusiness.cs" />
+    <Compile Include="HotelBusiness.cs" />
+    <Compile Include="Inside\InsideUtilityBusiness.cs" />
+    <Compile Include="InvoiceBusiness.cs" />
+    <Compile Include="OrderBusiness.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportBusiness.cs" />
+    <Compile Include="RoomBusiness.cs" />
+    <Compile Include="SystemConfigBusiness.cs" />
+    <Compile Include="TokenBusiness.cs" />
+    <Compile Include="UserBusiness.cs" />
+    <Compile Include="WidgetBusiness.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyFinance.Core\MyFinance.Core.csproj">
+      <Project>{26c6db72-a895-4297-a638-837cf5a5ed98}</Project>
+      <Name>MyFinance.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFinance.Data\MyFinance.Data.csproj">
+      <Project>{a9f879bc-ca11-4470-a655-8541b5da41a1}</Project>
+      <Name>MyFinance.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFinance.Domain\MyFinance.Domain.csproj">
+      <Project>{48f672e8-4513-4f7e-a296-c0ccc87f9aa1}</Project>
+      <Name>MyFinance.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFinance.Extention\MyFinance.Extention.csproj">
+      <Project>{408c9d72-dc60-4c5d-b12a-3c053fa4dae0}</Project>
+      <Name>MyFinance.Extention</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFinance.Utils\MyFinance.Utils.csproj">
+      <Project>{454e7439-95f4-427b-b2aa-a78acbb49807}</Project>
+      <Name>MyFinance.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

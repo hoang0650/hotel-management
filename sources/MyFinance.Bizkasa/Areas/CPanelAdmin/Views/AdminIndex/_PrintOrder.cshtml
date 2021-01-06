@@ -1,0 +1,109 @@
+﻿<div id="printContent" style="display:none">
+
+
+    <header class="clearfix">
+        <div id="logo">
+            <img src="@MyFinance.Utils.WorkContext.BizKasaContext.Logo">
+        </div>
+        <div id="company" @*ng-init="GetHotelInfo()"*@>
+            <h2 class="name">{{Hotel.Name}}</h2>
+            <div>{{Hotel.Address}}</div>
+            <div>{{Hotel.Phone}}</div>
+            <div><a href="mailto:{{Hotel.Email}}">{{Hotel.Email}}</a></div>
+        </div>
+
+    </header>
+
+    <div id="details" class="clearfix">
+        <div id="client">
+            <div class="to">KHÁCH HÀNG:</div>
+            <h2 class="name">{{Invoice.CustomerName}}</h2>
+            <div class="address">{{Invoice.Address}}</div>
+            <div class="email"><a href="mailto:{{Invoice.Email}}">{{Invoice.Email}}</a></div>
+        </div>
+        <div id="invoice">
+            <h1>HÓA ĐƠN THANH TOÁN</h1>
+            <div class="date">Ngày tạo: {{Invoice.CreatedDateView}} </div>
+            @*<div class="date">Due Date: 30/06/2014</div>*@
+        </div>
+    </div>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <th class="no">#</th>
+                <th class="desc">Dịch vụ</th>
+                <th class="unit">Diễn giải</th>
+                <th class="qty">Thành tiền (vnđ)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in Invoice.InvoiceDetails">
+                <td class="no">{{$index+1}}</td>
+                <td class="desc" style="white-space:pre-line;"> {{row.Descriptions}}</td>
+                <td class="unit"> {{row.Notes}}</td>
+                <td class="qty">{{row.SubAmount|number}}</td>
+            </tr>
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td colspan="2">Tổng tiền</td>
+                <td class="qty">{{Invoice.TotalAmount|number}}</td>
+            </tr>
+            <tr ng-show="Invoice.Surcharge>0">
+                <td></td>
+                <td colspan="2">Phụ thu</td>
+                <td class="qty"> {{Invoice.Surcharge|number}}</td>
+            </tr>
+            <tr ng-show="Invoice.Deductible>0">
+                <td></td>
+                <td colspan="2">Giảm trừ</td>
+                <td class="qty">{{Invoice.Deductible|number}}</td>
+            </tr>
+            <tr ng-show="Invoice.Prepaid>0">
+                <td></td>
+                <td colspan="2">Trả trước</td>
+                <td class="qty">{{Invoice.Prepaid|number}}</td>
+            </tr>
+            <tr ng-show="Invoice.Cashed>0">
+                <td></td>
+                <td colspan="2">Đã thanh toán</td>
+                <td class="qty">{{Invoice.Cashed|number}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2">Còn lại</td>
+                <td class="qty">{{(Invoice.TotalAmount-(Invoice.Prepaid+Invoice.Cashed))|number}}</td>
+            </tr>
+        </tfoot>
+    </table>
+    <div id="thanks">Trân trọng cảm ơn!</div>
+    <div id="notices">
+        <div>Ghi chú:</div>
+        <div class="notice">{{Invoice.Notes}}</div>
+    </div>
+    <table border="0" cellspacing="0" cellpadding="0" style="border:none">
+        <thead>
+            <tr>
+                <th class="unit" style="border:none">Kế toán <br /> (Ký tên)</th>
+                <th class="unit" style="border:none">Lễ Tân <br /> (Ký tên)</th>
+                <th class="qty" style="border:none">Khách hàng <br /> (Ký tên)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="center" style="border:none"> </td>
+                <td class="center" style="border:none"><b> @MyFinance.Utils.WorkContext.BizKasaContext.FullName</b></td>
+                <td class="center" style="border:none"></td>
+            </tr>
+
+
+        </tbody>
+
+
+
+    </table>
+
+</div>

@@ -1,0 +1,214 @@
+﻿<div id="CheckoutCompany" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">Thanh toán Phòng - {{Order.RoomName}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="profile-user-info profile-user-info-striped">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Khách hàng </div>
+
+                                <div class="profile-info-value">
+                                    <span class="editable editable-click">{{Order.CustomerName}}</span>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Vào lúc </div>
+
+                                <div class="profile-info-value">
+                                    @*<i class="fa fa-map-marker light-orange bigger-110"></i>*@
+                                    <span class="editable editable-click">{{Order.CheckInTime.Hours}}:{{Order.CheckInTime.Minutes}}</span>
+                                    <span class="editable editable-click">{{Order.CheckInDate|date:"dd/MM/yyyy"}} </span>
+                                </div>
+                            </div>
+
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Trả lúc: </div>
+
+                                <div class="profile-info-value">
+                                    @*<i class="fa fa-map-marker light-orange bigger-110"></i>*@
+                                    <span class="editable editable-click">{{Order.CheckOutDate|date:"HH:mm"}}</span>
+                                    <span class="editable editable-click">{{Order.CheckOutDate|date:"dd/MM/yyyy"}} </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="profile-user-info profile-user-info-striped">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Mã hóa đơn </div>
+
+                                <div class="profile-info-value">
+                                    <span class="editable editable-click" id="username">{{Order.Id}}</span>
+                                </div>
+                            </div>
+
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Loại phòng </div>
+
+                                <div class="profile-info-value">
+                                    <span class="editable editable-click" id="age">{{Order.RoomClassName}}</span>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Giá </div>
+
+                                <div class="profile-info-value">
+                                    <span class="editable editable-click" id="age">{{Order.Price| number}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-small">
+
+
+                        <h4 class="widget-title blue smaller col-sm-9 ">
+                            <i class="ace-icon fa fa-rss orange"></i>
+                            Tiền phòng
+                        </h4>
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <select id="form-field-1" class="form-control" ng-options="row.Value as row.Name  for row in CaculatorModes" ng-model="CaculatorMode" ng-change="ChangCalculatorMode()"></select>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main padding-8">
+                            <div class="profile-user-info profile-user-info-striped">
+                                <div class="profile-info-row" ng-repeat="item in Order.TimeUseds">
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click">{{item.Description}}</span>
+                                    </div>
+                                    <div class="profile-info-name"> {{item.SumAmount| number}} </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-small">
+                        <h4 class="widget-title blue smaller col-sm-10 ">
+                            <i class="ace-icon fa fa-rss orange"></i>
+                            Dịch vụ
+                        </h4>
+
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main padding-8">
+                            <div class="profile-user-info profile-user-info-striped">
+                                <div class="profile-info-row" ng-repeat="item in Order.Services">
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click">{{item.Name}} </span>
+                                        <span class="editable editable-click">{{item.Price}} x {{item.Quantity}}</span>
+                                    </div>
+                                    <div class="profile-info-name"> {{item.Price*item.Quantity| number}} </div>
+                                </div>
+
+                            </div>
+                            <div class="space-4"></div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Thêm dịch vụ</label>
+                                    <div class="col-sm-6">
+                                        <select id="form-field-1" class="form-control" ng-options="row as row.Name + '( '+ row.Price +' )' for row in Widgets" ng-model="OrderService"></select>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>X</label>
+                                        <select id="form-field-1" ng-options="a for a in UnitServices" ng-model="Quantity"></select>
+                                        <a class="icon-plus-add" ng-click="addSeviceToOrder()">
+                                            <i class="ace-icon icon-plus-sign"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Phụ thu</label>
+                                    <div class="col-sm-2">
+                                        <input id="form-field-1" type="text" class="form-control" ng-model="Order.Surcharge" />
+                                    </div>
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Giảm trừ</label>
+                                    <div class="col-sm-2">
+                                        <input id="form-field-1" type="text" class="form-control" ng-model="Order.Deductible" />
+                                    </div>
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Trả trước</label>
+                                    <div class="col-sm-2">
+                                        <input id="form-field-1" type="text" class="form-control" ng-model="Order.Prepay" />
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-small">
+
+                        <h4 class="widget-title blue smaller col-sm-10 ">
+                            <i class="ace-icon fa fa-rss orange"></i>
+                            Thanh toán:
+                        </h4>
+
+                        <h4 class="widget-title blue padding-right-22 col-sm-2 ">
+                           
+                            {{TotalAmount|number}}
+                        </h4>
+
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main padding-8">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Ghi chú</label>
+                                    <div class="col-sm-10">
+                                        <textarea id="form-field-1" class="form-control" ng-model="Order.Notes"></textarea>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="UpdateOrder()">Cập nhật</button>
+                <button type="button" class="btn btn-danger" ng-click="CheckOutOrder()">Trả Phòng</button>
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Hủy</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

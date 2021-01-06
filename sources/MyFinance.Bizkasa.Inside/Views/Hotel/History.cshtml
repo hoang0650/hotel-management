@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "History";
+}
+
+<div class="content" ng-controller="HotelController">
+
+    <!-- Page length options -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Lịch sử hoạt động</h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+            <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+        </div>
+
+        @*<div class="panel-body">
+                It is possible to easily customise the options shown in the length menu using the <code>lengthMenu</code> initialisation option. This parameter can take one of two forms: 1) A <code>1D</code> array of options which will be used for both the displayed option and the value; 2) A <code>2D</code> array in which the first array is used to define the value options and the second array the displayed options. The example below shows a 2D array being used to include a <code>"Show all"</code> records option.
+            </div>*@
+
+        <div class="dataTables_wrapper no-footer" ng-init="GetHistoriesByInside()">
+            <div class="datatable-header">
+                <div class="dataTables_filter">
+                    <div class="datatable-scroll">
+                        <table class="table datatable-show-all dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting">Mã khách sạn</th>
+                                    <th class="sorting">Tên khách sạn</th>
+                                    <th class="sorting">Tài khoản</th>
+                                    <th class="sorting">Hoạt động</th>
+                                    <th class="sorting">Ngày tạo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr role="row" class="odd" ng-repeat="item in Histories">
+                                    <td>{{item.HotelId}}</td>
+                                    <td>{{item.HotelName}}</td>
+                                    <td>{{item.UserName}}</td>
+                                    <td>{{item.Content}}</td>
+                                    <td>{{item.CreatedDateView}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="datatable-footer">
+                        <div class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of {{Filter.Page.total}} entries</div>
+
+                        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                            <paging class="small"
+                                    page="Filter.Page.currentPage"
+                                    page-size="Filter.Page.pageSize"
+                                    total="Filter.Page.total"
+                                    adjacent="{{adjacent}}"
+                                    dots="{{dots}}"
+                                    scroll-top="{{scrollTop}}"
+                                    hide-if-empty="{{hideIfEmpty}}"
+                                    ul-class="{{ulClass}}"
+                                    active-class="{{activeClass}}"
+                                    disabled-class="{{disabledClass}}"
+                                    show-prev-next="{{showPrevNext}}"
+                                    paging-action="HistoriesPaging( page, pageSize, total)">
+                            </paging>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page length options -->
+
+
+        </div>
+        @section Scripts {
+            <script src="~/Scripts/App/Hotel.js"></script>
+            <script src="~/Scripts/App/paging.js"></script>
+
+        }
+

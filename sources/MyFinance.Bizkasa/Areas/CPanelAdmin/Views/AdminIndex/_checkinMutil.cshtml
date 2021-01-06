@@ -1,0 +1,279 @@
+﻿
+<div id="CheckInMutil" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabelCheckInMutil" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="OrderReset()">×</button>
+                <h4 class="modal-title" id="myLargeModalLabelCheckInMutil">Đặt phòng</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-16">
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs" id="myTab">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#roomAvailable" aria-expanded="true">
+                                        Chọn thời gian và phòng
+                                        @*<span class="badge badge-danger">4</span>*@
+                                    </a>
+                                </li>
+                                @*<li class="active">
+                                        <a data-toggle="tab" href="#info" aria-expanded="true">
+
+                                            Thông tin đăng ký
+                                        </a>
+                                    </li>*@
+
+
+
+                                <li>
+                                    <a data-toggle="tab" href="#customer" aria-expanded="true">
+                                        @*<i class="green ace-icon fa fa-home bigger-120"></i>*@
+                                        Khách hàng
+                                    </a>
+                                </li>
+
+
+                            </ul>
+
+                            <div class="tab-content">
+                                @*<div id="info" class="tab-pane fade active in">
+                                        <div class="row">
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Giá </label>
+                                                <div class="col-sm-9">
+                                                    <input type="number" id="form-field-1" ng-model="Order.Price" placeholder="giá phòng" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trả trước </label>
+                                                <div class="col-sm-3">
+                                                    <input type="number" id="form-field-1" ng-model="Order.Prepay" placeholder="" class="form-control">
+                                                </div>
+                                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Khuyến mãi </label>
+                                                <div class="col-sm-3">
+                                                    <input type="number" id="form-field-1" placeholder="" ng-model="Order.Deductible" class="form-control">
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+
+                                    </div>*@
+
+                                <div id="roomAvailable" class="tab-pane fade active in">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Chọn thời gian</label>
+                                        <div class="col-sm-6">
+                                            <div class="input-group">
+                                                <input class="form-control date-picker" id="id-date-mutil" type="text" data-date-format="dd-mm-yyyy">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar bigger-110"></i>
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                        <button type="button" class="btn btn-primary" ng-click="GetRoomAvailable()">Xem</button>
+                                    </div>
+
+                                    <div class="row">
+                                        <table id="simple-table" class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Loại phòng</th>
+                                                    
+                                                    <th>Tổng</th>
+                                                    <th>Trống</th>
+                                                    <th>
+                                                        số lượng phòng
+                                                    </th>
+
+                                                    <th>Giá phòng</th>
+
+                                                </tr>
+                                            </thead>
+
+                                            <tbody ng-repeat="item in RoomAvailables">
+                                                <tr>
+                                                    <td>
+                                                        {{item.Name}}
+                                                    </td>
+                                                    <td>{{item.RoomTotal}}</td>
+                                                    <td>{{item.RoomAvailable-item.Quanlity|number}}</td>
+
+                                                    <td><input type="text" ng-model="item.Quanlity" value="{{item.Quanlity}}" ng-change="EnterRoomClick(item)" format="number" /></td>
+
+
+
+                                                    <td><select id="form-field-1" class="form-control" ng-options="row.Id as row.PriceByDay + '( '+ row.Name +' )'  for row in item.listConfig" ng-model="item.ConfigPriceSelected">
+                                                        <option value="">-- Chọn giá --</option>
+                                                    </select></td>
+
+
+                                                </tr>
+                                                <tr ng-show="item.Quanlity>0 && item.Rooms.length>0">
+                                                    <td colspan="7">
+                                                        <div ng-repeat="r in item.Rooms" class="room-avai">
+                                                            <label class="left" ng-show="r.RoomStatus!=1">
+                                                                <input type="checkbox" class="ace" ng-checked="r.Selected" ng-model="r.Selected" ng-change="SelectedClick(item)">
+                                                                <span class="lbl">  {{r.Name}}  </span>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div id="customer" class="tab-pane fade">
+                                    @*<div class="form-group">
+                                        <div class="large-padded-row">
+                                            <div class="padded-row">
+                                                <div angucomplete-alt id="ex1" placeholder="Search countries" maxlength="50" pause="100" selected-object="selectedCountry" local-data="countries" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" match-class="highlight">
+                                                </div>
+                                            </div>
+                                            <div class="result">
+                                                <div ng-show="selectedCountry">
+                                                    You selected <span class="bold-span">{{selectedCountry.originalObject.name}}</span> which has a country code of <span class="bold-span">{{selectedCountry.originalObject.code}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Tên đoàn</label>
+                                        <div class="col-sm-4">
+                                            @*<div angucomplete-alt id="ex1" placeholder="Search countries" maxlength="50" pause="100" selected-object="selectedCountry" local-data="countries" search-fields="name" title-field="name" minlength="1" input-class="form-control form-control-small" match-class="highlight" ng-model="Order.CompanyName">
+                                            </div>*@
+                                            <div angucomplete-alt id="com" placeholder="Nhập tên đoàn" pause="500" remote-url="/CPanelAdmin/Customer/GetCustomerByName" remote-url-request-formatter="remoteUrlRequestCompanyFn" remote-url-data-field="Data" title-field="Name" description-field="Address" minlength="2" input-class="form-control form-control-small" match-class="highlight" selected-object="CompanySelected" ng-model="Order.CompanyName">
+                                            </div>
+                                            @*<input type="text" id="form-field-1" ng-model="Order.CompanyName" placeholder="Tên công ty/đoàn (nếu có)" class="form-control">*@
+                                        </div>
+                                        <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Địa chỉ</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" id="form-field-1" ng-model="Order.CompanyAdd" placeholder="địa chỉ công ty/đoàn" class="form-control">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Điện thoại</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" id="form-field-1" ng-model="Order.CompanyMobile" placeholder="Điện thoại công ty/đoàn" class="form-control">
+                                        </div>
+                                        <label class="col-sm-2 control-label no-padding-right" for="form-field-15"> Trả trước</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" ng-model="Order.Prepaid" class="form-control" format="number" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @*  <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Ghi chú </label>*@
+                                        <div class="col-sm-12">
+                                            Ghi Chú:
+                                            <textarea id="form-field-1" placeholder="" ng-model="Order.Notes" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+
+                                        <div class="col-sm-12">
+                                            Danh sách khách hàng
+                                            <a @*onclick="javascript:showhide('rowinfo')"*@ data-toggle="modal" href="#addCustomerToOrder">
+
+                                                <i class="icon-plus-add ace-icon icon-plus-sign"></i>
+
+                                            </a>
+                                            <table id="simple-table" class="table table-striped table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>STT</th>
+                                                        <th>KH chính</th>
+                                                        <th>Họ Tên</th>
+                                                        <th>Giới tính</th>
+                                                        <th>CMND/Passport</th>
+
+                                                        <th>
+                                                            Quốc tịch
+                                                        </th>
+                                                        <th class="hidden-480">Điện thoại</th>
+
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody ng-repeat="item in Order.Customers">
+                                                    <tr>
+
+                                                        <td>{{$index+1}}</td>
+                                                        <td>
+                                                            <label>
+                                                                <input name="form-field-radio" type="radio" class="ace" ng-model="CustomerIndexSelected" ng-value="$index">
+                                                                <span class="lbl"> </span>
+                                                            </label>
+                                                        </td>
+                                                       
+                                                        <td>
+                                                            {{item.Name}}
+                                                        </td>
+                                                        <td>
+                                                            {{item.Sex}}
+                                                        </td>
+                                                        <td>{{item.PassportId}}</td>
+
+                                                        <td> {{item.National}} </td>
+                                                        <td>{{item.Mobile}}</td>
+
+                                                        <td>
+                                                            <div class="hidden-sm hidden-xs btn-group">
+                                                                @*<a ng-click="BindtoEditCustomer(item)">
+                                                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                                    </a>*@
+                                                                <a ng-click="BindtoEditCustomer(item, $index)">
+                                                                    <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                                </a>
+                                                                <a ng-click="RemoveItemCustomer($index)">
+                                                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="dropdown2" class="tab-pane fade">
+                                    <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" ng-click="AddOrderMutil()">Cập nhật</button>
+                <button type="button" class="btn btn-default active" data-dismiss="modal" ng-click="OrderReset()">Hủy</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    @{ Html.RenderPartial("_ConfigPriceSelectedByRoomClass");  }
+</div>
+
+
+
+<script type="text/javascript">
+    function showhide(id) {
+        var e = document.getElementById(id);
+        e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+    }
+</script>

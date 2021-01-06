@@ -1,0 +1,40 @@
+/*homepage*/
+.home-page #header{background: none;height:66px;}
+@media (max-width: 768px){
+	.banner .slogan{width: 80%;	}
+}
+@media (max-width: 767px){
+	.banner .slogan{width: 70%;	}
+	.background-img img{max-width: 50%;}
+	.banner .search {
+		bottom: 1em;
+		width: 80%;
+		left: 10%;
+	}
+	.banner .search .form-control {
+		height: 38px;
+		font-size: 14px;
+		padding: 9px 22px 9px;
+	}
+}
+@media (max-width: 568px){
+	.banner .search {
+		bottom: 0.5em;
+	}
+}
+@media (max-width: 480px){
+	.background-img img {
+		max-width: 100%;
+	}
+	.banner .search {
+		bottom: 1.5em;
+		width: 100%;
+		left: 0;
+	}
+	.banner .slogan{width: 80%;}
+}
+@media (max-width: 480px){
+	.banner .search {
+		bottom: 1em;
+	}
+}

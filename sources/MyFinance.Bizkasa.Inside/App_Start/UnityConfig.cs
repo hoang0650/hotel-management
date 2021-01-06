@@ -1,0 +1,91 @@
+using System;
+using Microsoft.Practices.Unity;
+using MyFinance.Data.Infrastructure;
+using MyFinance.Core;
+using System.Web;
+using MyFinance.Proxy;
+using MyFinance.Bizkasa.Service;
+using MyFinance.Bizkasa.Service.Inside;
+
+namespace MyFinance.Bizkasa.Inside.App_Start
+{
+    /// <summary>
+    /// Specifies the Unity configuration for the main container.
+    /// </summary>
+    public class UnityConfig
+    {
+        #region Unity Container
+        private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
+        {
+            var container = new UnityContainer();
+            RegisterTypes(container);
+            return container;
+        });
+
+        /// <summary>
+        /// Gets the configured Unity container.
+        /// </summary>
+        public static IUnityContainer GetConfiguredContainer()
+        {
+            return container.Value;
+        }
+        #endregion
+
+        /// <summary>Registers the type mappings with the Unity container.</summary>
+        /// <param name="container">The unity container to configure.</param>
+        /// <remarks>There is no need to register concrete types such as controllers or API controllers (unless you want to 
+        /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
+        public static void RegisterTypes(IUnityContainer container)
+        {
+            // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
+            // container.LoadConfiguration();
+
+            // TODO: Register your types here
+            // container.RegisterType<IProductRepository, ProductRepository>();
+
+
+            container.RegisterType<IDatabaseFactory, DatabaseFactory>(new HttpContextLifetimeManager<IDatabaseFactory>());
+            container.RegisterType<IUnitOfWork, UnitOfWork>(new HttpContextLifetimeManager<IUnitOfWork>());
+
+            container.RegisterType<BusinessProcess>(new HttpContextLifetimeManager<BusinessProcess>());
+           #region service
+           container.RegisterType<ITikasaService, TikasaService>();
+           container.RegisterType<IInsideService, InsideService>(new HttpContextLifetimeManager<IInsideService>());
+           #endregion
+           #region Proxy
+           container.RegisterType<IUserProxyService, UserProxyService>();
+           container.RegisterType<IRoomProxyServices, RoomProxyServices>();
+           container.RegisterType<IHotelProxyService, HotelProxyService>();
+           container.RegisterType<IOrderProxyService, OrderProxyService>();
+           container.RegisterType<IWidgetProxyService, WidgetProxyService>();
+           container.RegisterType<IFloorProxyService, FloorProxyService>();
+           container.RegisterType<IInvoiceProxyService, InvoiceProxyService>();
+           container.RegisterType<ICustomerProxyService, CustomerProxyService>();
+           container.RegisterType<IReportProxyService, ReportProxyService>();
+           container.RegisterType<IHistoryProxyService, HistoryProxyService>();
+           container.RegisterType<ITokenProxyService, TokenProxyService>();
+           #endregion
+
+         
+        }
+    }
+    public class HttpContextLifetimeManager<T> : LifetimeManager, IDisposable
+    {
+        public override object GetValue()
+        {
+            return HttpContext.Current.Items[typeof(T).AssemblyQualifiedName];
+        }
+        public override void RemoveValue()
+        {
+            HttpContext.Current.Items.Remove(typeof(T).AssemblyQualifiedName);
+        }
+        public override void SetValue(object newValue)
+        {
+            HttpContext.Current.Items[typeof(T).AssemblyQualifiedName] = newValue;
+        }
+        public void Dispose()
+        {
+            RemoveValue();
+        }
+    }
+}

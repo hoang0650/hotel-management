@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập vào hệ thống";
+    Layout = "~/Areas/CPanelAdmin/Views/Shared/_LayoutLogOn.cshtml";
+}
+
+<div class="main-container">
+    <div class="main-content">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="login-container">
+                    @*<div class="center">
+                        <img src="~/Content/V2/images/logo.png" />
+                    </div>*@
+
+                    <div class="space-6"></div>
+                    <div class="position-relative">
+                        <div id="login-box" class="login-box visible widget-box no-border">
+                            <div class="widget-body">
+                                <div class="widget-main" style="padding-bottom: 0px;">
+                                    <h4 class="header blue lighter bigger">
+                                        <i class="ace-icon fa fa-windows blue"></i>
+                                        Thông tin đăng nhập hệ thống
+                                    </h4>
+
+                                    <div class="space-6"></div>
+
+                                    <fieldset ng-app="appModule" ng-controller="UserController" id="user">
+                                        <label class="block clearfix">
+                                            <span class="block input-icon input-icon-right">
+                                                <input name="user" type="text" maxlength="50" placeholder="Username" class="form-control" ng-model="User.UserName" />
+                                                <i class="ace-icon fa fa-user"></i>
+                                            </span>
+                                        </label>
+
+                                        <label class="block clearfix">
+                                            <span class="block input-icon input-icon-right">
+                                                <input name="pass" type="password" maxlength="50" placeholder="Password" class="form-control" ng-model="User.Password" ng-enter="Login()" />
+                                                <i class="ace-icon fa fa-lock"></i>
+                                            </span>
+                                        </label>
+
+                                        <div class="space"></div>
+
+                                        <div class="clearfix center">                                           
+
+                                            <button type="submit" class="width-35 btn btn-sm btn-primary" ng-click="Login()">
+                                                <i class="ace-icon fa fa-key"></i>
+                                                <span class="bigger-110">Đăng nhập</span>
+                                            </button>
+                                        </div>
+
+                                        <div class="space-4"></div>
+
+                                    </fieldset>
+                                    <div class="space"></div>
+                                </div><!-- /.widget-main -->
+
+                                @*<div class="toolbar clearfix">
+                                    <div>
+                                        <a href="#" data-target="#forgot-box" class="forgot-password-link">
+                                            <i class="ace-icon fa fa-arrow-left"></i>
+                                            Quên mật khẩu..
+                                        </a>
+                                        
+                                    </div>
+                                    <div>
+                                        <a href="https://bizkasa.com" target="_blank" class="forgot-password-link">
+                                            Đăng ký
+                                            <i class="ace-icon fa fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+
+                                </div>*@
+                            </div><!-- /.widget-body -->
+                        </div><!-- /.login-box -->
+
+                        <div id="forgot-box" class="forgot-box widget-box no-border">
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <h4 class="header red lighter bigger">
+                                        <i class="ace-icon fa fa-key"></i>
+                                        Lấy lại mật khẩu
+                                    </h4>
+
+                                    <div class="space-6"></div>
+                                    <p>
+                                        Nhập email đã đăng ký trong hệ thống
+                                    </p>
+
+                                    <form>
+                                        <fieldset>
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input type="email" class="form-control" placeholder="Email" />
+                                                    <i class="ace-icon fa fa-envelope"></i>
+                                                </span>
+                                            </label>
+
+                                            <div class="clearfix">
+                                                <button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+                                                    <i class="ace-icon fa fa-lightbulb-o"></i>
+                                                    <span class="bigger-110">Gửi</span>
+                                                </button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div><!-- /.widget-main -->
+
+                                <div class="toolbar center">
+                                    <a href="#" data-target="#login-box" class="back-to-login-link">
+                                        Quay lại đăng nhập
+                                        <i class="ace-icon fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div><!-- /.widget-body -->
+                        </div><!-- /.forgot-box -->
+
+
+                    </div>
+                    <!-- /.position-relative -->
+
+                </div>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.main-content -->
+</div>
+
+
+
+

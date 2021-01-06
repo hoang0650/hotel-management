@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Cập nhật thông tin tài khoản";
+}
+
+<div class="modal-body form-horizontal " ng-app="appModule" ng-controller="UserController">
+    <div class="">
+        <div class="row" ng-init="GetUserForEditCurentAccount()">
+            <div class="col-xs-12 ">
+                <div class="form-group">
+                    <label for="txtgiaphong1" class="col-sm-3 control-label">
+                        Tên đăng nhập/email:
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="text" class=" col-xs-10 input-sm" placeholder="Tên tài khoản" ng-model="User.Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtgiaphong1" class="col-sm-3 control-label">
+                        Mật khẩu:
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="password" id="txtgiaphong1" class=" col-xs-10 input-sm" placeholder="nhập mật khẩu" ng-model="User.Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtgiaphong1" class="col-sm-3 control-label">
+                        Nhập lại mật khẩu:
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="password" id="txtgiaphong1" class=" col-xs-10 input-sm" placeholder="nhập lại mật khẩu" ng-model="User.RePassword">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtgiaphong1" class="col-sm-3 control-label">
+                        Họ và tên:
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="text" class=" col-xs-10 input-sm" placeholder="họ và tên" ng-model="User.FullName">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="txnote" class="col-sm-3 control-label">
+                        Ghi chú
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="txnote" class="col-xs-10 input-xs" placeholder="ghi chú" ng-model="User.Note">
+                    </div>
+                </div>
+
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+
+                        <button type="button" class="btn btn-primary" ng-click="AddUser()">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Cập nhật
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+@section Scripts {
+
+
+    <script src="~/Areas/CPanelAdmin/Script/User/User.js"></script>
+}
+
+

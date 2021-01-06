@@ -1,0 +1,97 @@
+﻿
+<div id="Adduser" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">Thêm mới tài khoản</h4>
+            </div>
+            <div class="modal-body form-horizontal ">
+                <div class="">
+                    <div class="row">
+                        <div class="col-xs-12 ">
+                            <div class="form-group">
+                                <label for="txtgiaphong1" class="col-sm-3 control-label">
+                                    Tên đăng nhập/email:
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" class=" col-xs-10 input-sm" placeholder="Tên tài khoản" ng-model="User.Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtgiaphong1" class="col-sm-3 control-label">
+                                    Mật khẩu:
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="password" id="txtgiaphong1" class=" col-xs-10 input-sm" placeholder="nhập mật khẩu" ng-model="User.Password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtgiaphong1" class="col-sm-3 control-label">
+                                    Nhập lại mật khẩu:
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="password" id="txtgiaphong1" class=" col-xs-10 input-sm" placeholder="nhập lại mật khẩu" ng-model="User.RePassword">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtgiaphong1" class="col-sm-3 control-label">
+                                    Họ và tên:
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" class=" col-xs-10 input-sm" placeholder="họ và tên" ng-model="User.FullName">
+                                </div>
+                            </div>
+
+                            @*<div class="form-group">
+                                    <label for="txgiuong" class="col-sm-3 control-label">
+                                        Nhóm quyền:
+                                    </label>
+                                    <div class="col-sm-4">
+                                        <select ng-model="Widget.GroupId" ng-options="row.Id as row.Name for row in GroupWidgets"></select>
+                                        <a> <span class="glyphicon glyphicon-plus-sign" ng-click="popGroupWidget()"></span></a>
+                                    </div>
+                                </div>*@
+
+
+
+                            <div class="form-group">
+                                <label for="txnote" class="col-sm-3 control-label">
+
+                                </label>
+                                <div class="col-sm-6">
+                                    <label>
+                                        <input type="checkbox" class="ace " ng-model="User.IsOwner" ng-checked="User.IsOwner"><span class="lbl"> Quản lý </span>
+                                    </label>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txnote" class="col-sm-3 control-label">
+                                    Ghi chú
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="txnote" class="col-xs-10 input-xs" placeholder="ghi chú" ng-model="User.Note">
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" ng-click="AddUser()">Cập nhập</button>
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Hủy</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

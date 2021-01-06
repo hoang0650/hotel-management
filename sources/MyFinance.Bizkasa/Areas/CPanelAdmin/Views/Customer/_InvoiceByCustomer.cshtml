@@ -1,0 +1,73 @@
+﻿<div id="InvoiceByCustomer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabeladdCustomerToOrder" aria-hidden="true">
+    <style type="text/css">
+        #ui-datepicker-div {
+            z-index: 9999 !important;
+        }
+    </style>
+
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title" id="myLargeModalLabeladdCustomerToOrder">
+                   Danh sách hóa đơn của khách hàng :{{CustomerSelected.Name}}
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="dataTables_wrapper" role="grid">
+                    <table class="table table-hover dataTable" id="list">
+                        <thead>
+                            <tr role="row">
+                                <th>Stt</th>
+                                <th>Mã phiếu</th>
+                                <th>Tên khách hàng</th>
+                                <th>Phòng</th>
+                                <th>Loại phòng</th>
+                                <th>Ngày tạo</th>
+                                <th>Tổng tiền</th>
+                                <th>Tình trạng</th>
+                               
+                            </tr>
+                        </thead>
+
+                        <tbody style="border-bottom: none;">
+                            <tr ng-repeat="item in Invoices" ng-click="ViewInvoiceDetail(item.Id)">
+                                <td>{{$index+1}}</td>
+                                <td>{{item.Id}}</td>
+                                <td class="hidden-480">
+                                    <label class="no-padding-left" ng-show="item.CustomerName.length>0">
+                                        {{item.CustomerName}}
+                                    </label>
+                                    <label class="no-padding-left" ng-show="item.CompanyName.length>0">
+                                        {{item.CompanyName}}
+                                    </label>
+                                </td>
+                                <td class="hidden-480">
+                                    <label class="no-padding-left">
+                                        {{item.RoomName}}
+                                    </label>
+                                </td>
+                                <td class="hidden-480">
+                                    <label class="no-padding-left">
+                                        {{item.RoomClassName}}
+                                    </label>
+                                </td>
+
+                                <td>{{item.CreatedDateView}}</td>
+                                <td class="text-right">{{item.TotalAmount|number}}</td>
+                                <td>{{item.InvoiceStatus==7?'Đã thanh toán':'Chưa thanh toán'}}</td>
+                                
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+           
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

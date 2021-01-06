@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Quản lý tầng / Lầu";
+}
+
+
+
+<div class="main-content" ng-app="appModule" ng-controller="FloorController">
+   
+       
+
+
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="~/CPanelAdmin/AdminIndex">Trang chủ</a>
+            </li>
+
+            <li>
+                Danh sách tầng/lầu
+            </li>
+
+        </ul><!-- /.breadcrumb -->
+        <div class="toolbar">
+            <a class="btn btn-primary" href="" ng-click="ShowPopup()">
+                <i class="icon-plus"></i>
+                <span class="hidden-320">Thêm mới tầng/lầu</span>
+            </a>
+            <a class="btn btn-primary" href="#" ng-click="ShowPopupInsertRoom()">
+                <i class="icon-plus"></i>
+                <span class="hidden-320">Thêm mới phòng</span>
+            </a>
+            <a class="btn btn-danger" ng-really-message="Bạn có chắc chắn muốn xóa  ?" ng-really-click="reallyDelete()">
+                <i class="menu-icon fa fa-bolt"></i>
+                <span class="hidden-320">Xóa nhiều</span>
+            </a>
+
+        </div>
+    </div>
+            <div class="page-content">
+                <div class="page-content-container">
+                    <div class="row">
+                        <div class="col-xs-12">
+
+
+                            <div class="dataTables_wrapper" role="grid" ng-init="GetListFloor()">
+                                <table class="table table-hover dataTable ng-scope ng-table" ng-table="tableParams" id="list">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="width-27px border hidden-480"></th>
+                                            <th class="border">Tên tầng</th>
+                                            <th class="center border hidden-480">Số phòng</th>                                           
+                                            <th></th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody style="border-bottom: none;">
+                                       
+
+                                        <tr style="cursor: pointer;" class="oddrow" ng-repeat="row in FloorList">
+                                            <td class="hidden-480">
+                                                <label class="no-padding-left">
+                                                    <input type="checkbox" class="ace ng-pristine" ng-model="row.IsSelected" ng-click="WidgetSelected(row)" ng-checked="row.IsSelected"><span class="lbl"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+
+                                                {{row.Name}}
+                                            </td>
+
+                                            <td class="text-right">{{row.NumRooms|number}}</td>
+                                           
+                                            <td class="center width-7">
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs">
+
+                                                    <a ng-click="GetFloorBy(row.Id)">
+                                                        <i class="ace-icon fa fa-pencil bigger-120" title="Sửa"></i>
+                                                    </a>
+                                                    <a ng-really-message="Bạn có chắc chắn muốn xóa  ?" ng-really-click="reallyDelete(item)" item="row">
+                                                        <i class="ace-icon fa fa-trash-o bigger-120" title="Xóa dịch vụ"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- ngIf: p.productItems.length > 1 -->
+                                    </tbody><!-- end ngRepeat: p in params.data -->
+                                </table>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                @*<div class="footer">
+                        <div class="pull-left">
+                            <span>Tổng số sản phẩm: </span><span class="total-highlight ng-binding"></span>
+
+                        </div>
+
+                    </div>*@
+            </div>
+
+        
+
+    @{ Html.RenderPartial("_InsertOrUpdateFloor");  }
+    @{ Html.RenderPartial("_InsertRoom");  }
+
+</div>
+@section Scripts {
+    <script src="~/Areas/CPanelAdmin/Script/Floor/Floor.js"></script>
+}
+

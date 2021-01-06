@@ -1,0 +1,70 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+
+    <meta name="description" content="Dashboard" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="~/Content/assets/img/favicon.png" type="image/x-icon">
+
+
+    <!--Basic Styles-->
+    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/weather-icons.min.css" rel="stylesheet" />
+
+    <!--Fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <!--Beyond styles-->
+    <link href="~/Content/assets/css/beyond.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/demo.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/typicons.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/animate.min.css" rel="stylesheet" />
+    <link href="/Content/assets/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/assets/my-Stylecss.css" rel="stylesheet" />
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    <script src="~/Content/assets/js/skins.min.js"></script>
+    <style>
+    </style>
+
+</head>
+<body>
+    @RenderBody()
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Content/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!--Beyond Scripts-->
+    <script src="~/Content/assets/js/beyond.js"></script>
+
+
+    <!--Page Related Scripts-->
+    <!--Sparkline Charts Needed Scripts-->
+    <script src="~/Content/assets/js/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="~/Content/assets/js/charts/sparkline/sparkline-init.js"></script>
+
+    <!--Easy Pie Charts Needed Scripts-->
+    <script src="~/Content/assets/js/charts/easypiechart/jquery.easypiechart.js"></script>
+    <script src="~/Content/assets/js/charts/easypiechart/easypiechart-init.js"></script>
+
+    <!--Flot Charts Needed Scripts-->
+    <script src="~/Content/assets/js/charts/flot/jquery.flot.js"></script>
+    <script src="~/Content/assets/js/charts/flot/jquery.flot.resize.js"></script>
+    <script src="~/Content/assets/js/charts/flot/jquery.flot.pie.js"></script>
+    <script src="~/Content/assets/js/charts/flot/jquery.flot.tooltip.js"></script>
+    <script src="~/Content/assets/js/charts/flot/jquery.flot.orderBars.js"></script>
+    <script src="~/Content/assets/js/your_js.js"></script>
+    <script src="~/Scripts/app/utilities/bootstrapAlerts.js"></script>
+    <script src="/Content/assets/js/toastr/toastr.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

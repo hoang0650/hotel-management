@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "tikasa.net - tìm nhà nghỉ, khách sạn nhanh nhất";
+    ViewBag.Description = "nhà nghỉ";
+    ViewBag.Keywords = "nhà nghỉ";
+    ViewBag.Address = "nhà nghỉ";
+}
+
+
+
+<div id="content-body" class="home-body">
+    <div id="namePage" data-namepage="Home"></div>
+    <div class="banner" id="banner">
+        <div class="background-banner background-img banner-zoom">
+            <div class="background-banner-line"></div>
+            <div class="background-banner-rgba"></div>
+        </div>
+        <div class="slogan">
+            @*<div class="img-slogan background-img">
+                <img src="~/Content/images/tikasalogo.png" style="width:400px;" alt="" />
+            </div>*@
+            <div class="search">
+                <div class="search-wrap">
+                    <div class="search-content">
+                        @using (Html.BeginForm("Result", "Home", FormMethod.Get, new { @class = "form-horizontal", @id = "form-Search" }))
+                        {
+                            <div class="txtlocation">
+                                @Html.TextBox("keyword", null, new { @class = "form-control", @placeholder = "Tên nhà nghỉ, khách sạn hoặc khu vực cần tìm..." })
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>

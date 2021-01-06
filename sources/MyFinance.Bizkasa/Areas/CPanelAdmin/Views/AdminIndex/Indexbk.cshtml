@@ -1,0 +1,467 @@
+﻿@{
+    ViewBag.Title = "Hệ thống quản lý khách sạn - Trang chủ";
+    Layout = "~/Areas/CPanelAdmin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main-content"  ng-controller="RoomController" ng-cloak>
+   
+    <div  style="position:fixed;top:150px;margin:auto;z-index:99;right:0px">
+        <div class="btn btn-app btn-xs btn-warning" id="viewCamera">
+            <i class="ace-icon fa fa-angle-double-left bigger-130"></i>
+        </div>
+        <div class="camView">
+            @{ Html.RenderAction("ViewCamera", "Hotel", null);}
+        </div>
+       
+    </div>
+    <div class="ace-settings-container" id="ace-settings-container">
+                <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                    <i class="ace-icon fa fa-cog bigger-130"></i>
+                </div>
+
+                <div class="ace-settings-box clearfix" id="ace-settings-box">
+                    <div class="pull-left">
+                        <div class="ace-settings-item">
+                            <div class="pull-left col-xs-3">
+                                <label>Xem theo: </label>
+                                <select class="" ng-change="ModeOrderRoom()" ng-model="ModeOrder">
+                                    <option value="ByShort">Rút gọn</option>
+                                    <option value="ByFloor">Tầng</option>
+                                    <option value="ByRoomClass">Loại phòng</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+
+                       
+                    </div><!-- /.pull-left -->
+
+                    <!-- /.pull-left -->
+                </div><!-- /.ace-settings-box -->
+            </div>
+    <div class="row">
+        <div class="col-sm-7 form-group" ng-init="HotelConfig()">
+            <div class=" col-sm-2" ng-repeat="row in RoomStatus" @*ng-click="GetRoomsByStatus(row.Key)"*@>
+                <span class="label" ng-style="{'background-color':row.Color}">{{row.Num}} - {{row.Value}}</span>
+
+
+            </div>
+        </div>
+
+
+
+
+            
+            <!-- List room -->
+            <div class="about-author col-xs-12" ng-init="ModeOrderRoom()">
+               
+                    <div class="col-xs-12" ng-repeat="fl in Floors"  ng-show="ModeOrder!='ByShort'">
+                     
+                            <div class="col-xs-12">
+                                <h4 class="dashboard-title">
+                                    <i class="fa fa-signal"></i>&nbsp;{{fl.Name}}
+                                </h4>
+                            </div>
+                           
+                                <div ng-repeat="r in fl.Rooms" class="col-xs-1  room-menu-context" ng-class="Order.RoomId==r.Id?'selected':''">
+                                    <div data-toggle="dropdown" class="col-xs-12 report-box infobox-dark infobox-blue2" ng-style="{'background-color':r.ColorStatus}">
+
+                                        <div class="infobox-data">
+                                            @*<span ng-show="r.OrderRoom!=null" class="center" ng-class="r.OrderRoom.CompanyName!=undefined?'center company':'center '"> {{r.OrderRoom.CompanyName!=undefined?r.OrderRoom.CompanyName:r.OrderRoom.CustomerName}}</span>*@
+                                            <span ng-show="r.RoomStatus==1" class="">{{r.OrderRoom.TimeSpend}} </span>
+                                        </div>
+                                        <div class="infobox-title center">
+                                            <span class="infobox-data-number center"> {{r.Name}}</span>
+
+                                        </div>
+                                        <div ng-cloak>
+                                            <span ng-show="r.RoomStatus==5">Đang bảo trì...</span>
+                                            <span ng-show="r.RoomStatus==2">Đang trống</span>
+                                            <span ng-show="r.RoomStatus==3">Đang dọn dẹp...</span>
+                                            <span ng-show="r.RoomStatus==1" class="text-right"> {{r.OrderRoom.CaculatorModeView}}</span>
+
+                                        </div>
+                                       
+                                    </div>
+                                    <ul class="dropdown-menu dropdown-warning">
+                                        <li ng-show="r.RoomStatus!=1 && r.RoomStatus!=3">
+                                            <a href="#" ng-click="CheckinNow(r,true,'ByHour')">
+                                                <i class="ace-icon fa fa-user-plus"></i>
+                                                Nhận phòng theo giờ
+                                            </a>
+                                        </li>
+                                      
+                                        <li ng-show="r.RoomStatus!=1 && r.RoomStatus!=3">
+                                            <a href="#" ng-click="CheckinNow(r,true,'ByNight')">
+                                                <i class="ace-icon fa fa-user-plus"></i>
+                                                Nhận phòng qua đêm
+                                            </a>
+                                        </li>
+                                        <li ng-show="r.RoomStatus!=1 && r.RoomStatus!=3">
+                                            <a href="#" ng-click="showCheckin(r,true)">
+                                                <i class="ace-icon fa fa-user-plus"></i>
+                                                Nhận phòng
+                                            </a>
+                                        </li>
+                                        <li ng-show="r.RoomStatus==1">
+                                            <a href="#" ng-click="Checkout(r.OrderRoom)">
+                                                <i class="ace-icon fa fa-money"></i>
+                                                Trả phòng/ Cập nhật HĐ
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li ng-show="r.RoomStatus==1">
+                                            <a href="#" ng-click="ShowPopupchangeRoom(r.OrderRoom.OrderId)">
+                                                <i class="ace-icon fa fa-exchange"></i>
+                                                Chuyển phòng
+                                            </a>
+                                        </li>
+
+                                        @*<li>
+                                            <a href="#" ng-click="showPopupBooking(r)">
+
+                                                <i class="ace-icon fa fa-street-view"></i>
+                                                Đặt phòng trước
+                                            </a>
+                                        </li>*@
+                                        <li ng-show="r.RoomStatus==3">
+                                            <a href="#" ng-click="ChangeStatusRoom(r.Id,'InActive')">
+                                                <i class="ace-icon fa fa-check"></i>
+                                                Đã dọn dẹp
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" ng-click="GetRoomForEdit(r.Id)">
+                                                <i class="ace-icon fa fa-pencil-square-o"></i>
+                                                Chỉnh sửa
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" ng-hide="r.RoomStatus==1" ng-really-message="Bạn có chắc chắn muốn xóa  ?" ng-really-click="reallyDelete(r.Id)">
+                                                <i class="ace-icon fa fa-times-circle"></i>
+                                                Xóa phòng
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                    </div>
+               
+                <div class="col-xs-12" ng-show="ModeOrder=='ByShort'">
+                    <div ng-repeat="r in Rooms" class="col-xs-1 room-menu-context" ng-class="Order.RoomId==r.Id?'selected':''">
+                        <div data-toggle="dropdown" class="col-xs-12 report-box infobox-dark infobox-blue2" ng-style="{'background-color':r.ColorStatus}">
+
+                            <div class="infobox-data">
+                                @*<span ng-show="r.OrderRoom!=null" class="center" ng-class="r.OrderRoom.CompanyName!=undefined?'center company':'center '"> {{r.OrderRoom.CompanyName!=undefined?r.OrderRoom.CompanyName:r.OrderRoom.CustomerName}}({{r.OrderRoom.CustomerNum}})</span>*@
+                                <span ng-show="r.RoomStatus==1" class="">{{r.OrderRoom.TimeSpend}}</span>
+                            </div>
+                            <div class="infobox-title center">
+                                <span class="infobox-data-number center"> {{r.Name}}</span>
+
+                            </div>
+                            <div ng-cloak>
+                                <span ng-show="r.RoomStatus==5">Đang bảo trì...</span>
+                                <span ng-show="r.RoomStatus==2">Đang trống</span>
+                                <span ng-show="r.RoomStatus==3">Đang dọn dẹp...</span>
+                                <span ng-show="r.RoomStatus==1" class="text-right"> {{r.OrderRoom.CaculatorModeView}}</span>
+
+                            </div>
+
+                        </div>
+                        <ul class="dropdown-menu dropdown-warning">
+                            <li ng-show="r.RoomStatus!=1 && r.RoomStatus!=3">
+                                <a href="#" ng-click="showCheckin(r,true)">
+                                    <i class="ace-icon fa fa-user-plus"></i>
+                                    Nhận phòng
+                                </a>
+                            </li>
+                            <li ng-show="r.RoomStatus==1">
+                                <a href="#" ng-click="Checkout(r.OrderRoom)">
+                                    <i class="ace-icon fa fa-money"></i>
+                                    Trả phòng/ Cập nhật HĐ
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li ng-show="r.RoomStatus==1">
+                                <a href="#" ng-click="ShowPopupchangeRoom(r.OrderRoom.OrderId)">
+                                    <i class="ace-icon fa fa-exchange"></i>
+                                    Chuyển phòng
+                                </a>
+                            </li>
+
+                            @*<li>
+                        <a href="#" ng-click="showPopupBooking(r)">
+
+                            <i class="ace-icon fa fa-street-view"></i>
+                            Đặt phòng trước
+                        </a>
+                    </li>*@
+                            <li ng-show="r.RoomStatus==3">
+                                <a href="#" ng-click="ChangeStatusRoom(r.Id,'InActive')">
+                                    <i class="ace-icon fa fa-check"></i>
+                                    Đã dọn dẹp
+                                </a>
+                            </li>
+                            @if (MyFinance.Utils.WorkContext.BizKasaContext.UserType == (int)MyFinance.Domain.Enum.UserType.Admin)
+                            {
+                                <li>
+                                    <a href="#" ng-click="GetRoomForEdit(r.Id)">
+                                        <i class="ace-icon fa fa-pencil-square-o"></i>
+                                        Chỉnh sửa
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" ng-hide="r.RoomStatus==1" ng-really-message="Bạn có chắc chắn muốn xóa  ?" ng-really-click="reallyDelete(r.Id)">
+                                        <i class="ace-icon fa fa-times-circle"></i>
+                                        Xóa phòng
+                                    </a>
+                                </li>
+                            }
+                            
+                        </ul>
+                    </div>
+
+                </div>
+                
+
+            </div>
+            <!-- List room end -->
+            <div class="col-xs-12">
+                <h4>Danh sách khách đang ở</h4>
+            </div>
+            <div class="col-xs-12">
+                <div class="dataTables_wrapper" role="grid" ng-init="GetListCustomerCheckIn()">
+                    <table class="table table-hover dataTable">
+                        <thead>
+                            <tr role="row">
+                                <th>STT</th>
+                                <th>Tên khách hàng</th>
+                                <th>Ngày sinh</th>
+                                <th>CMT</th>
+                                <th>Phòng</th>
+                                <th>Loại phòng</th>
+                                <th>Ngày tạo</th>
+                                <th>Tình trạng</th>
+                              
+                            </tr>
+                        </thead>
+
+                        <tbody style="border-bottom: none;">
+                            <tr ng-repeat="item in CustomerCheckIns">
+                                <td>{{$index+1}}</td>
+                                <td>{{item.Name}}</td>
+                                <td>{{item.BirthDateView}}</td>
+                                <td class="hidden-480">
+                                    {{item.PassportId}}
+                                </td>
+                                <td class="hidden-480">
+                                    <label class="no-padding-left">
+                                        {{item.RoomName}}
+                                    </label>
+                                </td>
+                                <td class="hidưden-480">
+                                    <label class="no-padding-left">
+                                        {{item.RoomClassName}}
+                                    </label>
+                                </td>
+
+                                <td>{{item.CheckInDateView}}</td>
+                                <td><span class="label label-warning">Khách đang ở</span> </td>
+
+                            </tr>
+                            
+
+
+                        </tbody>
+                      
+                    </table>
+
+                </div>
+                <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+
+          
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <div class="pull-left">
+                            <span>Tìm thấy  <span class="total-highlight">{{FilterCutomer.Page.total}}</span> khách hàng </span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <paging class="small pull-right"
+                                page="FilterCutomer.Page.currentPage"
+                                page-size="FilterCutomer.Page.pageSize"
+                                total="FilterCutomer.Page.total"
+                                show-prev-next="true"
+                                show-first-last="false"
+                                paging-action="PagingInvoicesAct( page, pageSize, total)">
+                        </paging>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <h4>Danh sách phiếu thu trong ngày</h4>
+               
+            </div>
+            <div class="col-xs-12">
+                <div class="dataTables_wrapper" role="grid" ng-init="GetInvoices(1)">
+                    <table class="table table-hover dataTable" id="list">
+                        <thead>
+                            <tr role="row">
+                                <th>STT</th>
+                                <th>Tên khách hàng</th>
+                                <th>CMT</th>
+                                <th>Phòng</th>
+                                <th>Loại phòng</th>
+                                <th>Ngày tạo</th>
+                                <th>Tình trạng</th>
+                                <th>Khuyến mãi</th>
+                                <th>Tổng tiền</th>
+
+                                @*<th></th>*@
+                            </tr>
+                        </thead>
+
+                        <tbody style="border-bottom: none;">
+                            
+                            <tr ng-repeat="item in Invoices" ng-click="ViewInvoiceDetail(item.Id)">
+                                <td>{{((Filter.Page.currentPage-1) * Filter.Page.pageSize) +($index+1)}}</td>
+                                <td>{{item.CustomerName}}</td>
+                                <td class="hidden-480">
+                                    <label class="no-padding-left" ng-show="item.CustomerName.length>0">
+                                        {{item.PassportId}}
+                                    </label>
+                                    <label class="no-padding-left" ng-show="item.CompanyName.length>0">
+                                        {{item.CompanyName}}
+                                    </label>
+                                </td>
+                                <td class="hidden-480">
+                                    <label class="no-padding-left">
+                                        {{item.RoomName}}
+                                    </label>
+                                </td>
+                                <td class="hidưden-480">
+                                    <label class="no-padding-left">
+                                        {{item.RoomClassName}}
+                                    </label>
+                                </td>
+
+                                <td>{{item.CreatedDateView}}</td>
+                                <td><span class="" ng-class="item.InvoiceStatus == 2?'label label-warning': item.InvoiceStatus == 1?'label label-danger':'label label-success '">{{ item.InvoiceStatus == 2?'Công nợ': item.InvoiceStatus == 1?'Chưa thanh toán':'Đã thanh toán'}}</span> </td>
+                              
+                                <td class="text-right">{{item.Deductible|number}}</td>
+                                <td class="text-right">{{item.Cashed>0?(item.Cashed+item.Prepaid):item.Prepaid|number}}</td>
+
+                            </tr>
+
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+
+                                <td colspan="7" class="text-right"><b>Tổng tiền</b> </td>
+                                <td class="qty text-right "><b>{{SumAmount.Debit|number}}</b></td>
+                                <td class="qty text-right "><b>{{SumAmount.Paid|number}}</b></td>
+
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+                <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+
+             
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <div class="pull-left">
+                            <span>Tìm thấy  <span class="total-highlight">{{Filter.Page.total}}</span> hóa đơn </span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <paging class="small pull-right"
+                                page="Filter.Page.currentPage"
+                                page-size="Filter.Page.pageSize"
+                                total="Filter.Page.total"
+                                show-prev-next="true"
+                                show-first-last="false"
+                                paging-action="PagingInvoicesAct( page, pageSize, total)">
+                        </paging>
+                    </div>
+                </div>
+            </div>
+            @{ Html.RenderPartial("_checkinSingle");  }
+            @{ Html.RenderPartial("_checkOut");  }
+            @{ Html.RenderPartial("_ViewInvoiceDetail");  }
+                    
+            @*@{ Html.RenderPartial("_checkinMutil");  }
+            @{ Html.RenderPartial("_ListCompanycheckin");  }
+            @{ Html.RenderPartial("_PanelTime");  }
+            @{ Html.RenderPartial("_StaticRooms");  }
+            @{ Html.RenderPartial("_OrderBookingList");  }*@
+            @{ Html.RenderPartial("_RoomAvailable");  }
+            @if (MyFinance.Utils.WorkContext.BizKasaContext != null)
+            {
+                Html.RenderPartial("_PrintOrder");
+            }
+
+            @{ Html.RenderPartial("_EditRoom");  }
+
+            @*@{ Html.RenderPartial("_AddCustomerToOrder");  }
+            @{ Html.RenderPartial("_AddServiceToOrder");  }
+            @{ Html.RenderPartial("_AddMoreRoomBooking");  }*@
+           
+            
+        </div>
+       
+      
+       
+    </div>
+    
+
+
+</div>
+
+
+
+@section Scripts {
+    <script src="~/Areas/CPanelAdmin/Script/Room/Room.js"></script>
+<script src="~/Areas/CPanelAdmin/Script/Paging/paging.js"></script>
+    @Styles.Render("~/Areas/CPanelAdmin/Content/adminIndexcss")
+    <script type="text/javascript">
+        jQuery(function ($) {
+            var config = {
+                '.chosen-select': {},
+                '.chosen-select-deselect': { allow_single_deselect: true },
+                '.chosen-select-no-single': { disable_search_threshold: 10 },
+                '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+                '.chosen-select-width': { width: "95%" }
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+
+            }
+
+
+            $("#viewCamera").click(function () {
+                if ($('.camView').is(':visible')) {
+                    $(".camView").hide();
+                    $(this).find("i").first().addClass("fa-angle-double-left");
+                    $(this).find("i").first().removeClass('fa-angle-double-right');
+                }
+                else {
+                    $(this).find("i").first().addClass("fa-angle-double-right");
+                    $(this).find("i").first().removeClass('fa-angle-double-left');
+                    $(".camView").show();
+                }
+              
+            });
+        });
+
+    </script>
+}
+
+

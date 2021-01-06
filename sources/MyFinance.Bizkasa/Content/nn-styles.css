@@ -1,0 +1,129 @@
+﻿.htthanhtoan strong{
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size:12px;
+}
+.hinhthucmuave p{
+    color: #0b1e6f;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 24px;
+     margin-right: 10px;
+     margin-bottom:16px;
+}
+.hinhthucmuave strong{
+    color: #333;
+    font-size: 12px;
+    line-height: 18px;
+}
+.nn-phone p{
+    display: block;
+    float: left;
+     color: #011059;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 5px 10px 8px 0;
+}
+.col-quyenloi li a {
+    background: url("/Images/tickv2.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+    color: #055199;
+    font-size: 14px;
+    padding-left: 28px;
+    
+}
+.session-time {
+    background: none repeat scroll 0 0 rgb(255, 234, 207);
+    border: 1px solid brown;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding: 10px 15px 5px;
+}
+.session-time p {
+    margin-bottom: 5px;
+}
+.td_title {
+    color: #474450;
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    width: 100%;
+}
+.col-fqe li a {
+    background: url("/Images/arrow.png") no-repeat scroll left center rgba(0, 0, 0, 0) !important;
+    padding-left: 13px !important;
+}
+.col-quyenloi li{
+    margin-bottom:17px;
+    line-height: 1.6666;
+}
+.col-info p{
+    margin:0;
+}
+.nn-online li
+{
+    margin-bottom:15px !important;
+}
+.detais{
+    padding: 40px 0 20px !important;
+}
+#main {
+    margin-bottom: 40px;
+}
+.el-bill {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    padding: 2em;
+}
+.elines-home .search-box-wrapper.style1 .search-tab-content {
+    background: none repeat scroll 0 0 #fff;
+    color: #474450;
+    float: left;
+    padding: 0;
+    width: 100%;
+}
+.el-guide p img {
+    max-width: 100%;
+}
+.el-guide li span {
+    display: block;
+    float: left;
+    font-size: 1.0833em;
+    font-weight: bold;
+    line-height: 1.6666;
+    width: 1.5em;
+}
+#preloader {
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2147483647;
+}
+#status {
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: auto;
+    left: 50%;
+    margin: -18px 0 0 -18px;
+    position: absolute;
+    top: 50%;
+    width: 100px;
+}
+.thongtin div span
+{
+     color: #272727;
+    display: block;
+    float: left;
+    line-height: 160%;
+    width: 7em;
+}
+.thongtin{
+    padding-bottom:300px;
+}

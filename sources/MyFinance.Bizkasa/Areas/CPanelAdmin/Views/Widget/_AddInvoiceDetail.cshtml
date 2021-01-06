@@ -1,0 +1,55 @@
+﻿<div id="addInvoiceDetail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title" id="myLargeModalLabel">
+                    Chi tiết hóa đơn
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Chọn dịch vụ</label>
+                        <div class="col-sm-9">
+                            <select chosen options="WidgetsInvoice" data-placeholder="Chọn dịch vụ ..." class="chosen-select-deselect form-control" tabindex="2" ng-options="row as row.Name  group by row.GroupName for row in WidgetsInvoice" ng-model="Service"></select>
+                            
+                        </div>                       
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Số lượng </label>
+                        <div class="col-sm-3">
+                            <input type="text" id="form-field-1" ng-model="InvoiceDetail.Quantity" placeholder="Số lượng" class="form-control" format="number">
+                        </div>
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Giá </label>
+                        <div class="col-sm-3">
+                            <input type="text" id="form-field-1" ng-model="InvoiceDetail.Price" placeholder="Giá" class="form-control" format="number">
+                        </div>
+                    </div>              
+
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ghi chú </label>
+                        <div class="col-sm-9">
+                            <textarea id="form-field-1" placeholder="" ng-model="InvoiceDetail.Notes" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" ng-click="AddInvoiceDetail()">Lưu và tạo tiếp</button>
+                <button type="button" class="btn btn-danger" ng-click="AddInvoiceDetail(true)">Lưu và đóng</button>
+                <button type="button" class="btn btn-default active" data-dismiss="modal">Hủy</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
