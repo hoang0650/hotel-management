@@ -207,9 +207,7 @@ app.controller("InvoiceController", function ($scope, InvoiceService) {
 
     };
     $scope.TransferPopup = function (val) {
-        $scope.Shift = {
-            MaxTransferAmount: val
-        };
+        $scope.Shift.MaxTransferAmount = val;
         $scope.InitAdmins();
         $('#transferManager').modal('show');
     };
@@ -278,7 +276,6 @@ app.controller("InvoiceController", function ($scope, InvoiceService) {
     };
 
     $scope.ComputedOpenAmount = function () {
- 
         if (!$scope.SummaryShift.ShiftPrev) {
             $scope.SummaryShift.ShiftPrev.OpenAmount=0
         }

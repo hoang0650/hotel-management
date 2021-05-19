@@ -640,7 +640,7 @@ namespace MyFinance.Business
                     .OrderByDescending(a => a.Id).Take(1).FirstOrDefault();
                 if (m_lastShift != null)
                 {
-                    shiftId = m_lastShift.Id;
+                    shiftId = m_cur_shiftId = m_lastShift.Id;                     
                     m_userId = m_lastShift.UserId;
                 }
 
